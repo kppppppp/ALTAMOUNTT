@@ -304,7 +304,7 @@ export function SiteExperience() {
               <div className="lg:col-span-7">
                 <h2 className="heading-editorial" data-text-reveal="left">
                   <span>YOUR SPACE.</span>
-                  <span><em>YOUR STORY.</em></span>
+                  <span>YOUR STORY.</span>
                   <span>OUR DESIGN.</span>
                 </h2>
                 <i className="gold-line" data-gold-line />

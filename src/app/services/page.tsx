@@ -14,7 +14,7 @@ export default function ServicesPage() {
 
   return (
     <PageShell>
-      <main>
+      <main className="services-page">
         {/* ═══ 1. CINEMATIC HERO ═══ */}
         <section className="page-hero-img">
           <img src={images.servicesHero} alt="Altamountt interior design services" loading="eager" />
@@ -51,7 +51,7 @@ export default function ServicesPage() {
                   translate those rhythms into spatial architecture, material specifications, and turnkey execution.
                 </p>
                 <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
-                  From single-room refreshes to complete 5-bedroom villa fit-outs, our studio maintains
+                  From residential luxury homes to customized corporate workspaces, our studio maintains
                   the same obsessive quality standard throughout.
                 </p>
               </div>
@@ -69,66 +69,93 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ═══ 3. RESIDENTIAL — IMAGE LEFT, TEXT RIGHT ═══ */}
+        {/* ═══ 3. RESIDENTIAL SECTION (editorial vertical flow) ═══ */}
         <section className="section-pad bg-[var(--bg-sand)]">
-          <div className="max-w-7xl mx-auto svc-row">
-            <div className="media-reveal-wrap" style={{ height: "50vw", minHeight: 380, maxHeight: 640 }} data-reveal="left">
-              <img src={res.image} alt="Residential interior by Altamountt" className="media-reveal-inner" loading="lazy" />
-            </div>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+              <div className="lg:col-span-5">
+                <span className="service-section-number">{res.number} <small>/ 04</small></span>
+                <h2 className="heading-editorial mb-4" data-text-reveal="left">
+                  <span>RESIDENTIAL</span>
+                  <span><em>INTERIORS.</em></span>
+                </h2>
+                <i className="gold-line" data-gold-line />
+                <p className="text-base md:text-lg text-[var(--ink-muted)] leading-relaxed mb-8">{res.description}</p>
 
-            <div>
-              <span className="mono text-xs text-[var(--gold-dark)] block mb-2">{res.number} / 04</span>
-              <h2 className="heading-editorial mb-4" data-text-reveal="left">
-                <span>RESIDENTIAL</span>
-                <span><em>INTERIORS.</em></span>
-              </h2>
-              <i className="gold-line" data-gold-line />
-              <p className="text-base text-[var(--ink-muted)] leading-relaxed mb-6">{res.description}</p>
+                <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-6">
+                  {res.subservices.map((s) => (
+                    <div key={s} className="svc-tag-item">
+                      <span className="svc-tag-dot" />
+                      <span>{s}</span>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-4">
-                {res.subservices.map((s) => (
-                  <div key={s} className="svc-tag-item">
-                    <span className="svc-tag-dot" />
-                    <span>{s}</span>
-                  </div>
-                ))}
+                <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
+                  Inquire for Residence <span>→</span>
+                </Link>
               </div>
 
-              <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
-                Inquire for Residence <span>→</span>
-              </Link>
+              {/* Editorial Vertical Image Stack: Living -> Kitchen -> Study */}
+              <div className="lg:col-span-7 flex flex-col gap-10">
+                <div className="media-reveal-wrap" style={{ height: "40vw", minHeight: 300, maxHeight: 520 }} data-reveal="left">
+                  <img src={images.living} alt="Residential living room TV unit design" className="media-reveal-inner" loading="lazy" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="up">
+                    <img src={images.kitchen} alt="Modular kitchen layout" className="media-reveal-inner" loading="lazy" />
+                  </div>
+                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="right">
+                    <img src={images.bedroom} alt="Bespoke bedroom layout" className="media-reveal-inner" loading="lazy" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ═══ 4. COMMERCIAL — TEXT LEFT, IMAGE RIGHT ═══ */}
+        {/* ═══ 4. COMMERCIAL SECTION (editorial vertical flow) ═══ */}
         <section className="section-pad bg-[var(--bg-ivory)]">
-          <div className="max-w-7xl mx-auto svc-row">
-            <div className="order-2 md:order-1">
-              <span className="mono text-xs text-[var(--gold-dark)] block mb-2">{com.number} / 04</span>
-              <h2 className="heading-editorial mb-4" data-text-reveal="left">
-                <span>COMMERCIAL</span>
-                <span><em>&amp; HOSPITALITY.</em></span>
-              </h2>
-              <i className="gold-line" data-gold-line />
-              <p className="text-base text-[var(--ink-muted)] leading-relaxed mb-6">{com.description}</p>
-
-              <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-4">
-                {com.subservices.map((s) => (
-                  <div key={s} className="svc-tag-item">
-                    <span className="svc-tag-dot" />
-                    <span>{s}</span>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+              {/* Images on Left */}
+              <div className="lg:col-span-7 flex flex-col gap-10 order-2 lg:order-1">
+                <div className="media-reveal-wrap" style={{ height: "40vw", minHeight: 300, maxHeight: 520 }} data-reveal="left">
+                  <img src={images.architectural} alt="Google BKC reception desk" className="media-reveal-inner" loading="lazy" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="up">
+                    <img src="/client-work/projects/commercial/lakme-salon-interior-01.webp" alt="Lakme Salon interior Versova" className="media-reveal-inner" loading="lazy" />
                   </div>
-                ))}
+                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="right">
+                    <img src="/client-work/projects/commercial/google-bkc-meeting.webp" alt="Google BKC meeting space" className="media-reveal-inner" loading="lazy" />
+                  </div>
+                </div>
               </div>
 
-              <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
-                Inquire for Commercial <span>→</span>
-              </Link>
-            </div>
+              {/* Text on Right */}
+              <div className="lg:col-span-5 order-1 lg:order-2">
+                <span className="service-section-number">{com.number} <small>/ 04</small></span>
+                <h2 className="heading-editorial mb-4" data-text-reveal="left">
+                  <span>COMMERCIAL</span>
+                  <span><em>&amp; HOSPITALITY.</em></span>
+                </h2>
+                <i className="gold-line" data-gold-line />
+                <p className="text-base md:text-lg text-[var(--ink-muted)] leading-relaxed mb-8">{com.description}</p>
 
-            <div className="order-1 md:order-2 media-reveal-wrap" style={{ height: "50vw", minHeight: 380, maxHeight: 640 }} data-reveal="right">
-              <img src={com.image} alt="Commercial interior by Altamountt" className="media-reveal-inner" loading="lazy" />
+                <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-6">
+                  {com.subservices.map((s) => (
+                    <div key={s} className="svc-tag-item">
+                      <span className="svc-tag-dot" />
+                      <span>{s}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
+                  Inquire for Commercial <span>→</span>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -142,7 +169,7 @@ export default function ServicesPage() {
               </div>
 
               <div className="svc-card-overlay">
-                <span className="mono text-xs text-[var(--gold-light)] block mb-2">{arch.number} / 04</span>
+                <span className="service-section-number service-section-number-light">{arch.number} <small>/ 04</small></span>
                 <h2 className="text-2xl md:text-4xl font-serif text-white mb-3">{arch.title}</h2>
                 <i className="gold-line dark" style={{ width: 50, margin: "0.75rem 0" }} data-gold-line />
                 <p className="text-xs md:text-sm text-[var(--ink-light-muted)] leading-relaxed mb-6">{arch.description}</p>
@@ -176,7 +203,7 @@ export default function ServicesPage() {
             </div>
 
             <div>
-              <span className="mono text-xs text-[var(--gold-dark)] block mb-2">{tkey.number} / 04</span>
+              <span className="service-section-number">{tkey.number} <small>/ 04</small></span>
               <h2 className="heading-editorial mb-4" data-text-reveal="left">
                 <span>FROM CONCEPT</span>
                 <span><em>TO COMPLETION.</em></span>

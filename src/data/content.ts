@@ -60,28 +60,28 @@ export const studioInfo = {
 };
 
 export const images = {
-  heroPoster: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=90",
-  living: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=90",
-  lounge: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1800&q=90",
-  dining: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1800&q=90",
-  bedroom: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=90",
-  kitchen: "https://images.unsplash.com/photo-1600566753051-f0b89df2dd90?auto=format&fit=crop&w=1800&q=90",
-  bath: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90",
-  detail: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1800&q=90",
-  material: "https://images.unsplash.com/photo-1615529162924-f8605388461d?auto=format&fit=crop&w=1800&q=90",
-  final: "https://images.unsplash.com/photo-1617104551722-3b2d5136646c?auto=format&fit=crop&w=2000&q=90",
-  architectural: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=90",
-  warmRoom: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=90",
-  penthouse: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=90",
-  beforeBath: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1800&q=90",
-  afterBath: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=90",
-  marbleStudy: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1800&q=90",
-  flutedWood: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=1800&q=90",
-  lightingGlow: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1800&q=90",
-  officeInterior: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=90",
-  aboutHero: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=90",
-  servicesHero: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=90",
-  contactHero: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=2000&q=90",
+  heroPoster: "/client-work/projects/residential/living-tv-unit-01.jpg",
+  living: "/client-work/projects/residential/living-tv-unit-01.jpg",
+  lounge: "/client-work/projects/residential/living-console-cabinet.jpg",
+  dining: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
+  bedroom: "/client-work/projects/residential/bedroom-ilaf-study.webp",
+  kitchen: "/client-work/interiors/client-kitchen-01.webp",
+  bath: "/client-work/projects/commercial/google-bkc-restroom.webp",
+  detail: "/client-work/projects/commercial/pachouli-wellness-washbasin.webp",
+  material: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg",
+  final: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
+  architectural: "/client-work/projects/commercial/google-bkc-reception.webp",
+  warmRoom: "/client-work/projects/commercial/google-bkc-meeting.webp",
+  penthouse: "/client-work/projects/commercial/google-bkc-office-01.webp",
+  beforeBath: "/client-work/projects/residential/living-tv-unit-01-cad.webp",
+  afterBath: "/client-work/projects/residential/living-tv-unit-01.jpg",
+  marbleStudy: "/client-work/interiors/client-study-yellow-chairs.webp",
+  flutedWood: "/client-work/interiors/client-study-wardrobe-01.webp",
+  lightingGlow: "/client-work/interiors/client-wardrobe-secret-door.webp",
+  officeInterior: "/client-work/projects/commercial/google-bkc-office-01.webp",
+  aboutHero: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
+  servicesHero: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
+  contactHero: "/client-work/projects/commercial/google-bkc-reception.webp",
 };
 
 export const aboutPillars = [
@@ -90,7 +90,7 @@ export const aboutPillars = [
     title: "Design",
     subtitle: "Architectural Vision",
     desc: "Aesthetic concepts with a distinct architectural point of view. We sculpt spaces that feel sophisticated without being sterile.",
-    image: images.living,
+    image: images.dining,
     preset: "up" as const,
   },
   {
@@ -98,7 +98,7 @@ export const aboutPillars = [
     title: "Function",
     subtitle: "Ergonomic Flow",
     desc: "Every square inch is engineered around the physical rhythm of your day, ensuring seamless movement and clutter-free living.",
-    image: images.dining,
+    image: images.kitchen,
     preset: "left" as const,
   },
   {
@@ -114,7 +114,7 @@ export const aboutPillars = [
     title: "Value",
     subtitle: "Financial Intelligence",
     desc: "True accessible luxury. High-end materials and finishes specified with financial intelligence and transparent pricing.",
-    image: images.warmRoom,
+    image: images.living,
     preset: "scale" as const,
   },
 ];
@@ -207,26 +207,26 @@ export const servicesProcess = [
 
 export const materialsDetails = [
   {
-    title: "Brushed Travertine & Italian Marble",
-    subtitle: "Tactile surfaces selected for depth and natural vein variation.",
+    title: "Bespoke Study & Dual Seating",
+    subtitle: "Custom floating desk integrated with floor-to-ceiling wardrobe units.",
     image: images.marbleStudy,
     preset: "up" as const,
   },
   {
-    title: "Fluted Timber & Acoustic Paneling",
-    subtitle: "Custom architectural millwork providing warm acoustic insulation.",
+    title: "Fluted Accent Walls & Wardrobes",
+    subtitle: "Precision fluting details and wooden drawer handles.",
     image: images.flutedWood,
     preset: "left" as const,
   },
   {
-    title: "Architectural Concealed Lighting",
-    subtitle: "Layered 2700K ambient illumination sculpted into ceiling reveals.",
+    title: "Integrated Secret Passage & Joinery",
+    subtitle: "Wardrobe doors that conceal entranceways to private master baths.",
     image: images.lightingGlow,
     preset: "right" as const,
   },
   {
-    title: "Brushed Champagne Brass Joinery",
-    subtitle: "Hand-finished hardware custom fabricated for each residence.",
+    title: "Premium Vanities & Gold Hardware",
+    subtitle: "Vessel washbasins with wall-mounted champagne gold hardware.",
     image: images.detail,
     preset: "scale" as const,
   },
@@ -235,25 +235,32 @@ export const materialsDetails = [
 export const imageStackScenes = [
   {
     id: "stack-1",
-    label: "LAYER 01",
-    title: "Spatial Clarity",
-    description: "Uncluttering the floor plan to welcome unobstructed natural light and intuitive flow.",
-    image: images.living,
+    label: "LAYER 01 · CORPORATE",
+    title: "Google BKC Reception",
+    description: "A sweeping reception desk with custom wave-patterned terrazzo flooring and architectural lighting reveals.",
+    image: "/client-work/projects/commercial/google-bkc-reception.webp",
   },
   {
     id: "stack-2",
-    label: "LAYER 02",
-    title: "Material Harmony",
-    description: "Layering tactile travertine, warm European oak, and textured bouclé fabrics.",
-    image: images.dining,
+    label: "LAYER 02 · COMMERCIAL",
+    title: "Pachouli Wellness Andheri",
+    description: "A welcoming reception lobby displaying textured wood cladding, elegant gold lettering, and backlit displays.",
+    image: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
   },
   {
     id: "stack-3",
-    label: "LAYER 03",
-    title: "Bespoke Millwork & Execution",
-    description: "Precision-engineered joinery and concealed storage delivering effortless turnkey elegance.",
-    image: images.warmRoom,
+    label: "LAYER 03 · RETAIL",
+    title: "Lakme Salon Versova",
+    description: "Premium hair styling and treatment zones framed by raw brick accent walls and circular copper pendant lights.",
+    image: "/client-work/projects/commercial/lakme-salon-interior-01.webp",
   },
+];
+
+// Names and imagery below are only used where the supplied project assets establish the relationship.
+export const selectedClients = [
+  { name: "GOOGLE", descriptor: "Corporate workspace · BKC", image: "/client-work/projects/commercial/google-bkc-reception.webp" },
+  { name: "LAKMÉ", descriptor: "Beauty & styling salon · Versova", image: "/client-work/projects/commercial/lakme-salon-interior-01.webp" },
+  { name: "PACHOULI WELLNESS", descriptor: "Wellness clinic · Andheri", image: "/client-work/projects/commercial/pachouli-wellness-reception.webp" },
 ];
 
 export const servicesData: ServiceItem[] = [
@@ -263,7 +270,7 @@ export const servicesData: ServiceItem[] = [
     title: "Residential Interiors",
     tagline: "Living spaces shaped around your daily rhythm",
     description: "Full-scale interior styling and spatial design for luxury apartments, penthouses, and villas in Thane & Mumbai. From tailored living lounges to serene private suites.",
-    image: images.living,
+    image: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
     subservices: [
       "Living & Entertainment Lounges",
       "Master & Guest Bedroom Suites",
@@ -279,7 +286,7 @@ export const servicesData: ServiceItem[] = [
     title: "Commercial & Hospitality",
     tagline: "Architectural brand experiences that inspire",
     description: "Boutique offices, corporate headquarters, executive suites, and dining environments designed to maximize engagement, workflow efficiency, and signature brand prestige.",
-    image: images.officeInterior,
+    image: "/client-work/projects/commercial/google-bkc-reception.webp",
     subservices: [
       "Executive Workspaces & Suites",
       "Boutique Hospitality & Lounges",
@@ -294,7 +301,7 @@ export const servicesData: ServiceItem[] = [
     title: "Interior Architecture",
     tagline: "Volumetric space planning & structural harmony",
     description: "Transformative structural reconfiguration, light optimization, architectural millwork, custom ceiling designs, and refined natural material selections.",
-    image: images.kitchen,
+    image: "/client-work/projects/residential/living-tv-unit-01-cad.webp",
     subservices: [
       "Comprehensive Space & Flow Planning",
       "Architectural Lighting Schemes",
@@ -309,7 +316,7 @@ export const servicesData: ServiceItem[] = [
     title: "Turnkey Solutions",
     tagline: "Seamless end-to-end execution from sketch to keys",
     description: "One single accountable team managing procurement, engineering, contractor supervision, craftsmanship, and on-schedule handover within your established budget.",
-    image: images.final,
+    image: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
     subservices: [
       "Material Sourcing & Procurement",
       "Civil & Structural Supervision",
@@ -322,123 +329,122 @@ export const servicesData: ServiceItem[] = [
 
 export const pinnedStoryScenes: ProjectScene[] = [
   {
-    tag: "01 / 05 · Living Volume / Thane",
-    title: "Living Sanctuary",
-    subtitle: "A softened palette of brushed travertine, warm oak, and bespoke textured upholstery built for daily calm and effortless entertaining.",
-    image: images.living,
+    tag: "01 / 05 · Living Lounge · Vivearea",
+    title: "Living Lounge",
+    subtitle: "Contemporary TV wall unit featuring a seamless marble backdrop with gold accent lines and matching low-profile cabinetry.",
+    image: "/client-work/projects/residential/living-tv-unit-01.jpg",
     aspect: "16/10"
   },
   {
-    tag: "02 / 05 · Dining Room / Thane",
-    title: "The Dining Room",
-    subtitle: "Architectural light fixtures suspended over monolithic stone surfaces, creating an intimate center of gravity for family gatherings.",
-    image: images.dining,
+    tag: "02 / 05 · Cabinetry Detail · Vivearea",
+    title: "Console Craft",
+    subtitle: "A hand-crafted console cabinet showing rounded corners and fine vertical fluting with a custom golden metallic finish.",
+    image: "/client-work/projects/residential/living-console-cabinet.jpg",
     aspect: "16/10"
   },
   {
-    tag: "03 / 05 · Private Suite / Thane",
-    title: "Master Bedroom",
-    subtitle: "A sanctuary of gentle symmetry, acoustic wall paneling, integrated mood lighting, and concealed wardrobe architecture.",
-    image: images.bedroom,
+    tag: "03 / 05 · Bedroom Suite · Vivearea",
+    title: "Master Suite",
+    subtitle: "Serene bedroom featuring a custom fluted headboard in sage green, integrated warm LED coves, and dual bedside hanging lamps.",
+    image: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
     aspect: "16/10"
   },
   {
-    tag: "04 / 05 · Material Study / Thane",
-    title: "Material Craft",
-    subtitle: "Every grain, edge, and metallic accent is rigorously tested under natural and artificial light to guarantee timeless tactile luxury.",
-    image: images.material,
+    tag: "04 / 05 · Integrated Storage · Vivearea",
+    title: "Bespoke Wardrobe",
+    subtitle: "Floor-to-ceiling wardrobes featuring integrated golden handles and matching top loft storage to maximize vertical space.",
+    image: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg",
     aspect: "16/10"
   },
   {
-    tag: "05 / 05 · Finished Residence / Thane",
-    title: "The Completed Vision",
-    subtitle: "Turnkey perfection where every spatial plan, lighting circuit, and custom furniture piece functions in seamless harmony.",
-    image: images.final,
+    tag: "05 / 05 · Study Area · Vivearea",
+    title: "Work Alcove",
+    subtitle: "A dedicated study desk framed by warm vertical timber flutes and matching floating shelving with integrated LED strips.",
+    image: "/client-work/projects/residential/bedroom-ilaf-study.webp",
     aspect: "16/10"
   }
 ];
 
 export const projectsList: ProjectDetail[] = [
   {
-    slug: "thane-residence",
-    title: "A Residence in Thane",
-    subtitle: "4,200 sq.ft Luxury Turnkey Apartment",
+    slug: "selected-residence",
+    title: "Selected Residence, Vivearea",
+    subtitle: "Bespoke Luxury Residential Apartment",
     category: "Residential Architecture",
-    location: "Bhayandarpada, Thane",
-    year: "2025",
-    scope: "Complete Turnkey Interior & Millwork",
-    heroImage: images.living,
-    intro: "A modern luxury home conceived for a multi-generational family seeking serene openness, clean lines, and warm, tactile materials.",
-    concept: "We eliminated dark partitions to flood the primary living volume with natural daylight, introducing custom fluted oak wall paneling that conceals storage and private entranceways.",
+    location: "Vivearea, Mumbai",
+    year: "2024",
+    scope: "Bespoke Interior & Millwork",
+    heroImage: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
+    intro: "A high-end residential apartment at Vivearea, Mumbai, showcasing custom millwork, fluted paneling, sage green tones, and modular layouts.",
+    concept: "We optimized the TV wall unit with a marble slab backdrop and gold borders, while designing a master bedroom with fluted headboards and loft storage.",
     gallery: [
-      { title: "Living Lounge", caption: "Custom low-profile sectional paired with travertine cocktail tables", image: images.living, preset: "up" },
-      { title: "Dining Volume", caption: "Sculptural lighting fixture above solid quartz dining island", image: images.dining, preset: "left" },
-      { title: "Master Suite", caption: "Acoustically insulated headboard wall with integrated brass sconces", image: images.bedroom, preset: "right" },
-      { title: "Material Palette", caption: "Hand-picked Italian marbles, warm European oak, champagne gold metals", image: images.material, preset: "scale" },
-      { title: "Detail & Joinery", caption: "Bespoke recessed handle details on matte lacquer cabinetry", image: images.detail, preset: "parallax" }
+      { title: "Master Bedroom", caption: "Sage green fluted headboard with bedside hanging lamps", image: "/client-work/projects/residential/bedroom-ilaf-01.jpg", preset: "up" },
+      { title: "TV Unit Option 1", caption: "Polished marble wall TV unit with gold trim", image: "/client-work/projects/residential/living-tv-unit-01.jpg", preset: "right" },
+      { title: "Bespoke Console", caption: "Fluted wooden cabinet console detail", image: "/client-work/projects/residential/living-console-cabinet.jpg", preset: "left" },
+      { title: "Bedroom Wardrobe", caption: "Beige wardrobes with long brass handles", image: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg", preset: "scale" },
+      { title: "Bedroom Study", caption: "Compact desk area with integrated overhead shelf", image: "/client-work/projects/residential/bedroom-ilaf-study.webp", preset: "parallax" }
     ],
-    quote: "Altamountt transformed our standard builder layout into a breathtaking, peaceful sanctuary that feels twice as spacious.",
-    clientFeedback: "Mr. & Mrs. Sharma · Thane"
+    quote: "Altamountt transformed our blank layout into a breathtaking, peaceful sanctuary that feels twice as spacious.",
+    clientFeedback: "Residential Client · Vivearea"
   },
   {
-    slug: "quiet-gathering",
-    title: "Quiet Gathering",
-    subtitle: "Contemporary Penthouse Living & Dining",
-    category: "Turnkey Living Spaces",
-    location: "Ghodbunder Road, Thane",
+    slug: "google-bkc",
+    title: "Google Office, BKC",
+    subtitle: "Modern Corporate Workspace",
+    category: "Commercial & Office",
+    location: "BKC, Mumbai",
     year: "2024",
-    scope: "Spatial Reconfiguration & Interior Styling",
-    heroImage: images.dining,
-    intro: "An open-concept penthouse where social entertaining zones harmonize effortlessly with quiet reading and work alcoves.",
-    concept: "Using curved plaster bulkheads and indirect perimeter lighting, the ceiling guides movement through the open floor plan while preserving an uncluttered aesthetic.",
+    scope: "Space Planning & Interior Architecture",
+    heroImage: "/client-work/projects/commercial/google-bkc-reception.webp",
+    intro: "A premium corporate workspace designed for Google in BKC, Mumbai, centering around open flow, wave-patterned flooring, and acoustic glass partitions.",
+    concept: "We optimized the corridor flow and reception area, pairing textured sand-tone wallpaper with curved concrete elements and stone washroom claddings.",
     gallery: [
-      { title: "Dining Atrium", caption: "Double-height dining space bathed in filtered morning sun", image: images.dining, preset: "up" },
-      { title: "Lounge Atmosphere", caption: "Soft linen upholstery with warm timber architectural accents", image: images.lounge, preset: "left" },
-      { title: "Curated Materials", caption: "Tactile bouclé fabrics against deep matte charcoal cabinetry", image: images.material, preset: "right" },
-      { title: "Culinary Space", caption: "Minimalist handleless kitchen with concealed pantry storage", image: images.kitchen, preset: "scale" }
+      { title: "Google Reception", caption: "Curved wooden desk and terrazzo wave-pattern flooring", image: "/client-work/projects/commercial/google-bkc-reception.webp", preset: "up" },
+      { title: "Workstations", caption: "Open-concept desk clusters with acoustic dividers", image: "/client-work/projects/commercial/google-bkc-office-01.webp", preset: "left" },
+      { title: "Meeting Suite", caption: "Glass-enclosed conference room with brick accent wall", image: "/client-work/projects/commercial/google-bkc-meeting.webp", preset: "right" },
+      { title: "Washroom Vanity", caption: "Round mirrors and concrete vessel basins", image: "/client-work/projects/commercial/google-bkc-restroom.webp", preset: "scale" }
     ],
-    quote: "The attention to lighting and flow has made hosting our family and friends an absolute joy.",
-    clientFeedback: "Kapoor Family · Thane"
+    quote: "The design completely changed how our team collaborates. The flow and restroom layout are exceptional.",
+    clientFeedback: "Google BKC Facilities Team"
   },
   {
-    slug: "layers-of-light",
-    title: "Layers of Light",
-    subtitle: "Bespoke Private Residence",
-    category: "Interior Architecture",
-    location: "Majiwada, Thane",
+    slug: "pachouli-wellness",
+    title: "Pachouli Wellness, Andheri",
+    subtitle: "Luxury Wellness Clinic & Spa",
+    category: "Commercial & Hospitality",
+    location: "Andheri, Mumbai",
     year: "2024",
-    scope: "Lighting Design, Custom Furniture & Turnkey Execution",
-    heroImage: images.bedroom,
-    intro: "A serene master apartment designed around the interplay of morning shadows, warm indirect cove illumination, and muted earthy tones.",
-    concept: "We balanced raw stone textures with ultra-fine champagne metallic accents, designing custom furniture pieces that appear to float above the floor.",
+    scope: "Turnkey Interior Design & Styling",
+    heroImage: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
+    intro: "A serene wellness clinic and spa for Pachouli in Andheri, combining light timber textures, brass detailing, and calming wellness spaces.",
+    concept: "We crafted a welcoming reception with wave-textured wall backdrops and gold branding, leading to private spa suites and styling bays.",
     gallery: [
-      { title: "Private Suite", caption: "Bespoke upholstered bedframe framed by ribbed wood paneling", image: images.bedroom, preset: "up" },
-      { title: "Architectural Bath", caption: "Walk-in rain shower with frameless glass and vein-matched porcelain", image: images.bath, preset: "right" },
-      { title: "Material Detailing", caption: "Precision brass shadow gaps and hand-applied lime plaster", image: images.detail, preset: "left" },
-      { title: "Finished Atmosphere", caption: "Warm ambient glow that transforms the room after twilight", image: images.final, preset: "scale" }
+      { title: "Reception Lobby", caption: "Backlit timber counter with customized white-wave backdrop", image: "/client-work/projects/commercial/pachouli-wellness-reception.webp", preset: "up" },
+      { title: "Om Therapy Suite", caption: "Serene treatment room featuring copper shirodhara vessel", image: "/client-work/projects/commercial/pachouli-wellness-om-room.webp", preset: "right" },
+      { title: "Hair Salon Area", caption: "Styling chairs and vanity mirrors with circular lights", image: "/client-work/projects/commercial/pachouli-wellness-salon.webp", preset: "left" },
+      { title: "Spa Suite", caption: "Relaxing massage bed alongside custom shower enclosure", image: "/client-work/projects/commercial/pachouli-wellness-shower.webp", preset: "scale" }
     ],
-    quote: "Every corner of our home feels intentional. The craftsmanship is flawless.",
-    clientFeedback: "Mehta Residence · Thane"
+    quote: "Altamountt delivered a peaceful sanctuary. Our clients frequently compliment the warm lighting and woodwork.",
+    clientFeedback: "Dr. Preeti Seth · Pachouli Wellness"
   },
   {
-    slug: "warmth-in-form",
-    title: "Warmth in Form",
-    subtitle: "Turnkey Executive Villa",
-    category: "Full Turnkey Villa",
-    location: "Hiranandani Estate, Thane",
-    year: "2024",
-    scope: "Complete Interior Design, MEP, Civil & Turnkey Execution",
-    heroImage: images.final,
-    intro: "An expansive 5-bedroom villa combining Scandinavian warmth with refined Indian contemporary craftsmanship.",
-    concept: "A cohesive narrative built around warm sand tones, architectural stone fireplaces, seamless micro-cement floors, and custom millwork throughout.",
+    slug: "lakme-salon",
+    title: "Lakme Salon, Versova",
+    subtitle: "Premium Beauty & Styling Salon",
+    category: "Commercial & Hospitality",
+    location: "Versova, Mumbai",
+    year: "2023",
+    scope: "Interior Design & Turnkey Execution",
+    heroImage: "/client-work/projects/commercial/lakme-salon-interior-01.webp",
+    intro: "A premium retail styling salon for Lakme in Versova, showcasing industrial chic brick walls, copper lighting, and circular back-light mirrors.",
+    concept: "We chose an industrial texture vocabulary, using dark brick cladding and concrete floors to create a high-contrast styling environment.",
     gallery: [
-      { title: "Main Living Hall", caption: "Expansive double-height glazing connecting to private terrace", image: images.final, preset: "up" },
-      { title: "Lounge & Library", caption: "Floor-to-ceiling backlit book shelving and leather lounge seating", image: images.lounge, preset: "left" },
-      { title: "Gourmet Kitchen", caption: "Integrated appliances behind fluted smoke-oak doors", image: images.kitchen, preset: "right" },
-      { title: "Fine Detailing", caption: "Brushed bronze hardware custom-fabricated for this project", image: images.detail, preset: "parallax" }
+      { title: "Styling Bay", caption: "Styling chairs framed by exposed brick walls and copper pendant lamps", image: "/client-work/projects/commercial/lakme-salon-interior-01.webp", preset: "up" },
+      { title: "Reception Desk", caption: "Bespoke counter styling with dark accents", image: "/client-work/projects/commercial/lakme-salon-interior-02.webp", preset: "left" },
+      { title: "Entrance Lobby", caption: "Glass doors and outdoor seating area", image: "/client-work/projects/commercial/lakme-salon-entrance.webp", preset: "right" }
     ],
-    quote: "Altamountt managed everything end-to-end within budget and delivered ahead of our move-in schedule.",
-    clientFeedback: "Deshmukh Villa · Thane"
+    quote: "The salon styling stands out. The brick wall texture and copper styling details are perfect for our brand.",
+    clientFeedback: "Lakme Salon Management"
   }
 ];
 

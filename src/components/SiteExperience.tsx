@@ -13,6 +13,7 @@ import {
   pinnedStoryScenes,
   process,
   projectsList,
+  selectedClients,
   servicesData,
   studioInfo,
 } from "@/data/content";
@@ -329,6 +330,49 @@ export function SiteExperience() {
                   <span>TYPOLOGY: RESIDENTIAL</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* VERIFIED CLIENTS — relationships are taken directly from supplied project assets */}
+        <section className="selected-clients-section" aria-labelledby="selected-clients-title">
+          <div className="max-w-7xl mx-auto">
+            <div className="selected-clients-heading">
+              <div>
+                <p className="eyebrow dark">Selected Clients</p>
+                <h2 id="selected-clients-title" className="heading-editorial" data-text-reveal="left">
+                  <span>SPACES CREATED FOR</span>
+                  <span><em>LEADING ORGANIZATIONS.</em></span>
+                </h2>
+              </div>
+              <p>From brand-forward retail to high-performance workspaces, every environment is resolved around how people arrive, move, work, and feel.</p>
+            </div>
+
+            <div className="client-marquee" aria-label="Selected clients: Google, Lakmé, Pachouli Wellness">
+              <div className="client-marquee-track">
+                {[...selectedClients, ...selectedClients].map((client, index) => (
+                  <span className="client-marquee-name" key={`${client.name}-${index}`}>{client.name}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="client-showcase-grid">
+              {selectedClients.map((client, index) => (
+                <article className={`client-showcase-card client-showcase-card-${index + 1} ${client.name === "GOOGLE" ? "client-showcase-card-google" : ""}`} key={client.name}>
+                  {client.name === "GOOGLE" && <p className="client-showcase-kicker">Selected Commercial Work</p>}
+                  <div className="media-reveal-wrap client-showcase-image" data-reveal={index === 1 ? "right" : "up"}>
+                    <img src={client.image} alt={`${client.name} project by Altamountt`} className="media-reveal-inner" loading="lazy" />
+                  </div>
+                  <div className="client-showcase-meta">
+                    <span>{client.name}</span>
+                    <span>{client.descriptor}</span>
+                  </div>
+                  {client.name === "GOOGLE" && <>
+                    <p className="client-showcase-google-copy">A workplace interior composed for arrival, collaboration, and daily flow.</p>
+                    <Link href="/projects/google-bkc" className="client-showcase-cta">View Google Project <span>→</span></Link>
+                  </>}
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -656,13 +700,13 @@ export function SiteExperience() {
         {/* BEFORE / AFTER INTERACTIVE COMPARISON */}
         <section className="section-pad-sm bg-[var(--bg-dark)] text-white" id="transformation">
           <div className="max-w-7xl mx-auto mb-10">
-            <p className="eyebrow dark">The Transformation</p>
+            <p className="eyebrow dark">Blueprint to Reality</p>
             <h2 className="heading-editorial" data-text-reveal="left">
-              <span>POTENTIAL,</span>
-              <span><em>REVEALED.</em></span>
+              <span>CONCEPT TO</span>
+              <span><em>VISUALIZATION.</em></span>
             </h2>
             <p className="text-sm text-[var(--ink-light-muted)] mt-4">
-              Drag the divider or scroll to witness the spatial transformation from standard builder layout to customized sanctuary.
+              Drag the divider or scroll to witness how we translate precise CAD engineering layouts into photorealistic 3D interior renders.
             </p>
           </div>
 
@@ -675,9 +719,9 @@ export function SiteExperience() {
           >
             {/* BEFORE LAYER */}
             <div className="comparison-image-layer">
-              <img src={images.beforeBath} alt="Space before transformation" />
+              <img src={images.beforeBath} alt="CAD design blueprint" />
               <div className="comparison-badge" style={{ left: "3rem" }}>
-                BEFORE
+                CAD BLUEPRINT
               </div>
             </div>
 
@@ -688,9 +732,9 @@ export function SiteExperience() {
                 clipPath: `inset(0 0 0 ${sliderPos}%)`,
               }}
             >
-              <img src={images.afterBath} alt="Space after Altamountt design transformation" />
+              <img src={images.afterBath} alt="3D photorealistic interior visualization" />
               <div className="comparison-badge" style={{ right: "3rem" }}>
-                AFTER · ALTAMOUNTT
+                3D VISUALIZATION
               </div>
             </div>
 

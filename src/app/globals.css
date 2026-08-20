@@ -3024,3 +3024,622 @@ img, video {
     padding-left: 0;
   }
 }
+/* =========================================================
+   SELECTED CLIENTS / COMMERCIAL SHOWCASE
+   Google = Featured Landscape
+   Lakme + Pachouli = Two Bottom Cards
+   ========================================================= */
+
+.selected-clients-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-dark);
+  color: var(--bg-ivory);
+
+  padding: 9rem 0 10rem;
+}
+
+/* ---------------------------------------------------------
+   SECTION HEADING
+   --------------------------------------------------------- */
+
+.selected-clients-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.selected-clients-heading > div {
+  flex: 1;
+}
+
+.selected-clients-heading > p {
+  width: min(100%, 380px);
+  margin: 0 0 0.5rem;
+
+  color: var(--ink-light-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+
+/* ---------------------------------------------------------
+   CLIENT MARQUEE
+   --------------------------------------------------------- */
+
+.client-marquee {
+  position: relative;
+
+  width: 100%;
+  overflow: hidden;
+
+  margin: 0 0 8rem;
+
+  padding: 1.5rem 0;
+
+  border-top: 1px solid rgba(245, 242, 235, 0.12);
+  border-bottom: 1px solid rgba(245, 242, 235, 0.12);
+}
+
+.client-marquee-track {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+
+  gap: 5rem;
+
+  animation: clientMarquee 28s linear infinite;
+}
+
+.client-marquee-name {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  white-space: nowrap;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+
+  font-weight: 400;
+  line-height: 0.9;
+
+  letter-spacing: -0.035em;
+
+  color: var(--gold-light);
+}
+
+.client-marquee-name::after {
+  content: "✦";
+
+  display: inline-block;
+
+  margin-left: 5rem;
+
+  font-family: serif;
+  font-size: 1rem;
+
+  color: var(--gold-light);
+  opacity: 0.8;
+}
+
+@keyframes clientMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* ---------------------------------------------------------
+   MAIN COMMERCIAL GRID
+   --------------------------------------------------------- */
+
+.client-showcase-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  column-gap: 2rem;
+  row-gap: 5rem;
+
+  width: 100%;
+}
+
+
+/* ---------------------------------------------------------
+   ALL CLIENT CARDS
+   --------------------------------------------------------- */
+
+.client-showcase-card {
+  position: relative;
+
+  min-width: 0;
+
+  width: 100%;
+}
+
+
+/* ---------------------------------------------------------
+   GOOGLE — FEATURED PROJECT
+   FULL WIDTH LANDSCAPE
+   --------------------------------------------------------- */
+
+.client-showcase-card-google {
+  grid-column: 1 / -1;
+
+  width: 100%;
+}
+
+
+/* Google kicker */
+
+.client-showcase-card-google .client-showcase-kicker {
+  margin: 0 0 1.25rem;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.65rem;
+
+  line-height: 1;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+
+  color: var(--gold-light);
+}
+
+
+/* Google image */
+
+.client-showcase-card-google .client-showcase-image {
+  position: relative;
+
+  width: 350%;
+
+  height: auto;
+
+  aspect-ratio: 16 / 8;
+
+  overflow: hidden;
+
+  background: #22201d;
+}
+
+
+/* Google image itself */
+
+.client-showcase-card-google
+.client-showcase-image
+.media-reveal-inner {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center center;
+
+  transform-origin: center center;
+
+  transition:
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s ease;
+}
+
+
+/* Google hover */
+
+.client-showcase-card-google:hover
+.client-showcase-image
+.media-reveal-inner {
+
+  transform: scale(1.035);
+
+  filter: brightness(1.03);
+}
+
+
+/* ---------------------------------------------------------
+   GOOGLE META
+   --------------------------------------------------------- */
+
+.client-showcase-card-google .client-showcase-meta {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  width: 100%;
+
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid rgba(245, 242, 235, 0.15);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: var(--ink-light-muted);
+}
+
+.client-showcase-card-google
+.client-showcase-meta span:first-child {
+
+  color: var(--bg-ivory);
+
+  letter-spacing: 0.25em;
+}
+
+
+/* Google description */
+
+.client-showcase-google-copy {
+
+  max-width: 620px;
+
+  margin: 1.25rem 0 0;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 0.95rem;
+
+  line-height: 1.8;
+
+  color: var(--ink-light-muted);
+}
+
+
+/* Google CTA */
+
+.client-showcase-card-google
+.client-showcase-cta {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  margin-top: 1.5rem;
+
+  padding-bottom: 0.4rem;
+
+  border-bottom: 1px solid var(--gold-light);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color: var(--gold-light);
+
+  transition:
+    gap 0.35s ease,
+    color 0.35s ease;
+}
+
+.client-showcase-card-google
+.client-showcase-cta:hover {
+
+  gap: 1.2rem;
+
+  color: var(--bg-ivory);
+}
+
+
+/* ---------------------------------------------------------
+   LAKMÉ + PACHOULI
+   TWO EQUAL CARDS
+   --------------------------------------------------------- */
+
+.client-showcase-card-2,
+.client-showcase-card-3 {
+
+  width: 100%;
+
+  align-self: start;
+}
+
+
+/* Image wrapper */
+
+.client-showcase-card-2 .client-showcase-image,
+.client-showcase-card-3 .client-showcase-image {
+
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background: #22201d;
+}
+
+
+/* Images */
+
+.client-showcase-card-2
+.client-showcase-image
+.media-reveal-inner,
+
+.client-showcase-card-3
+.client-showcase-image
+.media-reveal-inner {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transform-origin: center center;
+
+  transition:
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s ease;
+}
+
+
+/* Hover */
+
+.client-showcase-card-2:hover
+.client-showcase-image
+.media-reveal-inner,
+
+.client-showcase-card-3:hover
+.client-showcase-image
+.media-reveal-inner {
+
+  transform: scale(1.04);
+
+  filter: brightness(1.04);
+}
+
+
+/* ---------------------------------------------------------
+   SECONDARY CLIENT META
+   --------------------------------------------------------- */
+
+.client-showcase-card-2 .client-showcase-meta,
+.client-showcase-card-3 .client-showcase-meta {
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1.5rem;
+
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  border-top: 1px solid rgba(245, 242, 235, 0.15);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: var(--ink-light-muted);
+}
+
+.client-showcase-card-2 .client-showcase-meta span:first-child,
+.client-showcase-card-3 .client-showcase-meta span:first-child {
+
+  color: var(--bg-ivory);
+
+  letter-spacing: 0.25em;
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE REVEAL COMPATIBILITY
+   --------------------------------------------------------- */
+
+.client-showcase-image {
+  clip-path: inset(0 0 0 0);
+}
+
+.client-showcase-image .media-reveal-inner {
+  will-change: transform;
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE — TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+
+  .selected-clients-section {
+    padding: 7rem 0 8rem;
+  }
+
+  .selected-clients-heading {
+    gap: 2rem;
+  }
+
+  .client-marquee {
+    margin-bottom: 6rem;
+  }
+
+  .client-showcase-grid {
+    column-gap: 1.25rem;
+    row-gap: 4rem;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE — MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .selected-clients-section {
+    padding: 5.5rem 1.25rem 6rem;
+  }
+
+  .selected-clients-heading {
+    display: block;
+
+    margin-bottom: 3rem;
+  }
+
+  .selected-clients-heading > p {
+    width: 100%;
+
+    margin-top: 1.5rem;
+  }
+
+
+  /* Mobile marquee */
+
+  .client-marquee {
+    margin-bottom: 4rem;
+
+    padding: 1.2rem 0;
+  }
+
+  .client-marquee-track {
+    gap: 2.5rem;
+
+    animation-duration: 22s;
+  }
+
+  .client-marquee-name {
+    font-size: clamp(2.8rem, 14vw, 5rem);
+  }
+
+  .client-marquee-name::after {
+    margin-left: 2.5rem;
+
+    font-size: 0.7rem;
+  }
+
+
+  /* One column */
+
+  .client-showcase-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 3.5rem;
+  }
+
+
+  /* Google */
+
+  .client-showcase-card-google {
+    grid-column: auto;
+  }
+
+  .client-showcase-card-google
+  .client-showcase-image {
+
+    aspect-ratio: 16 / 9;
+  }
+
+
+  /* Bottom projects */
+
+  .client-showcase-card-2
+  .client-showcase-image,
+
+  .client-showcase-card-3
+  .client-showcase-image {
+
+    aspect-ratio: 4 / 5;
+  }
+
+
+  /* Meta */
+
+  .client-showcase-card-google
+  .client-showcase-meta,
+
+  .client-showcase-card-2
+  .client-showcase-meta,
+
+  .client-showcase-card-3
+  .client-showcase-meta {
+
+    flex-wrap: wrap;
+
+    gap: 0.6rem;
+
+    font-size: 0.55rem;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 480px) {
+.client-showcase-card-google .client-showcase-image {
+  position: relative;
+
+  width: 100%;
+
+ height: 100%;
+
+  aspect-ratio: 16 / 6;
+
+  overflow: hidden;
+
+  background:transparent;
+}
+
+  .selected-clients-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .client-showcase-card-google
+  .client-showcase-image {
+
+    aspect-ratio: 16 / 9;
+  }
+
+  .client-showcase-google-copy {
+    font-size: 0.82rem;
+  }
+
+}

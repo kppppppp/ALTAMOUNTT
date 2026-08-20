@@ -24,109 +24,316 @@ export function Navigation() {
   const closeMenu = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+
     handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  // Lock body scroll + Escape key handler
+  // Lock page scrolling while mobile menu is open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeMenu(); };
-      window.addEventListener("keydown", onKey);
-      return () => {
-        document.body.style.overflow = "";
-        window.removeEventListener("keydown", onKey);
-      };
-    } else {
+    if (!open) {
       document.body.style.overflow = "";
+      return;
     }
+
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [open, closeMenu]);
 
-  // GSAP open animation
+  // Mobile menu GSAP animation
   useEffect(() => {
-    if (tlRef.current) tlRef.current.kill();
+    if (tlRef.current) {
+      tlRef.current.kill();
+    }
+
     if (!open) return;
 
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "power4.out",
+      },
+    });
+
     tlRef.current = tl;
 
-    tl.fromTo(".mob-overlay", { opacity: 0 }, { opacity: 1, duration: 0.28, ease: "power2.out" })
-      .fromTo(".mob-header", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.3 }, "-=0.1")
-      .fromTo(".mob-nav-item", { y: 48, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.06, duration: 0.6 }, "-=0.18")
-      .fromTo(".mob-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power3.out" }, "-=0.25")
-      .fromTo(".mob-cta", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 }, "-=0.2")
-      .fromTo(".mob-meta", { opacity: 0 }, { opacity: 1, duration: 0.35 }, "-=0.15");
+    tl.fromTo(
+      ".mob-overlay",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      }
+    )
+      .fromTo(
+        ".mob-header",
+        {
+          opacity: 0,
+          y: -15,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.35,
+        },
+        "-=0.12"
+      )
+      .fromTo(
+        ".mob-close-btn",
+        {
+          opacity: 0,
+          scale: 0.8,
+          rotate: -45,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          rotate: 0,
+          duration: 0.35,
+          ease: "back.out(1.7)",
+        },
+        "-=0.2"
+      )
+      .fromTo(
+        ".mob-nav-item",
+        {
+          y: 45,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.07,
+          duration: 0.55,
+        },
+        "-=0.12"
+      )
+      .fromTo(
+        ".mob-rule",
+        {
+          scaleX: 0,
+          transformOrigin: "left center",
+        },
+        {
+          scaleX: 1,
+          duration: 0.55,
+          ease: "power3.out",
+        },
+        "-=0.2"
+      )
+      .fromTo(
+        ".mob-cta",
+        {
+          y: 18,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+        },
+        "-=0.2"
+      )
+      .fromTo(
+        ".mob-meta",
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.35,
+        },
+        "-=0.15"
+      );
 
-    return () => { tl.kill(); };
+    return () => {
+      tl.kill();
+    };
   }, [open]);
 
   return (
     <>
-      {/* ─── SITE HEADER ─── */}
-      <header className={`site-nav ${scrolled ? "scrolled" : ""} ${!isHomePage ? "page-light" : ""}`}>
-        <Link className="nav-brand" href="/" onClick={closeMenu}>
-          ALTAMOUNTT<span>SPACE &amp; DESIGN</span>
+      {/* =========================================================
+          DESKTOP / MAIN NAVBAR
+      ========================================================= */}
+      <header
+        className={`site-nav ${
+          scrolled ? "scrolled" : ""
+        } ${!isHomePage ? "page-light" : ""}`}
+      >
+        {/* BRAND LOGO */}
+        <Link
+          className="nav-brand-logo"
+          href="/"
+          onClick={closeMenu}
+          aria-label="Altamountt Space & Design — Home"
+        >
+          <img
+            src="/logo.png"
+            alt="Altamountt Space & Design"
+            className="nav-logo-image"
+          />
         </Link>
 
-        <nav className="nav-links" aria-label="Desktop navigation">
+        {/* DESKTOP NAVIGATION */}
+        <nav
+          className="nav-links"
+          aria-label="Desktop navigation"
+        >
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href}
-              className={`nav-link-item ${pathname === link.href ? "active" : ""}`}>
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`nav-link-item ${
+                pathname === link.href ? "active" : ""
+              }`}
+              onClick={closeMenu}
+            >
               {link.name}
             </Link>
           ))}
         </nav>
 
-        <Link className="nav-cta-btn" href="/contact">Start a project <span>→</span></Link>
+        {/* DESKTOP CTA */}
+        <Link
+          className="nav-cta-btn"
+          href="/contact"
+          onClick={closeMenu}
+        >
+          <span>Start a project</span>
+          <span aria-hidden="true">→</span>
+        </Link>
 
-        {/* Hamburger — only visible on mobile */}
-        <button className="nav-hamburger" aria-label="Open menu" aria-expanded={open}
-          onClick={() => setOpen(true)}>
+        {/* MOBILE HAMBURGER */}
+        <button
+          type="button"
+          className="nav-hamburger"
+          aria-label="Open navigation menu"
+          aria-expanded={open}
+          onClick={() => setOpen(true)}
+        >
           <span className="ham-line" />
           <span className="ham-line" />
         </button>
       </header>
 
-      {/* ─── FULLSCREEN MOBILE OVERLAY ─── */}
-      <div className={`mob-overlay ${open ? "mob-open" : ""}`} role="dialog"
-        aria-modal="true" aria-label="Navigation Menu">
-
-        {/* Stationary top bar with BRAND + visible X CLOSE */}
+      {/* =========================================================
+          FULLSCREEN MOBILE NAVIGATION
+      ========================================================= */}
+      <div
+        className={`mob-overlay ${open ? "mob-open" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation Menu"
+        aria-hidden={!open}
+      >
+        {/* MOBILE MENU HEADER */}
         <div className="mob-header">
-          <Link className="nav-brand text-[var(--bg-ivory)]" href="/" onClick={closeMenu}>
-            ALTAMOUNTT<span className="text-[var(--gold)]">SPACE &amp; DESIGN</span>
+          <Link
+            className="mob-logo-link"
+            href="/"
+            onClick={closeMenu}
+            aria-label="Altamountt Space & Design — Home"
+          >
+            <img
+              src="/logo.png"
+              alt="Altamountt Space & Design"
+              className="mob-logo-image"
+            />
           </Link>
 
-          {/* HIGH-CONTRAST CLOSE BUTTON — always visible, always tappable */}
-          <button className="mob-close-btn" aria-label="Close menu" onClick={closeMenu}>
-            <span className="mob-close-x" aria-hidden="true">✕</span>
-            <span className="mob-close-label">CLOSE</span>
+          {/* VERY CLEAR CLOSE BUTTON */}
+          <button
+            type="button"
+            className="mob-close-btn"
+            aria-label="Close navigation menu"
+            onClick={closeMenu}
+          >
+            <span
+              className="mob-close-x"
+              aria-hidden="true"
+            >
+              ×
+            </span>
+
+            <span className="mob-close-label">
+              CLOSE
+            </span>
           </button>
         </div>
 
-        {/* Navigation links */}
-        <nav className="mob-nav-links" aria-label="Mobile navigation">
+        {/* MOBILE LINKS */}
+        <nav
+          className="mob-nav-links"
+          aria-label="Mobile navigation"
+        >
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="mob-nav-item"
-              onClick={closeMenu}>
-              <span className="mob-nav-num">{link.number}</span>
-              {link.name}
+            <Link
+              key={link.name}
+              href={link.href}
+              className="mob-nav-item"
+              onClick={closeMenu}
+            >
+              <span className="mob-nav-num">
+                {link.number}
+              </span>
+
+              <span className="mob-nav-name">
+                {link.name}
+              </span>
+
+              <span
+                className="mob-nav-arrow"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
             </Link>
           ))}
         </nav>
 
-        {/* Footer area */}
+        {/* MOBILE FOOTER / CTA */}
         <div className="mob-footer">
           <i className="gold-line dark mob-rule" />
-          <Link href="/contact" className="hero-btn-primary mob-cta" onClick={closeMenu}>
-            <span>Start a project</span><span>→</span>
+
+          <Link
+            href="/contact"
+            className="hero-btn-primary mob-cta"
+            onClick={closeMenu}
+          >
+            <span>Start a project</span>
+            <span aria-hidden="true">→</span>
           </Link>
+
           <div className="mob-meta">
             <span>THANE, MAHARASHTRA</span>
-            <a href={`tel:${studioInfo.phone}`} className="text-[var(--gold-light)] underline">
+
+            <a
+              href={`tel:${studioInfo.phone}`}
+              className="text-[var(--gold-light)] underline"
+            >
               {studioInfo.phoneDisplay}
             </a>
           </div>

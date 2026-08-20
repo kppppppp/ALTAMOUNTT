@@ -297,42 +297,70 @@ export function SiteExperience() {
         </section>
 
         {/* BRAND STATEMENT SECTION */}
-        <section className="section-pad" id="brand-statement">
-          <div className="max-w-7xl mx-auto">
-            <p className="eyebrow">The Altamountt Point of View</p>
+<section
+  className="section-pad !pt-32 md:!pt-40 lg:!pt-48"
+  id="brand-statement"
+>
+  <div className="max-w-7xl mx-auto">
+    <p className="eyebrow">The Altamountt Point of View</p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              <div className="lg:col-span-7">
-                <h2 className="heading-editorial" data-text-reveal="left">
-                  <span>YOUR SPACE.</span>
-                  <span>YOUR STORY.</span>
-                  <span>OUR DESIGN.</span>
-                </h2>
-                <i className="gold-line" data-gold-line />
-                <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed max-w-xl">
-                  From thoughtful spatial reconfiguration to complete turnkey execution,
-                  Altamountt creates architectural interiors that balance timeless elegance,
-                  practical functionality, and realistic budgets.
-                </p>
-              </div>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
 
-              <div className="lg:col-span-5 flex flex-col gap-8">
-                <div className="media-reveal-wrap h-[380px] md:h-[460px]" data-reveal="up">
-                  <img
-                    src={images.lounge}
-                    alt="Altamountt luxury lounge interior"
-                    className="media-reveal-inner"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="border-t border-[var(--line)] pt-6 flex justify-between items-center text-xs font-mono tracking-widest text-[var(--ink-muted)]">
-                  <span>LOCATION: THANE WEST</span>
-                  <span>TYPOLOGY: RESIDENTIAL</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* TEXT */}
+      <div className="lg:col-span-6">
+    <h2 className="heading-editorial" data-text-reveal="left">
+  <span>YOUR <em className="word-accent">SPACE.</em></span>
+  <span>YOUR <em className="word-accent">STORY.</em></span>
+  <span>OUR <em className="word-accent">DESIGN.</em></span>
+</h2>
+
+        <i className="gold-line" data-gold-line />
+
+       <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed max-w-xl">
+  From thoughtful spatial reconfiguration to complete turnkey execution,
+  Altamountt creates architectural interiors that balance timeless elegance,
+  practical functionality, and realistic budgets.
+</p>
+
+<div className="trusted-by mt-12 pt-7 max-w-xl">
+  <div className="trusted-by-heading">
+    <span className="trusted-by-line" />
+    <span>Trusted By</span>
+  </div>
+
+  <div className="trusted-by-list">
+    <span>GOOGLE</span>
+    <span>LAKMÉ</span>
+    <span>PACHOULI</span>
+  </div>
+</div>
+      </div>
+
+      {/* IMAGE */}
+      <div className="lg:col-span-6 flex flex-col gap-8">
+
+        <div
+          className="media-reveal-wrap h-[560px] md:h-[600px] lg:h-[640px]"
+          data-reveal="up"
+        >
+          <img
+            src={images.lounge}
+            alt="Altamountt luxury lounge interior"
+            className="media-reveal-inner"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="border-t border-[var(--line)] pt-6 flex justify-between items-center text-xs font-mono tracking-widest text-[var(--ink-muted)]">
+          <span>LOCATION: THANE WEST</span>
+          <span>TYPOLOGY: RESIDENTIAL</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
         {/* VERIFIED CLIENTS — relationships are taken directly from supplied project assets */}
         <section className="selected-clients-section" aria-labelledby="selected-clients-title">

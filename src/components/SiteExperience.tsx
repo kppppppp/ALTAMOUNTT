@@ -340,7 +340,7 @@ export function SiteExperience() {
       <div className="lg:col-span-6 flex flex-col gap-8">
 
        <div
-  className="media-reveal-wrap brand-video-wrap h-[560px] md:h-[600px] lg:h-[640px]"
+className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px]"
   data-reveal="up"
 >
   <video

@@ -3643,3 +3643,24 @@ img, video {
   }
 
 }
+.brand-video-wrap {
+  height: 500px;
+}
+
+@media (max-width: 1024px) {
+  .brand-video-wrap {
+    height: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-video-wrap {
+    height: 620px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-video-wrap {
+    height: 540px;
+  }
+}

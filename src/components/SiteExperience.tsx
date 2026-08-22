@@ -339,17 +339,25 @@ export function SiteExperience() {
       {/* IMAGE */}
       <div className="lg:col-span-6 flex flex-col gap-8">
 
-        <div
-          className="media-reveal-wrap h-[560px] md:h-[600px] lg:h-[640px]"
-          data-reveal="up"
-        >
-          <img
-            src={images.lounge}
-            alt="Altamountt luxury lounge interior"
-            className="media-reveal-inner"
-            loading="lazy"
-          />
-        </div>
+       <div
+  className="media-reveal-wrap brand-video-wrap h-[560px] md:h-[600px] lg:h-[640px]"
+  data-reveal="up"
+>
+  <video
+    src="https://res.cloudinary.com/haulskyj/video/upload/WhatsApp_Video_2026-08-21_at_16.50.09.mp4"
+    className="brand-video"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+  />
+
+  <div className="brand-video-label">
+    <span>ALTAMOUNTT</span>
+    <span>SPACE &amp; DESIGN</span>
+  </div>
+</div>
 
         <div className="border-t border-[var(--line)] pt-6 flex justify-between items-center text-xs font-mono tracking-widest text-[var(--ink-muted)]">
           <span>LOCATION: THANE WEST</span>

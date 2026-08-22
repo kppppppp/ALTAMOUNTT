@@ -360,7 +360,7 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
 </div>
 
         <div className="border-t border-[var(--line)] pt-6 flex justify-between items-center text-xs font-mono tracking-widest text-[var(--ink-muted)]">
-          <span>LOCATION: THANE WEST</span>
+          <span>LOCATION: ASHAR - THANE WEST</span>
           <span>TYPOLOGY: RESIDENTIAL</span>
         </div>
 
@@ -392,24 +392,121 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
               </div>
             </div>
 
-            <div className="client-showcase-grid">
-              {selectedClients.map((client, index) => (
-                <article className={`client-showcase-card client-showcase-card-${index + 1} ${client.name === "GOOGLE" ? "client-showcase-card-google" : ""}`} key={client.name}>
-                  {client.name === "GOOGLE" && <p className="client-showcase-kicker">Selected Commercial Work</p>}
-                  <div className="media-reveal-wrap client-showcase-image" data-reveal={index === 1 ? "right" : "up"}>
-                    <img src={client.image} alt={`${client.name} project by Altamountt`} className="media-reveal-inner" loading="lazy" />
-                  </div>
-                  <div className="client-showcase-meta">
-                    <span>{client.name}</span>
-                    <span>{client.descriptor}</span>
-                  </div>
-                  {client.name === "GOOGLE" && <>
-                    <p className="client-showcase-google-copy">A workplace interior composed for arrival, collaboration, and daily flow.</p>
-                    <Link href="/projects/google-bkc" className="client-showcase-cta">View Google Project <span>→</span></Link>
-                  </>}
-                </article>
-              ))}
-            </div>
+          <div className="alt-client-showcase">
+
+  {/* ================= GOOGLE FEATURE ================= */}
+
+  {selectedClients
+    .filter((client) => client.name === "GOOGLE")
+    .map((client) => (
+      <article
+        key={client.name}
+        className="alt-google-feature"
+      >
+
+        <div className="alt-google-heading">
+          <div>
+            <p className="alt-project-eyebrow">
+              Selected Commercial Work
+            </p>
+
+            <h3 className="alt-project-title">
+              {client.name}
+            </h3>
+          </div>
+
+          <span className="alt-project-type">
+            {client.descriptor}
+          </span>
+        </div>
+
+        <div
+          className="alt-google-image media-reveal-wrap"
+          data-reveal="up"
+        >
+          <img
+            src={client.image}
+            alt={`${client.name} project by Altamountt`}
+            className="alt-client-image media-reveal-inner"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="alt-google-meta">
+
+          <p>
+            A workplace interior composed for arrival,
+            collaboration, and daily flow.
+          </p>
+
+          <Link
+            href="/projects/google-bkc"
+            className="alt-google-link"
+          >
+            View Google Project
+            <span>→</span>
+          </Link>
+
+        </div>
+
+      </article>
+    ))}
+
+
+  {/* ================= LAKMÉ + PACHOULI ================= */}
+
+  <div className="alt-client-pair">
+
+    {selectedClients
+      .filter((client) => client.name !== "GOOGLE")
+      .map((client, index) => (
+        <article
+          key={client.name}
+          className="alt-client-card"
+        >
+
+          <div className="alt-client-card-top">
+
+            <span className="alt-client-number">
+              0{index + 2}
+            </span>
+
+            <span className="alt-client-type">
+              {client.descriptor}
+            </span>
+
+          </div>
+
+          <div
+            className="alt-client-image-wrap media-reveal-wrap"
+            data-reveal={index === 0 ? "left" : "right"}
+          >
+            <img
+              src={client.image}
+              alt={`${client.name} project by Altamountt`}
+              className="alt-client-image media-reveal-inner"
+              loading="lazy"
+            />
+          </div>
+
+          <div className="alt-client-card-bottom">
+
+            <h3>
+              {client.name}
+            </h3>
+
+            <span className="alt-client-arrow">
+              ↗
+            </span>
+
+          </div>
+
+        </article>
+      ))}
+
+  </div>
+
+</div>
           </div>
         </section>
 
@@ -632,8 +729,8 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
           <div className="max-w-7xl mx-auto mb-12 text-center">
             <p className="eyebrow dark justify-center">Layered Architecture</p>
             <h2 className="heading-editorial" data-text-reveal="left">
-              <span>DESIGN IN</span>
-              <span><em>PROGRESSION.</em></span>
+              <span>DESIGN WITH</span>
+              <span><em>PRECISION.</em></span>
             </h2>
             <p className="text-sm text-[var(--ink-light-muted)] mt-4">
               Watch structural planning, bespoke finishes, and custom millwork integrate seamlessly.
@@ -816,32 +913,176 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
         </section>
 
         {/* PHILOSOPHY & TESTIMONIAL */}
-        <section className="section-pad text-center bg-[var(--bg-sand)]" id="testimonials">
-          <div className="max-w-4xl mx-auto">
-            <p className="eyebrow justify-center">Customer-First Philosophy</p>
-            <h2 className="heading-editorial mb-8" data-text-reveal="left">
-              <span>THE CLIENT</span>
-              <span><em>COMES FIRST.</em></span>
-            </h2>
+        {/* =========================================================
+    CLIENT EXPERIENCES
+    ========================================================= */}
 
-            <div className="inline-flex items-center gap-3 bg-[var(--bg-ivory)] px-6 py-3 rounded-full mb-12">
-              <span className="text-2xl font-serif font-bold">5.0</span>
-              <span className="text-[var(--gold-dark)]">★★★★★</span>
-              <span className="text-xs font-mono tracking-wider text-[var(--ink-muted)] uppercase">
-                {studioInfo.reviewCount}
-              </span>
+<section className="luxury-testimonials" id="testimonials">
+
+  <div className="luxury-testimonials-shell">
+
+    {/* HEADER */}
+
+    <div className="luxury-testimonials-header">
+
+      <div className="luxury-testimonials-title-block">
+
+        <p className="luxury-testimonials-eyebrow">
+          Client Experiences
+        </p>
+
+        <h2
+          className="luxury-testimonials-heading"
+          data-text-reveal="left"
+        >
+          <span>THE CLIENT</span>
+          <span>
+            <em>COMES FIRST.</em>
+          </span>
+        </h2>
+
+      </div>
+
+
+      <div className="luxury-testimonials-intro">
+
+        <p>
+          Every space begins with understanding the people
+          who will experience it. Our approach brings together
+          thoughtful design, practical functionality and
+          meticulous execution.
+        </p>
+
+        <div className="luxury-rating">
+
+          <span className="luxury-rating-number">
+            5.0
+          </span>
+
+          <div className="luxury-rating-details">
+
+            <div className="luxury-rating-stars">
+              ★★★★★
             </div>
 
-            <blockquote className="text-2xl md:text-4xl font-serif italic text-[var(--ink)] leading-relaxed mb-8">
-              &ldquo;{clientTestimonials[0].quote}&rdquo;
-            </blockquote>
+            <span>
+              {studioInfo.reviewCount}
+            </span>
 
-            <p className="font-mono text-xs tracking-widest text-[var(--gold-dark)] uppercase">
-              — {clientTestimonials[0].author} · {clientTestimonials[0].location}
-            </p>
           </div>
-        </section>
 
+        </div>
+
+      </div>
+
+    </div>
+
+
+    {/* FEATURED REVIEW */}
+
+    <div
+      className="luxury-featured-review"
+      data-reveal="up"
+    >
+
+      <div className="luxury-quote-symbol">
+        “
+      </div>
+
+      <div className="luxury-featured-review-content">
+
+        <span className="luxury-review-label">
+          01 / FEATURED REVIEW
+        </span>
+
+        <blockquote>
+          “{clientTestimonials[0].quote}”
+        </blockquote>
+
+      <div className="luxury-featured-review-author">
+  <span className="luxury-author-line" />
+
+  <div>
+    <strong>{clientTestimonials[0].author}</strong>
+
+    <span>
+      {clientTestimonials[0].location} · Google Review
+    </span>
+  </div>
+</div>
+
+      </div>
+
+    </div>
+
+
+    {/* REVIEW GRID */}
+
+    <div className="luxury-review-grid">
+
+      {clientTestimonials.slice(1, 5).map((testimonial, index) => (
+
+        <article
+          key={`${testimonial.author}-${index}`}
+          className="luxury-review-card"
+          data-reveal={index % 2 === 0 ? "left" : "right"}
+        >
+
+        <div className="luxury-review-card-top">
+  <span className="luxury-review-number">
+    0{index + 2}
+  </span>
+
+  <span className="luxury-review-stars">
+    ★★★★★
+  </span>
+</div>
+
+
+          <blockquote>
+            “{testimonial.quote}”
+          </blockquote>
+
+
+    <div className="luxury-review-card-footer">
+  <div>
+    <strong>{testimonial.author}</strong>
+
+    <span>
+      {testimonial.location} · Google Review
+    </span>
+  </div>
+
+  <span className="luxury-review-arrow">
+    ↗
+  </span>
+</div>
+
+        </article>
+
+      ))}
+
+    </div>
+
+
+    {/* BOTTOM STATEMENT */}
+
+    <div className="luxury-testimonials-bottom">
+
+      <span className="luxury-bottom-line" />
+
+      <p>
+        Designed around people.
+        <em> Built around trust.</em>
+      </p>
+
+      <span className="luxury-bottom-line" />
+
+    </div>
+
+  </div>
+
+</section>
         {/* FINAL CINEMATIC IMAGE */}
         <section className="relative h-[85vh] min-h-[550px] overflow-hidden bg-black text-white" id="cinematic-final">
           <div className="media-reveal-wrap h-full" data-reveal="scale">

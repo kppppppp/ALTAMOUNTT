@@ -26,7 +26,7 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
+ 
   padding: 0;
 }
 
@@ -3663,4 +3663,1029 @@ img, video {
   .brand-video-wrap {
     height: 540px;
   }
+}
+/* =========================================================
+   ALTAMOUNTT — PREMIUM CLIENT SHOWCASE
+   ========================================================= */
+
+.alt-client-showcase {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+
+/* =========================================================
+   GOOGLE FEATURE
+   ========================================================= */
+
+.alt-google-feature {
+  width: 100%;
+}
+
+.alt-google-heading {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.alt-project-eyebrow {
+  margin: 0 0 0.7rem;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: var(--gold-light);
+}
+
+.alt-project-title {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+
+  color: var(--bg-ivory);
+}
+
+.alt-project-type {
+  padding-bottom: 0.3rem;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: var(--ink-light-muted);
+}
+
+
+/* =========================================================
+   GOOGLE LANDSCAPE IMAGE
+   ========================================================= */
+
+.alt-google-image {
+  width: 100%;
+  height: clamp(380px, 42vw, 620px);
+
+  overflow: hidden;
+  position: relative;
+
+  background: #201e1b;
+}
+
+.alt-client-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  will-change: transform;
+
+  transition:
+    transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.alt-google-image:hover .alt-client-image {
+  transform: scale(1.035);
+}
+
+
+/* =========================================================
+   GOOGLE META
+   ========================================================= */
+
+.alt-google-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  padding-top: 1.2rem;
+
+  border-top: 1px solid rgba(245,242,235,0.15);
+}
+
+.alt-google-meta p {
+  margin: 0;
+
+  max-width: 600px;
+
+  font-size: 0.9rem;
+  line-height: 1.7;
+
+  color: var(--ink-light-muted);
+}
+
+.alt-google-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.7rem;
+
+  flex-shrink: 0;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: var(--gold-light);
+
+  border-bottom: 1px solid var(--gold-light);
+
+  padding-bottom: 0.35rem;
+
+  transition: gap 0.3s ease;
+}
+
+.alt-google-link:hover {
+  gap: 1.1rem;
+}
+
+
+/* =========================================================
+   LAKMÉ + PACHOULI
+   ========================================================= */
+
+.alt-client-pair {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 2rem;
+}
+
+
+/* =========================================================
+   SECONDARY CARD
+   ========================================================= */
+
+.alt-client-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.alt-client-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1rem;
+}
+
+.alt-client-number {
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+
+  color: var(--gold-light);
+}
+
+.alt-client-type {
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: var(--ink-light-muted);
+}
+
+
+/* =========================================================
+   SECONDARY IMAGE
+   ========================================================= */
+
+.alt-client-image-wrap {
+  width: 100%;
+
+  height: clamp(380px, 42vw, 560px);
+
+  overflow: hidden;
+
+  position: relative;
+
+  background: #201e1b;
+}
+
+.alt-client-card:hover .alt-client-image {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   CARD FOOTER
+   ========================================================= */
+
+.alt-client-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 1rem;
+
+  border-top: 1px solid rgba(245,242,235,0.15);
+}
+
+.alt-client-card-bottom h3 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(2rem, 3vw, 3.2rem);
+
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.035em;
+
+  color: var(--bg-ivory);
+}
+
+.alt-client-arrow {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(245,242,235,0.2);
+  border-radius: 50%;
+
+  color: var(--gold-light);
+
+  transition:
+    transform 0.4s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.alt-client-card:hover .alt-client-arrow {
+  transform: rotate(45deg);
+
+  background: var(--gold-light);
+  color: var(--bg-dark);
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .alt-google-image {
+    height: 500px;
+  }
+
+  .alt-client-image-wrap {
+    height: 430px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .alt-client-showcase {
+    gap: 4rem;
+  }
+
+  .alt-google-heading {
+    display: block;
+  }
+
+  .alt-project-type {
+    display: block;
+    margin-top: 0.75rem;
+  }
+
+  .alt-google-image {
+    height: 300px;
+  }
+
+  .alt-google-meta {
+    display: block;
+  }
+
+  .alt-google-meta p {
+    margin-bottom: 1.25rem;
+  }
+
+  .alt-client-pair {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .alt-client-image-wrap {
+    height: 500px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .alt-google-image {
+    height: 230px;
+  }
+
+  .alt-client-image-wrap {
+    height: 470px;
+  }
+}
+/* =========================================================
+   ALTAMOUNTT — LUXURY TESTIMONIALS
+   ========================================================= */
+
+.luxury-testimonials {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: var(--bg-sand);
+
+  color: var(--ink);
+
+  padding: clamp(7rem, 11vw, 13rem) 0;
+}
+
+.luxury-testimonials-shell {
+  width: min(1400px, calc(100% - 8rem));
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.luxury-testimonials-header {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+
+  gap: 7rem;
+
+  align-items: end;
+
+  padding-bottom: 5rem;
+
+  border-bottom:
+    1px solid rgba(24, 23, 21, 0.14);
+}
+
+.luxury-testimonials-eyebrow {
+  margin: 0 0 1.4rem;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.28em;
+
+  text-transform: uppercase;
+
+  color: var(--gold-dark);
+}
+
+.luxury-testimonials-heading {
+  display: flex;
+
+  flex-direction: column;
+
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(4.5rem, 8vw, 9rem);
+
+  font-weight: 400;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.055em;
+}
+
+.luxury-testimonials-heading span:last-child {
+  color: var(--gold-dark);
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.luxury-testimonials-intro {
+  max-width: 390px;
+
+  justify-self: end;
+}
+
+.luxury-testimonials-intro > p {
+  margin: 0 0 2rem;
+
+  font-size: 0.9rem;
+
+  line-height: 1.8;
+
+  color: var(--ink-muted);
+}
+
+
+/* =========================================================
+   RATING
+   ========================================================= */
+
+.luxury-rating {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem 1.25rem;
+
+  border:
+    1px solid rgba(24, 23, 21, 0.16);
+
+  background:
+    rgba(250, 248, 245, 0.35);
+}
+
+.luxury-rating-number {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  line-height: 0.8;
+  color: var(--ink);
+}
+
+.luxury-rating-details {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.35rem;
+}
+
+.luxury-rating-stars {
+  color: var(--gold-dark);
+  font-size: 1.35rem;
+  letter-spacing: 0.15em;
+  line-height: 1;
+}
+
+.luxury-rating-details > span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.52rem;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color: var(--ink-muted);
+}
+
+
+/* =========================================================
+   FEATURED REVIEW
+   ========================================================= */
+
+.luxury-featured-review {
+  position: relative;
+
+  min-height: 520px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 6rem 8%;
+
+  border-bottom:
+    1px solid rgba(24, 23, 21, 0.14);
+}
+
+.luxury-quote-symbol {
+  position: absolute;
+
+  left: 0;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(15rem, 25vw, 30rem);
+
+  line-height: 0.5;
+
+  color: rgba(184, 154, 112, 0.16);
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+.luxury-featured-review-content {
+  position: relative;
+
+  width: min(100%, 1050px);
+
+  text-align: center;
+}
+
+.luxury-review-label {
+  display: block;
+
+  margin-bottom: 2rem;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.25em;
+
+  text-transform: uppercase;
+
+  color: var(--gold-dark);
+}
+
+.luxury-featured-review blockquote {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(2.5rem, 4.4vw, 5.5rem);
+
+  font-weight: 400;
+
+  font-style: italic;
+
+  line-height: 1.12;
+
+  letter-spacing: -0.03em;
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   FEATURED AUTHOR
+   ========================================================= */
+
+.luxury-featured-review-author {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 1rem;
+
+  margin-top: 3rem;
+}
+
+.luxury-author-line {
+  width: 45px;
+
+  height: 1px;
+
+  background: var(--gold-dark);
+}
+
+.luxury-featured-review-author div {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 0.3rem;
+}
+
+.luxury-featured-review-author strong {
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+
+  color: var(--ink);
+}
+
+.luxury-featured-review-author span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.52rem;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: var(--ink-muted);
+}
+
+
+/* =========================================================
+   REVIEW GRID
+   ========================================================= */
+
+.luxury-review-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  border-bottom:
+    1px solid rgba(24, 23, 21, 0.14);
+}
+
+.luxury-review-card {
+  position: relative;
+
+  min-height: 360px;
+
+  padding: 3rem;
+
+  border-right:
+    1px solid rgba(24, 23, 21, 0.14);
+
+  border-bottom:
+    1px solid rgba(24, 23, 21, 0.14);
+
+  display: flex;
+
+  flex-direction: column;
+
+  transition:
+    background 0.5s ease;
+}
+
+.luxury-review-card:nth-child(2n) {
+  border-right: none;
+}
+
+.luxury-review-card:nth-last-child(-n + 2) {
+  border-bottom: none;
+}
+
+.luxury-review-card:hover {
+  background: rgba(250, 248, 245, 0.45);
+}
+
+
+/* =========================================================
+   REVIEW CARD TOP
+   ========================================================= */
+
+.luxury-review-card-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 3rem;
+}
+
+.luxury-review-number {
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.18em;
+
+  color: var(--gold-dark);
+}
+
+.luxury-review-stars {
+  font-size: 1.25rem;
+
+  letter-spacing: 0.15em;
+
+  color: var(--gold-dark);
+}
+
+
+/* =========================================================
+   REVIEW TEXT
+   ========================================================= */
+
+.luxury-review-card blockquote {
+  margin: 0;
+
+  max-width: 650px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+
+  font-weight: 400;
+
+  font-style: italic;
+
+  line-height: 1.35;
+
+  letter-spacing: -0.015em;
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   REVIEW FOOTER
+   ========================================================= */
+
+.luxury-review-card-footer {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin-top: auto;
+
+  padding-top: 3rem;
+}
+
+.luxury-review-card-footer div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.3rem;
+}
+.luxury-review-card-footer div span {
+  display: block;
+
+  margin-top: 0.35rem;
+
+  font-family: "DM Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--ink-muted);
+}
+.luxury-review-card-footer strong {
+  display: block;
+
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+
+  color: var(--ink);
+}
+
+.luxury-review-card-footer span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 0.52rem;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: var(--ink-muted);
+}
+
+
+/* =========================================================
+   REVIEW ARROW
+   ========================================================= */
+
+.luxury-review-arrow {
+  width: 42px;
+
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid rgba(24, 23, 21, 0.18);
+
+  border-radius: 50%;
+
+  color: var(--gold-dark);
+
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.luxury-review-card:hover
+.luxury-review-arrow {
+  transform: rotate(45deg);
+
+  background: var(--gold-dark);
+
+  color: white;
+}
+
+
+/* =========================================================
+   BOTTOM STATEMENT
+   ========================================================= */
+
+.luxury-testimonials-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 1.5rem;
+
+  padding-top: 4rem;
+}
+
+.luxury-bottom-line {
+  width: 55px;
+
+  height: 1px;
+
+  background: var(--gold-dark);
+}
+
+.luxury-testimonials-bottom p {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 1.2rem;
+
+  font-style: italic;
+
+  color: var(--ink-muted);
+}
+
+.luxury-testimonials-bottom em {
+  color: var(--gold-dark);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .luxury-testimonials-shell {
+    width: min(100% - 4rem, 900px);
+  }
+
+  .luxury-testimonials-header {
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+  }
+
+  .luxury-testimonials-intro {
+    justify-self: start;
+
+    max-width: 600px;
+  }
+
+  .luxury-testimonials-heading {
+    font-size: clamp(4rem, 10vw, 7rem);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .luxury-testimonials {
+    padding: 5.5rem 0 6rem;
+  }
+
+  .luxury-testimonials-shell {
+    width: calc(100% - 2rem);
+  }
+
+  .luxury-testimonials-heading {
+    font-size: clamp(3.4rem, 15vw, 5rem);
+  }
+
+  .luxury-testimonials-header {
+    padding-bottom: 3rem;
+  }
+
+  .luxury-featured-review {
+    min-height: 0;
+
+    padding: 5rem 0;
+  }
+
+  .luxury-featured-review blockquote {
+    font-size: clamp(2rem, 9vw, 3.2rem);
+  }
+
+  .luxury-quote-symbol {
+    left: -1rem;
+
+    font-size: 10rem;
+  }
+
+  .luxury-review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .luxury-review-card {
+    min-height: 320px;
+
+    padding: 2rem 1.5rem;
+
+    border-right: none !important;
+
+    border-bottom:
+      1px solid rgba(24, 23, 21, 0.14) !important;
+  }
+
+  .luxury-review-card:last-child {
+    border-bottom: none !important;
+  }
+
+  .luxury-testimonials-bottom {
+    gap: 0.8rem;
+  }
+
+  .luxury-bottom-line {
+    width: 25px;
+  }
+
+  .luxury-testimonials-bottom p {
+    font-size: 1rem;
+
+    text-align: center;
+  }
+}
+.luxury-review-stars,
+.luxury-rating-stars {
+  color: var(--gold-dark);
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  line-height: 1;
+}
+
+.luxury-featured-review-author strong,
+.luxury-review-card-footer strong {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.luxury-featured-review-author span,
+.luxury-review-card-footer span {
+  font-family: "DM Mono", monospace;
 }

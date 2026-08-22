@@ -268,11 +268,11 @@ export const servicesData: ServiceItem[] = [
     id: "residential",
     number: "01",
     title: "Residential Interiors",
-    tagline: "Living spaces shaped around your daily rhythm",
+    tagline: "Thoughtfully designed residences shaped around the way you live.",
     description: "Full-scale interior styling and spatial design for luxury apartments, penthouses, and villas in Thane & Mumbai. From tailored living lounges to serene private suites.",
     image: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
     subservices: [
-      "Living & Entertainment Lounges",
+      "Living & Entertainment Spaces",
       "Master & Guest Bedroom Suites",
       "Bespoke Modular Kitchens",
       "Spa-Grade Bathrooms & Vanity",
@@ -284,7 +284,7 @@ export const servicesData: ServiceItem[] = [
     id: "commercial",
     number: "02",
     title: "Commercial & Hospitality",
-    tagline: "Architectural brand experiences that inspire",
+    tagline: "Distinctive spaces designed to elevate brands, businesses and guest experiences.",
     description: "Boutique offices, corporate headquarters, executive suites, and dining environments designed to maximize engagement, workflow efficiency, and signature brand prestige.",
     image: "/client-work/projects/commercial/google-bkc-reception.webp",
     subservices: [
@@ -299,7 +299,7 @@ export const servicesData: ServiceItem[] = [
     id: "architecture",
     number: "03",
     title: "Interior Architecture",
-    tagline: "Volumetric space planning & structural harmony",
+    tagline: "Where architecture, proportion, light and material come together.",
     description: "Transformative structural reconfiguration, light optimization, architectural millwork, custom ceiling designs, and refined natural material selections.",
     image: "/client-work/projects/residential/living-tv-unit-01-cad.webp",
     subservices: [
@@ -313,7 +313,7 @@ export const servicesData: ServiceItem[] = [
   {
     id: "turnkey",
     number: "04",
-    title: "Turnkey Solutions",
+    title: "Turnkey Interior ",
     tagline: "Seamless end-to-end execution from sketch to keys",
     description: "One single accountable team managing procurement, engineering, contractor supervision, craftsmanship, and on-schedule handover within your established budget.",
     image: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
@@ -473,18 +473,40 @@ export const brandPrinciples = [
     detail: "No vendor blame games. We take complete ownership of timelines, material procurement, quality assurance, and costs."
   }
 ];
-
 export const clientTestimonials = [
   {
-    quote: "Altamountt gave our Thane apartment the feeling of a world-class boutique hotel. They were mindful of our budget without ever compromising on aesthetics or build quality.",
-    author: "Rohan & Sneha Joshi",
-    location: "Thane West",
-    rating: 5
+    quote:
+      "Altamountt Space and Design is one of the best interior designers in GB Road, Thane. Their team transformed our 4 BHK flat into a modern and elegant home with perfect space planning. The finishing, materials, and modular design quality are excellent. Highly recommended for home interiors and renovations!",
+    author: "Habib Jan",
+    location: "Thane",
+    rating: 5,
   },
   {
-    quote: "Their turnkey execution is second to none. From custom wardrobes to concealed lighting, every single detail was completed with surgical precision.",
-    author: "Vikram Nair",
-    location: "Ghodbunder Road, Thane",
-    rating: 5
-  }
+    quote:
+      "Amazing experience working with Altamountt. Their designs are modern, functional, and luxurious. They helped us with full office renovation and interior decoration. Highly professional and creative team.",
+    author: "Swati Prasad",
+    location: "Thane West",
+    rating: 5,
+  },
+  {
+    quote:
+      "One stop solution. The detailing and finishing is too good. Also pricing is reasonable. Highly recommended.",
+    author: "Prashant Shetty",
+    location: "Thane",
+    rating: 5,
+  },
+  {
+    quote:
+      "I recently worked with Altamountt Space & Design and had a great experience from start to finish. If you're looking for professional interior designers in Thane, this team is definitely worth considering.",
+    author: "Swapnil Patil",
+    location: "Thane",
+    rating: 5,
+  },
+  {
+    quote:
+      "We got this company from Google having very good service, design and material quality. The company is very flexible to achieve our dream home interior. We are satisfied with this company.",
+    author: "Pranjal Gupta",
+    location: "Thane",
+    rating: 5,
+  },
 ];

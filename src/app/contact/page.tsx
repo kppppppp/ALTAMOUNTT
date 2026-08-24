@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
+import { ContactForm } from "@/components/ContactForm";
 import { images, studioInfo } from "@/data/content";
 
 export const metadata: Metadata = {
@@ -9,14 +10,6 @@ export const metadata: Metadata = {
     "Start your interior design project with Altamountt Space & Design. Reach our studio in Bhayandarpada, Thane by phone, WhatsApp or our inquiry form.",
 };
 
-const inquiryTypes = [
-  "Residential Interior Design",
-  "Commercial / Hospitality",
-  "Architecture & Renovation",
-  "Turnkey Project",
-  "Budget Consultation",
-  "Other",
-];
 
 const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(studioInfo.address)}&output=embed`;
 
@@ -144,59 +137,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-form-shell" data-reveal="right">
-              <p className="eyebrow dark">Inquiry form</p>
-              <form action={studioInfo.whatsappUrl} method="GET" target="_blank" className="contact-form">
-                <div className="form-field-dark">
-                  <label htmlFor="name" className="form-label-dark">Full Name *</label>
-                  <input id="name" name="name" type="text" className="form-input-dark" placeholder="Rohan Mehta" required />
-                </div>
-                <div className="contact-form-row">
-                  <div className="form-field-dark">
-                    <label htmlFor="phone" className="form-label-dark">Phone *</label>
-                    <input id="phone" name="phone" type="tel" className="form-input-dark" placeholder="+91 98765 43210" required />
-                  </div>
-                  <div className="form-field-dark">
-                    <label htmlFor="email" className="form-label-dark">Email</label>
-                    <input id="email" name="email" type="email" className="form-input-dark" placeholder="you@email.com" />
-                  </div>
-                </div>
-                <div className="form-field-dark">
-                  <label htmlFor="type" className="form-label-dark">Project Type</label>
-                  <select id="type" name="type" className="form-input-dark form-select-dark" defaultValue="">
-                    <option value="" disabled>Select a service category</option>
-                    {inquiryTypes.map((item) => (
-                      <option key={item} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="form-field-dark">
-                  <label htmlFor="budget" className="form-label-dark">Approximate Budget</label>
-                  <select id="budget" name="budget" className="form-input-dark form-select-dark" defaultValue="">
-                    <option value="" disabled>Select a budget range</option>
-                    <option>To be discussed</option>
-                    <option>₹ 5L - 15L</option>
-                    <option>₹ 15L - 35L</option>
-                    <option>₹ 35L - 75L</option>
-                    <option>₹ 75L - 1.5 Cr</option>
-                    <option>₹ 1.5 Cr +</option>
-                  </select>
-                </div>
-                <div className="form-field-dark">
-                  <label htmlFor="message" className="form-label-dark">Tell Us About Your Space</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    className="form-input-dark resize-none"
-                    placeholder="Describe your space, timeline, and vision. Floor plans and inspirations are welcome."
-                  />
-                </div>
-                <button type="submit" className="hero-btn-primary w-full justify-center">
-                  Send Inquiry <span>→</span>
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>

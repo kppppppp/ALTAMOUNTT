@@ -262,9 +262,14 @@ export default function About() {
               <span>DESIGNING SPACES.</span>
               <span><em>DEFINING LIFESTYLES.</em></span>
             </h2>
-            <Link href="/contact" className="hero-btn-primary">
-              Start a Project with Us <span>→</span>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Link href="/contact" className="hero-btn-primary">
+                Start a Project with Us <span>→</span>
+              </Link>
+              <a href={studioInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hero-btn-secondary">
+                WhatsApp Us <span>→</span>
+              </a>
+            </div>
           </div>
         </section>
       </main>

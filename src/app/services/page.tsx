@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
-import { allServicesGrouped, images, servicesData, servicesProcess } from "@/data/content";
+import { allServicesGrouped, images, servicesData, servicesProcess, studioInfo } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Interior Design Services | Altamountt Space & Design · Thane",
@@ -296,9 +296,14 @@ export default function ServicesPage() {
               <span>READY TO TRANSFORM</span>
               <span><em>YOUR SPACE?</em></span>
             </h2>
-            <Link href="/contact" className="hero-btn-primary">
-              Start a Project <span>→</span>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Link href="/contact" className="hero-btn-primary">
+                Start a Project <span>→</span>
+              </Link>
+              <a href={studioInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hero-btn-secondary">
+                WhatsApp Us <span>→</span>
+              </a>
+            </div>
           </div>
         </section>
       </main>

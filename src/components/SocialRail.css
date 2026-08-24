@@ -1,0 +1,165 @@
+/* ═══════════════════════════════════════════════════
+   SOCIAL RAIL — Fixed vertical pill
+   ═══════════════════════════════════════════════════ */
+
+/* ── Container (position: fixed) ── */
+.social-rail-container {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90; /* above content, below mob-overlay (130) & site-nav (120) */
+  pointer-events: none;
+}
+
+/* ── Pill ── */
+.social-rail-pill {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(245, 242, 235, 0.92); /* warm ivory, slightly translucent */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 190, 170, 0.35);
+  border-radius: 999px;
+  padding: 0.875rem 0.5rem;
+  width: 60px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Icon base ── */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--ink-light, #5c5a55);
+  text-decoration: none;
+  outline: none;
+  transition:
+    color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease;
+}
+
+/* ── Inactive (LinkedIn, Facebook) ── */
+.social-icon--inactive {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ── Active icons ── */
+.social-icon--active {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Focus ring for keyboard accessibility */
+.social-icon--active:focus-visible {
+  outline: 2px solid var(--gold, #C6A96C);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+/* Hover: scale + slight horizontal shift + subtle bg highlight */
+.social-icon--active:hover {
+  transform: scale(1.12) translateX(-3px);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* ── Tooltip (desktop only, via data-tooltip attr) ── */
+.social-icon--active::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  white-space: nowrap;
+  background: var(--bg-dark, #151412);
+  color: var(--bg-ivory, #F5F2EB);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon--active:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ── MOBILE (≤ 768px) ── */
+@media (max-width: 768px) {
+  .social-rail-container {
+    top: auto;
+    bottom: max(1.25rem, calc(env(safe-area-inset-bottom) + 1rem));
+    right: 1rem;
+    transform: none;
+  }
+
+  .social-rail-pill {
+    flex-direction: row;
+    padding: 0.5rem 0.75rem;
+    width: auto;
+    gap: 0.125rem;
+  }
+
+  /* Hide inactive icons on mobile — only show Instagram + WhatsApp */
+  .social-icon--desktop-only {
+    display: none;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Mobile hover: shift up instead of left */
+  .social-icon--active:hover {
+    transform: scale(1.08) translateY(-2px);
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  /* No tooltips on mobile */
+  .social-icon--active::after {
+    display: none;
+  }
+}
+
+/* ── TABLET (769px – 1024px) ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .social-rail-container {
+    right: 1rem;
+  }
+
+  .social-rail-pill {
+    width: 54px;
+    padding: 0.75rem 0.375rem;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ── Hide rail when mobile overlay is open ── */
+.mob-open ~ .social-rail-container,
+body:has(.mob-open) .social-rail-container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}

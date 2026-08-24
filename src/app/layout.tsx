@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { SocialRail } from "@/components/SocialRail";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +50,7 @@ export default function RootLayout({
         <SmoothScroll />
         <MotionSystem />
         {children}
+        <SocialRail />
       </body>
     </html>
   );

@@ -54,7 +54,7 @@ export const studioInfo = {
   phoneDisplay: "+917304723416",
   whatsappUrl: "https://wa.me/917304723416?text=Hi%20Altamountt%20team%2C%20I%20would%20like%20to%20inquire%20about%20interior%20design%20services.",
   mapsUrl: "https://maps.google.com/?q=JVM+Sky+Court+Bhayandarpada+Thane",
-  email: "hello@altamounttdesign.com",
+  email: "hello@altamountt.co.in",
   rating: "5.0",
   reviewCount: "10+ Google Reviews",
 };

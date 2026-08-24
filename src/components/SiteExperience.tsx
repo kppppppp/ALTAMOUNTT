@@ -458,7 +458,7 @@ export function SiteExperience() {
                 <div className="relative w-full lg:w-[45vw] lg:max-w-[500px] aspect-[9/16] shadow-2xl p-2 border border-[rgba(21,20,18,0.12)] bg-white rounded-sm">
                   <div className="media-reveal-wrap h-full w-full relative overflow-hidden" data-reveal="scale">
                     <video 
-                      src="/client-work/video/video-progress.mp4" 
+                      src="https://res.cloudinary.com/haulskyj/video/upload/v1787590125/video-progress.mp4" 
                       autoPlay 
                       muted 
                       loop 

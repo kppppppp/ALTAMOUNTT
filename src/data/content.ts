@@ -60,27 +60,27 @@ export const studioInfo = {
 };
 
 export const images = {
-  heroPoster: "/client-work/projects/residential/living-tv-unit-01.jpg",
-  living: "/client-work/projects/residential/living-tv-unit-01.jpg",
-  lounge: "/client-work/projects/residential/living-console-cabinet.jpg",
-  dining: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
-  bedroom: "/client-work/projects/residential/bedroom-ilaf-study.webp",
+  heroPoster: "/client-work/interiors/img7.jpeg", // Living Room
+  living: "/client-work/interiors/img9.jpeg", // Living Lounge
+  lounge: "/client-work/interiors/img7.jpeg", // Living Room
+  dining: "/client-work/interiors/img8.jpeg", // Dining Space
+  bedroom: "/client-work/interiors/img11.jpeg", // Bedroom
   kitchen: "/client-work/interiors/client-kitchen-01.webp",
   bath: "/client-work/projects/commercial/google-bkc-restroom.webp",
-  detail: "/client-work/projects/commercial/pachouli-wellness-washbasin.webp",
-  material: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg",
+  detail: "/client-work/interiors/drawing0.png",
+  material: "/client-work/interiors/img6.jpeg", // Agate Art Bedroom
   final: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
-  architectural: "/client-work/projects/commercial/google-bkc-reception.webp",
-  warmRoom: "/client-work/projects/commercial/google-bkc-meeting.webp",
-  penthouse: "/client-work/projects/commercial/google-bkc-office-01.webp",
-  beforeBath: "/client-work/projects/residential/living-tv-unit-01-cad.webp",
-  afterBath: "/client-work/projects/residential/living-tv-unit-01.jpg",
-  marbleStudy: "/client-work/interiors/client-study-yellow-chairs.webp",
-  flutedWood: "/client-work/interiors/client-study-wardrobe-01.webp",
-  lightingGlow: "/client-work/interiors/client-wardrobe-secret-door.webp",
+  architectural: "/client-work/interiors/img12.jpeg", // Terrace/Balcony
+  warmRoom: "/client-work/interiors/img13.jpeg", // Dining Mirror
+  penthouse: "/client-work/interiors/img12.jpeg", // Terrace
+  beforeBath: "/client-work/interiors/drawing0.png", // Design Drawing
+  afterBath: "/client-work/interiors/img7.jpeg", // Finished Living Room
+  marbleStudy: "/client-work/interiors/img5.jpeg", // Study Desk
+  flutedWood: "/client-work/interiors/img4.jpeg", // Wardrobe/Bedroom
+  lightingGlow: "/client-work/interiors/im1.jpeg", // Circular Headboard
   officeInterior: "/client-work/projects/commercial/google-bkc-office-01.webp",
-  aboutHero: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
-  servicesHero: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
+  aboutHero: "/client-work/interiors/img11.jpeg", // Bedroom striped
+  servicesHero: "/client-work/interiors/img9.jpeg", // Living Lounge
   contactHero: "/client-work/projects/commercial/google-bkc-reception.webp",
 };
 
@@ -207,26 +207,26 @@ export const servicesProcess = [
 
 export const materialsDetails = [
   {
-    title: "Bespoke Study & Dual Seating",
-    subtitle: "Custom floating desk integrated with floor-to-ceiling wardrobe units.",
+    title: "Bespoke Study Desk",
+    subtitle: "Custom desk integrated with overhead olive green cabinetry and floating shelves.",
     image: images.marbleStudy,
     preset: "up" as const,
   },
   {
-    title: "Fluted Accent Walls & Wardrobes",
-    subtitle: "Precision fluting details and wooden drawer handles.",
+    title: "Contemporary Wardrobes",
+    subtitle: "Precision wardrobe design in soft beige and olive green tones.",
     image: images.flutedWood,
     preset: "left" as const,
   },
   {
-    title: "Integrated Secret Passage & Joinery",
-    subtitle: "Wardrobe doors that conceal entranceways to private master baths.",
+    title: "Custom Headboards & Wall Patterns",
+    subtitle: "Bespoke circular wall motifs paired with deep blue tufted upholstery.",
     image: images.lightingGlow,
     preset: "right" as const,
   },
   {
-    title: "Premium Vanities & Gold Hardware",
-    subtitle: "Vessel washbasins with wall-mounted champagne gold hardware.",
+    title: "Architectural Planning & Layouts",
+    subtitle: "Precise spatial planning from initial concept drawings to final execution.",
     image: images.detail,
     preset: "scale" as const,
   },
@@ -270,7 +270,7 @@ export const servicesData: ServiceItem[] = [
     title: "Residential Interiors",
     tagline: "Thoughtfully designed residences shaped around the way you live.",
     description: "Full-scale interior styling and spatial design for luxury apartments, penthouses, and villas in Thane & Mumbai. From tailored living lounges to serene private suites.",
-    image: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
+    image: "/client-work/interiors/img6.jpeg",
     subservices: [
       "Living & Entertainment Spaces",
       "Master & Guest Bedroom Suites",
@@ -286,7 +286,7 @@ export const servicesData: ServiceItem[] = [
     title: "Commercial & Hospitality",
     tagline: "Distinctive spaces designed to elevate brands, businesses and guest experiences.",
     description: "Boutique offices, corporate headquarters, executive suites, and dining environments designed to maximize engagement, workflow efficiency, and signature brand prestige.",
-    image: "/client-work/projects/commercial/google-bkc-reception.webp",
+    image: "/client-work/interiors/img10.jpeg",
     subservices: [
       "Executive Workspaces & Suites",
       "Boutique Hospitality & Lounges",
@@ -301,7 +301,7 @@ export const servicesData: ServiceItem[] = [
     title: "Interior Architecture",
     tagline: "Where architecture, proportion, light and material come together.",
     description: "Transformative structural reconfiguration, light optimization, architectural millwork, custom ceiling designs, and refined natural material selections.",
-    image: "/client-work/projects/residential/living-tv-unit-01-cad.webp",
+    image: "/client-work/interiors/img12.jpeg",
     subservices: [
       "Comprehensive Space & Flow Planning",
       "Architectural Lighting Schemes",
@@ -316,7 +316,7 @@ export const servicesData: ServiceItem[] = [
     title: "Turnkey Interior ",
     tagline: "Seamless end-to-end execution from sketch to keys",
     description: "One single accountable team managing procurement, engineering, contractor supervision, craftsmanship, and on-schedule handover within your established budget.",
-    image: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
+    image: "/client-work/interiors/img11.jpeg",
     subservices: [
       "Material Sourcing & Procurement",
       "Civil & Structural Supervision",
@@ -329,38 +329,38 @@ export const servicesData: ServiceItem[] = [
 
 export const pinnedStoryScenes: ProjectScene[] = [
   {
-    tag: "01 / 05 · Living Lounge · Vivearea",
-    title: "Living Lounge",
-    subtitle: "Contemporary TV wall unit featuring a seamless marble backdrop with gold accent lines and matching low-profile cabinetry.",
-    image: "/client-work/projects/residential/living-tv-unit-01.jpg",
+    tag: "01 / 05 · Living Room · Vivearea",
+    title: "Living Space",
+    subtitle: "A welcoming living area anchored by a dramatic marble TV wall, featuring rich brown leather sofas and contrasting mustard yellow armchairs.",
+    image: "/client-work/interiors/img7.jpeg",
     aspect: "16/10"
   },
   {
-    tag: "02 / 05 · Cabinetry Detail · Vivearea",
-    title: "Console Craft",
-    subtitle: "A hand-crafted console cabinet showing rounded corners and fine vertical fluting with a custom golden metallic finish.",
-    image: "/client-work/projects/residential/living-console-cabinet.jpg",
+    tag: "02 / 05 · Media Wall · Vivearea",
+    title: "Media & Study",
+    subtitle: "A multi-functional bedroom media wall integrating a sleek TV unit, backlit display shelving, and a dedicated workspace.",
+    image: "/client-work/interiors/img2.jpeg",
     aspect: "16/10"
   },
   {
     tag: "03 / 05 · Bedroom Suite · Vivearea",
     title: "Master Suite",
-    subtitle: "Serene bedroom featuring a custom fluted headboard in sage green, integrated warm LED coves, and dual bedside hanging lamps.",
-    image: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
+    subtitle: "A striking bedroom composition defined by a bold blue tufted bed, set against an illuminated circular acoustic wall panel.",
+    image: "/client-work/interiors/im1.jpeg",
     aspect: "16/10"
   },
   {
-    tag: "04 / 05 · Integrated Storage · Vivearea",
-    title: "Bespoke Wardrobe",
-    subtitle: "Floor-to-ceiling wardrobes featuring integrated golden handles and matching top loft storage to maximize vertical space.",
-    image: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg",
+    tag: "04 / 05 · Dining Area · Vivearea",
+    title: "Dining Interiors",
+    subtitle: "An elegant dining space focused on a white marble table with sculptural gold bases, paired with textured curved dining chairs.",
+    image: "/client-work/interiors/img8.jpeg",
     aspect: "16/10"
   },
   {
     tag: "05 / 05 · Study Area · Vivearea",
     title: "Work Alcove",
-    subtitle: "A dedicated study desk framed by warm vertical timber flutes and matching floating shelving with integrated LED strips.",
-    image: "/client-work/projects/residential/bedroom-ilaf-study.webp",
+    subtitle: "A dedicated study desk featuring overhead olive green cabinetry, open display shelving, and integrated warm LED task lighting.",
+    image: "/client-work/interiors/img5.jpeg",
     aspect: "16/10"
   }
 ];
@@ -378,14 +378,14 @@ export const projectsList: ProjectDetail[] = [
     intro: "A high-end residential apartment at Vivearea, Mumbai, showcasing custom millwork, fluted paneling, sage green tones, and modular layouts.",
     concept: "We optimized the TV wall unit with a marble slab backdrop and gold borders, while designing a master bedroom with fluted headboards and loft storage.",
     gallery: [
-      { title: "Master Bedroom", caption: "Sage green fluted headboard with bedside hanging lamps", image: "/client-work/projects/residential/bedroom-ilaf-01.jpg", preset: "up" },
-      { title: "TV Unit Option 1", caption: "Polished marble wall TV unit with gold trim", image: "/client-work/projects/residential/living-tv-unit-01.jpg", preset: "right" },
-      { title: "Bespoke Console", caption: "Fluted wooden cabinet console detail", image: "/client-work/projects/residential/living-console-cabinet.jpg", preset: "left" },
-      { title: "Bedroom Wardrobe", caption: "Beige wardrobes with long brass handles", image: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg", preset: "scale" },
-      { title: "Bedroom Study", caption: "Compact desk area with integrated overhead shelf", image: "/client-work/projects/residential/bedroom-ilaf-study.webp", preset: "parallax" }
+      { title: "Master Bedroom", caption: "Striking blue tufted bed with circular acoustic wall panels", image: "/client-work/interiors/im1.jpeg", preset: "up" },
+      { title: "Living Space", caption: "Seamless marble TV wall and rich brown leather seating", image: "/client-work/interiors/img7.jpeg", preset: "right" },
+      { title: "Dining Interiors", caption: "White marble table and sculptural gold-finished base", image: "/client-work/interiors/img8.jpeg", preset: "left" },
+      { title: "Bespoke Wardrobe", caption: "Soft beige and olive green wardrobe integration", image: "/client-work/interiors/img4.jpeg", preset: "scale" },
+      { title: "Work Alcove", caption: "Study desk with overhead olive green cabinetry", image: "/client-work/interiors/img5.jpeg", preset: "parallax" }
     ],
-    quote: "Altamountt transformed our blank layout into a breathtaking, peaceful sanctuary that feels twice as spacious.",
-    clientFeedback: "Residential Client · Vivearea"
+    quote: "Altamountt transformed our space into a breathtaking, peaceful sanctuary that feels twice as spacious.",
+    clientFeedback: "Residential Client"
   },
   {
     slug: "google-bkc",

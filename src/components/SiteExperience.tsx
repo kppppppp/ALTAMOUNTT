@@ -836,10 +836,10 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
             <p className="eyebrow dark">Blueprint to Reality</p>
             <h2 className="heading-editorial" data-text-reveal="left">
               <span>CONCEPT TO</span>
-              <span><em>VISUALIZATION.</em></span>
+              <span><em>REALITY.</em></span>
             </h2>
             <p className="text-sm text-[var(--ink-light-muted)] mt-4">
-              Drag the divider or scroll to witness how we translate precise CAD engineering layouts into photorealistic 3D interior renders.
+              Drag the divider or scroll to witness how we translate precise CAD engineering layouts and architectural drawings into stunning finished interior spaces.
             </p>
           </div>
 

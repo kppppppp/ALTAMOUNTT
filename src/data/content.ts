@@ -54,7 +54,7 @@ export const studioInfo = {
   phoneDisplay: "+917304723416",
   whatsappUrl: "https://wa.me/917304723416?text=Hi%20Altamountt%20team%2C%20I%20would%20like%20to%20inquire%20about%20interior%20design%20services.",
   mapsUrl: "https://maps.google.com/?q=JVM+Sky+Court+Bhayandarpada+Thane",
-  email: "hello@altamountt.co.in",
+  email: "hello@altamounttdesign.com",
   rating: "5.0",
   reviewCount: "10+ Google Reviews",
 };
@@ -378,14 +378,14 @@ export const projectsList: ProjectDetail[] = [
     intro: "A high-end residential apartment at Vivearea, Mumbai, showcasing custom millwork, fluted paneling, sage green tones, and modular layouts.",
     concept: "We optimized the TV wall unit with a marble slab backdrop and gold borders, while designing a master bedroom with fluted headboards and loft storage.",
     gallery: [
-      { title: "Master Bedroom", caption: "Striking blue tufted bed with circular acoustic wall panels", image: "/client-work/interiors/im1.jpeg", preset: "up" },
-      { title: "Living Space", caption: "Seamless marble TV wall and rich brown leather seating", image: "/client-work/interiors/img7.jpeg", preset: "right" },
-      { title: "Dining Interiors", caption: "White marble table and sculptural gold-finished base", image: "/client-work/interiors/img8.jpeg", preset: "left" },
-      { title: "Bespoke Wardrobe", caption: "Soft beige and olive green wardrobe integration", image: "/client-work/interiors/img4.jpeg", preset: "scale" },
-      { title: "Work Alcove", caption: "Study desk with overhead olive green cabinetry", image: "/client-work/interiors/img5.jpeg", preset: "parallax" }
+      { title: "Master Bedroom", caption: "Sage green fluted headboard with bedside hanging lamps", image: "/client-work/projects/residential/bedroom-ilaf-01.jpg", preset: "up" },
+      { title: "TV Unit Option 1", caption: "Polished marble wall TV unit with gold trim", image: "/client-work/projects/residential/living-tv-unit-01.jpg", preset: "right" },
+      { title: "Bespoke Console", caption: "Fluted wooden cabinet console detail", image: "/client-work/projects/residential/living-console-cabinet.jpg", preset: "left" },
+      { title: "Bedroom Wardrobe", caption: "Beige wardrobes with long brass handles", image: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg", preset: "scale" },
+      { title: "Bedroom Study", caption: "Compact desk area with integrated overhead shelf", image: "/client-work/projects/residential/bedroom-ilaf-study.webp", preset: "parallax" }
     ],
-    quote: "Altamountt transformed our space into a breathtaking, peaceful sanctuary that feels twice as spacious.",
-    clientFeedback: "Residential Client"
+    quote: "Altamountt transformed our blank layout into a breathtaking, peaceful sanctuary that feels twice as spacious.",
+    clientFeedback: "Residential Client · Vivearea"
   },
   {
     slug: "google-bkc",

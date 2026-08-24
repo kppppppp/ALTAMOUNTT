@@ -916,19 +916,21 @@ img, video {
   display: block;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible; /* Prevent horizontal typography clipping */
 }
 
 [data-text-reveal] {
   display: block;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible; /* Prevent clipping on wrapper elements */
 }
 
 [data-text-reveal] span {
   display: block;
   width: 100%;
+  overflow: visible; /* Prevent character cutoffs at ends of lines */
+  padding-right: 0.12em; /* Safe spacing buffer for italics / letter spacing */
 }
 
 /* Editorial Collage */
@@ -2458,7 +2460,7 @@ img, video {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 68px;
+  max-height: 88px;
   object-fit: contain;
   object-position: left center;
 }
@@ -4690,67 +4692,51 @@ img, video {
   font-family: "DM Mono", monospace;
 }
 
-/* ═══════════════════════════════════════════════════
-   CONTACT FORM — Success / WhatsApp Continuation
-   ═══════════════════════════════════════════════════ */
-.contact-form-success {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 420px;
-  padding: 2rem;
+/* ─── REUSABLE PAGE HERO (for /projects & /blog) ─── */
+:root {
+  --navbar-safety-height: 110px;
 }
 
-.contact-form-success-inner {
-  text-align: center;
-  max-width: 380px;
+@media (max-width: 768px) {
+  :root {
+    --navbar-safety-height: 85px;
+  }
 }
 
-.contact-form-success-check {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--gold, #C6A96C);
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
+.page-editorial-hero {
+  position: relative;
+  padding-top: calc(var(--navbar-safety-height) + 3rem);
+  padding-bottom: 4rem;
+  background-color: var(--bg-ivory);
 }
 
-.contact-form-success-title {
-  font-family: "Playfair Display", serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--bg-ivory, #F5F2EB);
-  margin-bottom: 0.75rem;
+.page-editorial-hero__heading {
+  font-size: clamp(2.5rem, 6.5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-family: 'Playfair Display', serif;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  min-width: 0;
+  color: var(--ink);
 }
 
-.contact-form-success-copy {
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--ink-light-muted, #999);
-  margin-bottom: 1.5rem;
+.page-editorial-hero__desc {
+  font-size: clamp(0.875rem, 1.2vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--ink-muted);
+  max-width: 100%;
 }
 
-.contact-form-reset-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  background: none;
-  border: none;
-  color: var(--gold-light, #D4B978);
-  font-family: "DM Mono", monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
-}
-
-.contact-form-reset-btn:hover {
-  color: var(--gold, #C6A96C);
+@media (min-width: 1024px) {
+  .page-editorial-hero {
+    padding-top: calc(var(--navbar-safety-height) + 5rem);
+    padding-bottom: 5rem;
+    min-height: 55vh;
+    max-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

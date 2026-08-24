@@ -99,80 +99,18 @@ export function SiteExperience() {
         },
       });
 
-      // 2. EDITORIAL COLLAGE PARALLAX
-      gsap.to(".collage-floating", {
-        yPercent: -20,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".collage-grid",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.2,
-        },
-      });
-
-      // 3. PINNED PROJECT STORY (The Signature ScrollTrigger "WOW" Experience)
-      const storyLayers = gsap.utils.toArray<HTMLElement>(".pinned-story-layer");
-      const totalScenes = pinnedStoryScenes.length;
-
-      const storyTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".pinned-story-section",
-          start: "top top",
-          end: `+=${totalScenes * 1200}`,
-          pin: true,
-          scrub: 0.8,
-          onUpdate: (self) => {
-            const index = Math.min(
-              totalScenes - 1,
-              Math.floor(self.progress * totalScenes)
-            );
-            setActiveStoryScene(index);
-          },
-        },
-      });
-
-      storyLayers.forEach((layer, i) => {
-        if (i === 0) return;
-
-        storyTl
-          .fromTo(
-            layer,
-            {
-              clipPath: "inset(100% 0% 0% 0%)",
-              yPercent: 15,
-              scale: 1.15,
-            },
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              yPercent: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power2.inOut",
-            },
-            `scene-${i}`
-          )
-          .to(
-            storyLayers[i - 1]?.querySelector("img") || {},
-            {
-              scale: 0.95,
-              opacity: 0.6,
-              duration: 1,
-            },
-            `scene-${i}`
-          );
-      });
-
-      // 4. SIGNATURE IMAGE STACK MOMENT
+      // 2. SIGNATURE IMAGE STACK MOMENT (Fixed Pin Scroll Animation with invalidateOnRefresh)
       const stackCards = gsap.utils.toArray<HTMLElement>(".stack-layer-card");
       if (stackCards.length >= 3) {
         const stackTl = gsap.timeline({
           scrollTrigger: {
             trigger: ".image-stack-section",
             start: "top top",
-            end: "+=2200",
+            end: "+=1500",
             pin: true,
-            scrub: 0.8,
+            scrub: 1,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
           },
         });
 
@@ -191,14 +129,14 @@ export function SiteExperience() {
         );
       }
 
-      // 5. BEFORE / AFTER SCROLL SYNC
+      // 3. BEFORE / AFTER SCROLL SYNC (Technical drawing to finished space)
       gsap.to(".comparison-after-layer", {
         clipPath: "inset(0 0% 0 0)",
         ease: "none",
         scrollTrigger: {
           trigger: ".comparison-container",
-          start: "top 80%",
-          end: "bottom 20%",
+          start: "top 85%",
+          end: "bottom 15%",
           scrub: true,
           onUpdate: (self) => {
             if (!isDraggingSlider.current) {
@@ -240,14 +178,12 @@ export function SiteExperience() {
     } catch {}
   };
 
-  const currentScene = pinnedStoryScenes[activeStoryScene];
-
   return (
     <div ref={containerRef} className="page-wrapper">
       <Navigation />
 
       <main id="main-content">
-        {/* HERO SECTION — 100VH VIDEO WITH MASKED TEXT REVEAL */}
+        {/* 01. HERO SECTION — 100VH VIDEO WITH MASKED TEXT REVEAL */}
         <section className="hero-section" id="hero">
           <video
             className="hero-video-bg"
@@ -280,7 +216,7 @@ export function SiteExperience() {
               </p>
 
               <div className="hero-actions-row">
-                <a href="#projects" className="hero-btn-primary">
+                <a href="#commercial-intro" className="hero-btn-primary">
                   Explore Our Spaces <span>→</span>
                 </a>
                 <a href="#contact" className="hero-btn-secondary">
@@ -296,439 +232,436 @@ export function SiteExperience() {
           </div>
         </section>
 
-        {/* BRAND STATEMENT SECTION */}
-<section
-  className="section-pad !pt-32 md:!pt-40 lg:!pt-48"
-  id="brand-statement"
->
-  <div className="max-w-7xl mx-auto">
-    <p className="eyebrow">The Altamountt Point of View</p>
+        {/* 02. COMMERCIAL INTRODUCTION */}
+        <section className="relative bg-[var(--bg-ivory)] overflow-hidden flex items-center py-20 lg:py-32" style={{ minHeight: '620px', maxHeight: '780px' }} id="commercial-intro">
+          {/* Subtle architectural vertical grid lines */}
+          <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
 
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+          <div className="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* LEFT COLUMN: Large editorial typography */}
+            <div className="lg:col-span-7 relative z-20">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-6 h-[1px] bg-[var(--gold-dark)]" />
+                <span className="mono text-[10px] text-[var(--gold-dark)] tracking-[0.25em] uppercase">01 / COMMERCIAL</span>
+              </div>
+              <h2 className="heading-editorial text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.9] translate-x-[-2px]" data-text-reveal="up">
+                <span>SPACES THAT</span>
+                <span><em className="text-[var(--gold-dark)] font-serif italic">BUILD BRANDS.</em></span>
+              </h2>
+              <div className="mt-8 max-w-md">
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed mb-6">
+                  From workplaces and retail environments to hospitality and wellness spaces, we create commercial interiors that balance identity, functionality and experience.
+                </p>
+                <Link href="/services/commercial" className="hero-btn-primary">
+                  EXPLORE COMMERCIAL WORK <span>→</span>
+                </Link>
+              </div>
+            </div>
 
-      {/* TEXT */}
-      <div className="lg:col-span-6">
-    <h2 className="heading-editorial" data-text-reveal="left">
-  <span>YOUR <em className="word-accent">SPACE.</em></span>
-  <span>YOUR <em className="word-accent">STORY.</em></span>
-  <span>OUR <em className="word-accent">DESIGN.</em></span>
-</h2>
+            {/* RIGHT COLUMN: Large cropped commercial photograph entering from side */}
+            <div className="lg:col-span-5 relative h-full flex justify-end">
+              <div className="relative w-full max-w-[420px] aspect-[4/5] overflow-hidden group shadow-xl">
+                <div className="media-reveal-wrap h-full w-full relative overflow-hidden" data-reveal="right">
+                  <img 
+                    src="/client-work/projects/commercial/g-potrait.png" 
+                    alt="Commercial Reception Interior Design" 
+                    className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" 
+                  />
+                </div>
+                {/* Micro metadata over image */}
+                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-[9px] font-mono text-white bg-[rgba(21,20,18,0.85)] px-3 py-2 backdrop-blur-sm">
+                  <span>GOOGLE BKC / RECEPTION</span>
+                  <span>19.1175° N, 72.8631° E</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <i className="gold-line" data-gold-line />
+        {/* 03. COMMERCIAL PORTFOLIO */}
+        <section className="section-pad-sm bg-[var(--bg-dark)] text-white relative overflow-hidden" id="commercial-work">
+          {/* Subtle horizontal baseline rule */}
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-[rgba(245,242,235,0.08)]" />
 
-       <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed max-w-xl">
-  From thoughtful spatial reconfiguration to complete turnkey execution,
-  Altamountt creates architectural interiors that balance timeless elegance,
-  practical functionality, and realistic budgets.
-</p>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col mb-16">
+              <span className="mono text-[10px] text-[var(--gold-light)] tracking-widest block mb-2">SELECTED SHOWCASE</span>
+              <h2 className="text-3xl md:text-5xl font-serif tracking-tight text-[var(--bg-ivory)]">SELECTED COMMERCIAL WORK</h2>
+            </div>
 
-<div className="trusted-by mt-12 pt-7 max-w-xl">
-  <div className="trusted-by-heading">
-    <span className="trusted-by-line" />
-    <span>Trusted By</span>
-  </div>
+            <div className="flex flex-col gap-24 lg:gap-36">
+              {/* GOOGLE: LARGE FEATURE PROJECT */}
+              {selectedClients
+                .filter((client) => client.name === "GOOGLE")
+                .map((client) => (
+                  <article key={client.name} className="group relative w-full">
+                    <div className="flex items-end justify-between mb-4 border-b border-[rgba(245,242,235,0.1)] pb-3">
+                      <div className="flex items-center gap-3">
+                        <span className="mono text-sm text-[var(--gold-light)] font-semibold">01</span>
+                        <h3 className="text-2xl md:text-3xl font-serif text-white">{client.name}</h3>
+                      </div>
+                      <span className="mono text-[10px] text-[var(--ink-light-muted)] uppercase tracking-widest">BKC / MUMBAI · WORKPLACE</span>
+                    </div>
 
-  <div className="trusted-by-list">
-    <span>GOOGLE</span>
-    <span>LAKMÉ</span>
-    <span>PACHOULI</span>
-  </div>
-</div>
-      </div>
+                    <div className="media-reveal-wrap overflow-hidden h-[50vh] md:h-[70vh] lg:h-[75vh] w-full relative transition-transform duration-700 ease-out group-hover:scale-[1.005]" data-reveal="scale">
+                       <img 
+                         src={client.image} 
+                         alt={client.name} 
+                         className="media-reveal-inner object-cover w-full h-full" 
+                         style={{ objectPosition: "center 40%" }}
+                         loading="lazy" 
+                       />
+                    </div>
+                    
+                    <div className="flex justify-between items-start mt-4">
+                      <p className="text-xs text-[var(--ink-light-muted)] max-w-sm leading-relaxed">
+                        High-performance workspace resolved around open flow, wave-patterned ceilings, and bespoke concrete features.
+                      </p>
+                      <Link href="/projects/google-bkc" className="text-xs text-[var(--gold-light)] uppercase tracking-widest hover:text-white transition-colors border-b border-current pb-[2px]">
+                        EXPLORE CASE STUDY →
+                      </Link>
+                    </div>
+                  </article>
+                ))}
 
-      {/* IMAGE */}
-      <div className="lg:col-span-6 flex flex-col gap-8">
+              {/* LAKME + PACHOULI: ASYMMETRIC GRID WITH DIFFERENT HEIGHTS & VERTICAL POSITIONS */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-24 items-start">
+                {selectedClients
+                  .filter((client) => client.name !== "GOOGLE")
+                  .map((client, idx) => (
+                    <article 
+                      key={client.name} 
+                      className={`group flex flex-col justify-end md:col-span-6 ${idx === 0 ? "lg:col-span-5 md:mt-12" : "lg:col-span-7 lg:mt-0"}`}
+                    >
+                       <div className="flex items-end justify-between mb-4 border-b border-[rgba(245,242,235,0.1)] pb-2">
+                         <div className="flex items-center gap-2">
+                           <span className="mono text-[10px] text-[var(--gold-light)]">0{idx + 2}</span>
+                           <h3 className="text-xl md:text-2xl font-serif text-white">{client.name}</h3>
+                         </div>
+                         <span className="mono text-[9px] text-[var(--ink-light-muted)] uppercase tracking-widest">
+                           {client.descriptor.split('·')[0]}
+                         </span>
+                       </div>
 
-       <div
-className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px]"
-  data-reveal="up"
->
-  <video
-    src="https://res.cloudinary.com/haulskyj/video/upload/WhatsApp_Video_2026-08-21_at_16.50.09.mp4"
-    className="brand-video"
-    autoPlay
-    muted
-    loop
-    playsInline
-    preload="metadata"
-  />
+                       <div 
+                         className={`media-reveal-wrap overflow-hidden relative transition-transform duration-700 ease-out group-hover:scale-[1.01] ${idx === 0 ? "aspect-[3/4] md:h-[55vh]" : "aspect-[4/3] md:h-[45vh]"}`} 
+                         data-reveal={idx === 0 ? "up" : "right"}
+                       >
+                          <img src={client.image} alt={client.name} className="media-reveal-inner object-cover w-full h-full" loading="lazy" />
+                       </div>
 
-  <div className="brand-video-label">
-    <span>ALTAMOUNTT</span>
-    <span>SPACE &amp; DESIGN</span>
-  </div>
-</div>
+                       <div className="flex justify-between items-start mt-4">
+                          <p className="text-[11px] text-[var(--ink-light-muted)] leading-normal max-w-xs">
+                            {idx === 0 
+                              ? "Premium salon framing treatment zones, architectural copper details, and raw brick accents."
+                              : "Wellness clinic utilizing organic textures, fluted wall screens, and integrated spatial flow."
+                            }
+                          </p>
+                          <Link href={idx === 0 ? "/projects/lakme-salon" : "/projects/pachouli-wellness"} className="text-[10px] text-[var(--gold-light)] uppercase tracking-widest hover:text-white transition-colors flex-shrink-0 ml-4 border-b border-current pb-[1px]">
+                            EXPLORE →
+                          </Link>
+                       </div>
+                    </article>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div className="border-t border-[var(--line)] pt-6 flex justify-between items-center text-xs font-mono tracking-widest text-[var(--ink-muted)]">
-          <span>LOCATION: ASHAR - THANE WEST</span>
-          <span>TYPOLOGY: RESIDENTIAL</span>
-        </div>
+        {/* 04. COMMERCIAL SERVICES / CAPABILITIES */}
+        <section className="section-pad bg-[var(--bg-dark)] text-white relative overflow-hidden" id="commercial-capabilities">
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+            <div className="max-w-7xl mx-auto h-full w-full border-x border-white grid grid-cols-4">
+              <div className="border-r border-white h-full" />
+              <div className="border-r border-white h-full" />
+              <div className="border-r border-white h-full" />
+            </div>
+          </div>
 
-      </div>
-
-    </div>
-  </div>
-</section>
-
-        {/* VERIFIED CLIENTS — relationships are taken directly from supplied project assets */}
-        <section className="selected-clients-section" aria-labelledby="selected-clients-title">
-          <div className="max-w-7xl mx-auto">
-            <div className="selected-clients-heading">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
-                <p className="eyebrow dark">Selected Clients</p>
-                <h2 id="selected-clients-title" className="heading-editorial" data-text-reveal="left">
-                  <span>SPACES CREATED FOR</span>
-                  <span><em>LEADING ORGANIZATIONS.</em></span>
+                <p className="eyebrow dark">02 / CAPABILITIES</p>
+                <h2 className="heading-editorial text-4xl md:text-6xl" data-text-reveal="left">
+                  <span>COMMERCIAL</span>
+                  <span><em>SPECIALIZATIONS.</em></span>
                 </h2>
               </div>
-              <p>From brand-forward retail to high-performance workspaces, every environment is resolved around how people arrive, move, work, and feel.</p>
+              <p className="text-sm text-[var(--ink-light-muted)] max-w-xs leading-relaxed">
+                Engineering commercial venues with high spatial efficiency, acoustic comfort, and brand identity.
+              </p>
             </div>
 
-            <div className="client-marquee" aria-label="Selected clients: Google, Lakmé, Pachouli Wellness">
-              <div className="client-marquee-track">
-                {[...selectedClients, ...selectedClients].map((client, index) => (
-                  <span className="client-marquee-name" key={`${client.name}-${index}`}>{client.name}</span>
-                ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mt-12">
+              {[
+                { title: "Workplace Interiors", desc: "High-productivity corporate hubs and executive suites.", num: "01" },
+                { title: "Retail & Brand Spaces", desc: "Flagship showrooms and experiential retail outlets.", num: "02" },
+                { title: "Hospitality & Lounges", desc: "Engaging cafes, diners, and boutique lounge experiences.", num: "03" },
+                { title: "Salon & Wellness", desc: "Modern premium styling salons, clinics, and spas.", num: "04" },
+                { title: "Interior Architecture", desc: "Transformative structural reconfiguration and custom joinery.", num: "05" },
+                { title: "Turnkey Execution", desc: "Flawless site construction management from sketch to handover.", num: "06" }
+              ].map((cap, idx) => (
+                <div key={cap.title} className="border-t border-[rgba(245,242,235,0.15)] pt-6 flex flex-col justify-between h-48 group hover:border-[var(--gold)] transition-colors duration-500">
+                  <div>
+                    <span className="mono text-[10px] text-[var(--gold-light)] block mb-3">{cap.num} // SPECIFICATION</span>
+                    <h3 className="text-xl md:text-2xl font-serif text-white group-hover:text-[var(--gold-light)] transition-colors duration-500">{cap.title}</h3>
+                  </div>
+                  <p className="text-xs text-[var(--ink-light-muted)] leading-relaxed">{cap.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 05. PROJECT IN PROGRESS VIDEO */}
+        <section className="py-24 lg:py-32 bg-[var(--bg-ivory)] relative overflow-hidden" id="project-in-progress">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              
+              {/* LEFT 42% */}
+             <div className="lg:col-span-6 relative flex flex-col justify-center min-w-0">
+                {/* Thin gold vertical line running from heading area toward the video */}
+                <div className="hidden lg:block absolute left-[-24px] top-0 bottom-[-40px] w-[1px] bg-[var(--gold-dark)] opacity-30" />
+
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="w-8 h-[1px] bg-[var(--gold-dark)]" />
+                  <p className="eyebrow dark !mb-0 text-[var(--gold-dark)]">PROJECT IN PROGRESS</p>
+                </div>
+                
+               <h2
+  className="heading-editorial text-5xl md:text-[clamp(4rem,5.8vw,6.5rem)] mb-8 leading-[0.9] tracking-[-0.025em] overflow-visible"
+  data-text-reveal="left"
+>
+                 <span className="block whitespace-nowrap">DESIGN IS</span>
+<span className="block whitespace-nowrap">ONLY THE</span>
+<span className="block whitespace-nowrap">
+  <em className="text-[var(--gold-dark)]">BEGINNING.</em>
+</span>
+                </h2>
+                
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-sm mt-4 border-t border-[var(--line)] pt-6">
+                  From drawings and planning to execution on site, every project is shaped through careful coordination and attention to detail.
+                </p>
+
+                {/* Staggered vertical coordinates text for design detail */}
+                <div className="mt-8 flex flex-col gap-1 text-[10px] font-mono text-[var(--ink-muted)] uppercase tracking-widest border-l-2 border-[var(--gold-dark)] pl-4">
+                  <span>PHASE / SITE SURVEY &amp; EXECUTION</span>
+                  <span>COORD / 19.2638° N, 72.9815° E</span>
+                </div>
               </div>
+
+              {/* RIGHT 58% */}
+              <div className="lg:col-span-6 flex flex-col items-center lg:items-end min-w-0">
+                {/* Video container with targeted styling (width 42-48vw, height 600-720px on desktop) */}
+                <div className="relative w-full lg:w-[45vw] lg:max-w-[500px] aspect-[9/16] shadow-2xl p-2 border border-[rgba(21,20,18,0.12)] bg-white rounded-sm">
+                  <div className="media-reveal-wrap h-full w-full relative overflow-hidden" data-reveal="scale">
+                    <video 
+                      src="/client-work/video/video-progress.mp4" 
+                      autoPlay 
+                      muted 
+                      loop 
+                      playsInline 
+                      preload="metadata" 
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>
+                  
+                  {/* Subtle metadata beneath it */}
+                  <div className="flex justify-between w-full mt-3 px-1 text-[10px] font-mono tracking-widest text-[var(--ink-muted)] uppercase">
+                    <span>COMMERCIAL · IN PROGRESS</span>
+                    <span>THANE, MAHARASHTRA</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
-
-          <div className="alt-client-showcase">
-
-  {/* ================= GOOGLE FEATURE ================= */}
-
-  {selectedClients
-    .filter((client) => client.name === "GOOGLE")
-    .map((client) => (
-      <article
-        key={client.name}
-        className="alt-google-feature"
-      >
-
-        <div className="alt-google-heading">
-          <div>
-            <p className="alt-project-eyebrow">
-              Selected Commercial Work
-            </p>
-
-            <h3 className="alt-project-title">
-              {client.name}
-            </h3>
           </div>
+        </section>
 
-          <span className="alt-project-type">
-            {client.descriptor}
-          </span>
-        </div>
-
-        <div
-          className="alt-google-image media-reveal-wrap"
-          data-reveal="up"
-        >
-          <img
-            src={client.image}
-            alt={`${client.name} project by Altamountt`}
-            className="alt-client-image media-reveal-inner"
-            loading="lazy"
-          />
-        </div>
-
-        <div className="alt-google-meta">
-
-          <p>
-            A workplace interior composed for arrival,
-            collaboration, and daily flow.
-          </p>
-
-          <Link
-            href="/projects/google-bkc"
-            className="alt-google-link"
-          >
-            View Google Project
-            <span>→</span>
-          </Link>
-
-        </div>
-
-      </article>
-    ))}
-
-
-  {/* ================= LAKMÉ + PACHOULI ================= */}
-
-  <div className="alt-client-pair">
-
-    {selectedClients
-      .filter((client) => client.name !== "GOOGLE")
-      .map((client, index) => (
-        <article
-          key={client.name}
-          className="alt-client-card"
-        >
-
-          <div className="alt-client-card-top">
-
-            <span className="alt-client-number">
-              0{index + 2}
-            </span>
-
-            <span className="alt-client-type">
-              {client.descriptor}
-            </span>
-
-          </div>
-
-          <div
-            className="alt-client-image-wrap media-reveal-wrap"
-            data-reveal={index === 0 ? "left" : "right"}
-          >
-            <img
-              src={client.image}
-              alt={`${client.name} project by Altamountt`}
-              className="alt-client-image media-reveal-inner"
-              loading="lazy"
+        {/* 06. COMMERCIAL → RESIDENTIAL TRANSITION */}
+        <section className="relative py-32 lg:py-48 bg-black text-white overflow-hidden flex items-center min-h-[50vh] lg:min-h-[65vh]" id="transition">
+          {/* Large cropped residential background image at very low opacity for depth */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none">
+            <img 
+              src={images.living} 
+              alt="Bespoke Residential Living Space" 
+              className="w-full h-full object-cover filter grayscale scale-105" 
             />
           </div>
 
-          <div className="alt-client-card-bottom">
-
-            <h3>
-              {client.name}
-            </h3>
-
-            <span className="alt-client-arrow">
-              ↗
-            </span>
-
-          </div>
-
-        </article>
-      ))}
-
-  </div>
-
-</div>
+          <div className="max-w-7xl mx-auto px-6 w-full relative z-10 text-center flex flex-col items-center justify-center">
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <span className="w-8 h-[1px] bg-[var(--gold)]" />
+              <p className="eyebrow dark !mb-0 text-[var(--gold)]">02 / RESIDENTIAL</p>
+              <span className="w-8 h-[1px] bg-[var(--gold)]" />
+            </div>
+            
+            <h2 className="heading-editorial text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.9] max-w-4xl mx-auto" data-text-reveal="up">
+              <span>SPACES MADE</span>
+              <span><em className="text-[var(--gold)] font-serif italic">FOR LIVING.</em></span>
+            </h2>
+            
+            <p className="text-sm md:text-base text-[var(--ink-light-muted)] mt-8 max-w-md leading-relaxed mx-auto border-t border-[rgba(245,242,235,0.2)] pt-6">
+              From considered layouts to refined details, we create homes shaped around the people who live in them.
+            </p>
           </div>
         </section>
 
-        {/* EDITORIAL IMAGE COLLAGE (ASYMMETRIC DEPTH) */}
-        <section className="section-pad-sm bg-[var(--bg-sand)]" id="about-preview">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div>
-                <p className="eyebrow">A Home in Layers</p>
-                <h2 className="heading-editorial" data-text-reveal="left">
-                  <span>DESIGNED</span>
-                  <span><em>AROUND YOU.</em></span>
-                </h2>
-              </div>
-              <p className="text-sm md:text-base text-[var(--ink-muted)] max-w-sm leading-relaxed">
-                Composed in light, tactile materials, and an intimate understanding of daily living rituals.
-              </p>
-            </div>
+        {/* 07. RESIDENTIAL INTRO */}
+        <section className="py-24 lg:py-36 bg-[var(--bg-ivory)] relative overflow-hidden" id="residential-intro">
+          {/* Subtle background detail */}
+          <div className="absolute left-[15%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
 
-            <div className="collage-grid">
-              <div className="collage-tall media-reveal-wrap" data-reveal="up">
-                <img
-                  src={images.dining}
-                  alt="Sculptural dining room interior in Thane"
-                  className="media-reveal-inner"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="collage-offset media-reveal-wrap" data-reveal="right">
-                <img
-                  src={images.bedroom}
-                  alt="Textured master suite interior"
-                  className="media-reveal-inner"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="collage-floating media-reveal-wrap" data-reveal="parallax">
-                <img
-                  src={images.detail}
-                  alt="Architectural joinery detail"
-                  className="media-reveal-inner"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES (LARGE VISUAL CATEGORIES) */}
-        <section className="section-pad bg-[var(--bg-dark)] text-[var(--bg-ivory)]" id="services">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div>
-                <p className="eyebrow dark">What We Create</p>
-                <h2 className="heading-editorial" data-text-reveal="left">
-                  <span>SPACES WITH</span>
-                  <span><em>PURPOSE.</em></span>
-                </h2>
-              </div>
-              <Link
-                href="/services"
-                className="mono text-xs text-[var(--gold-light)] flex items-center gap-2 border-b border-[var(--gold-light)] pb-1 w-fit hover:text-white hover:border-white transition-colors"
-              >
-                View Full Service Matrix <span>→</span>
-              </Link>
-            </div>
-
-            <div className="services-editorial-grid">
-              {servicesData.map((service, index) => {
-                const revealPreset = index % 2 === 0 ? "up" : "right";
-                return (
-                  <article
-                    key={service.id}
-                    className="service-card-item"
-                    data-reveal={revealPreset}
-                  >
-                    <div className="service-card-bg">
-                      <img src={service.image} alt={service.title} />
-                    </div>
-                    <div className="service-card-overlay" />
-
-                    <div className="service-card-content">
-                      <div>
-                        <span className="service-card-num">{service.number}</span>
-                        <h3 className="service-card-title">{service.title}</h3>
-                        <p className="service-card-desc">{service.tagline}</p>
-                      </div>
-
-                      <div>
-                        <ul className="service-card-list">
-                          {service.subservices.slice(0, 3).map((sub) => (
-                            <li key={sub}>{sub}</li>
-                          ))}
-                        </ul>
-
-                        <Link href="/services" className="service-card-link">
-                          Explore Category <span>→</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURED PROJECTS (EDITORIAL ASYMMETRIC GALLERY) */}
-        <section className="section-pad" id="projects">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-              <div>
-                <p className="eyebrow">Selected Work</p>
-                <h2 className="heading-editorial" data-text-reveal="left">
-                  <span>FEATURED</span>
-                  <span><em>PORTFOLIO.</em></span>
-                </h2>
-              </div>
-              <Link
-                href="/projects"
-                className="mono text-xs text-[var(--ink)] flex items-center gap-2 border-b border-current pb-1 w-fit hover:text-[var(--gold-dark)] transition-colors"
-              >
-                Explore All Projects <span>→</span>
-              </Link>
-            </div>
-
-            <div className="projects-editorial-grid">
-              {projectsList.map((project, idx) => {
-                const isEven = idx % 2 !== 0;
-                const preset = idx === 0 ? "up" : idx === 1 ? "left" : idx === 2 ? "right" : "scale";
-
-                return (
-                  <article
-                    key={project.slug}
-                    className={`project-item-editorial ${isEven ? "offset" : ""}`}
-                  >
-                    <Link href={`/projects/${project.slug}`}>
-                      <div className="project-img-box media-reveal-wrap" data-reveal={preset}>
-                        <img
-                          src={project.heroImage}
-                          alt={project.title}
-                          className="media-reveal-inner"
-                          loading="lazy"
-                        />
-                      </div>
-                    </Link>
-
-                    <div className="project-meta-row">
-                      <span>0{idx + 1} · {project.location}</span>
-                      <span>{project.category}</span>
-                    </div>
-
-                    <Link href={`/projects/${project.slug}`} className="project-title-link">
-                      {project.title}
-                    </Link>
-
-                    <p className="text-sm text-[var(--ink-muted)] mb-4 line-clamp-2">
-                      {project.intro}
-                    </p>
-
-                    <Link href={`/projects/${project.slug}`} className="project-view-cta">
-                      View Project Story <span>→</span>
-                    </Link>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* PINNED PROJECT STORY (THE SIGNATURE "WOW" EXPERIENCE) */}
-        <section className="pinned-story-section" id="story-experience">
-          <div className="pinned-story-left">
-            <div>
-              <p className="eyebrow dark">Interactive Project Journey</p>
-              <span className="mono text-xs text-[var(--gold-light)] block mb-3">
-                {currentScene.tag}
-              </span>
-              <h2 className="text-4xl md:text-6xl font-serif leading-none mb-6">
-                {currentScene.title}
-              </h2>
-              <i className="gold-line dark" />
-              <p className="text-base text-[var(--ink-light-muted)] leading-relaxed max-w-md">
-                {currentScene.subtitle}
-              </p>
-            </div>
-
-            <div>
-              <div className="pinned-story-nav mb-4">
-                {pinnedStoryScenes.map((scene, i) => (
-                  <div
-                    key={scene.title}
-                    className={`pinned-story-dot ${i === activeStoryScene ? "active" : ""}`}
+          <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* LEFT COLUMN: Large residential image */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative w-full aspect-[4/3] overflow-hidden group shadow-lg">
+                <div className="media-reveal-wrap h-full w-full relative overflow-hidden" data-reveal="left">
+                  <img 
+                    src={images.penthouse} 
+                    alt="Luxury residential design in Thane" 
+                    className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105" 
                   />
-                ))}
+                </div>
+                <div className="absolute bottom-4 left-4 text-[9px] font-mono text-white bg-[rgba(21,20,18,0.85)] px-3 py-1.5 backdrop-blur-sm uppercase">
+                  TYPOLOGY / RESIDENTIAL
+                </div>
               </div>
-              <span className="mono text-[10px] text-[var(--ink-light-muted)]">
-                SCROLL DOWN TO PROGRESS SCENE (0{activeStoryScene + 1} / 05)
-              </span>
             </div>
-          </div>
 
-          <div className="pinned-story-right">
-            {pinnedStoryScenes.map((scene, i) => (
-              <div
-                key={scene.title}
-                className="pinned-story-layer"
-                style={{ zIndex: i + 1 }}
-              >
-                <img src={scene.image} alt={scene.title} />
+            {/* RIGHT COLUMN: Oversized typography and metadata */}
+            <div className="lg:col-span-6 flex flex-col items-start lg:pl-8">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-6 h-[1px] bg-[var(--gold-dark)]" />
+                <span className="mono text-[10px] text-[var(--gold-dark)] tracking-widest uppercase">RESIDENTIAL · BESPOKE INTERIORS</span>
               </div>
-            ))}
+              
+              <h3 className="heading-editorial text-4xl md:text-6xl mb-6 leading-[0.95]" data-text-reveal="right">
+                <span>HOMES WITH</span>
+                <span><em>A POINT OF VIEW.</em></span>
+              </h3>
+              
+              <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed mb-8 max-w-sm border-b border-[var(--line)] pb-6">
+                Thoughtfully planned homes where proportion, material, light and everyday functionality come together.
+              </p>
+              
+              <Link href="/services/residential" className="hero-btn-primary">
+                EXPLORE RESIDENTIAL WORK <span>→</span>
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* SIGNATURE IMAGE STACK MOMENT (OVERLAPPING LAYERED EXPERIENCE) */}
-        <section className="image-stack-section" id="image-stack">
-          <div className="max-w-7xl mx-auto mb-12 text-center">
+        {/* 08. RESIDENTIAL PORTFOLIO */}
+        <section className="py-24 lg:py-36 bg-[var(--bg-ivory)] relative" id="residential-work">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col mb-16 border-b border-[var(--line)] pb-4">
+              <span className="mono text-[10px] text-[var(--gold-dark)] tracking-widest block mb-2">CURATED GALLERY</span>
+              <h2 className="text-3xl md:text-5xl font-serif tracking-tight">RESIDENTIAL WORK</h2>
+            </div>
+
+            <div className="flex flex-col gap-24 lg:gap-36">
+              {/* Item 1: Large Master Suite Image */}
+              <article className="group relative w-full">
+                <div className="flex justify-between items-end mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="mono text-xs text-[var(--gold-dark)]">01</span>
+                    <h3 className="text-xl md:text-2xl font-serif">MASTER SUITES</h3>
+                  </div>
+                  <span className="mono text-[10px] text-[var(--ink-muted)] uppercase tracking-widest">BEDROOM / THANE</span>
+                </div>
+                
+                <div className="media-reveal-wrap h-[55vh] md:h-[75vh] w-full mb-4 relative overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[1.005]" data-reveal="up">
+                  <img src={images.bedroom} alt="Master Bedroom Suite design" className="media-reveal-inner object-cover w-full h-full" loading="lazy" />
+                </div>
+                
+                <p className="text-xs text-[var(--ink-muted)] max-w-xs leading-normal">
+                  Tactile master suite layouts focusing on textured fabrics, integrated wardrobes, and custom illumination.
+                </p>
+              </article>
+
+              {/* Items 2 & 3: Asymmetric columns */}
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-24 items-start">
+                
+                {/* Dining (Portrait) */}
+                <article className="group flex flex-col justify-end md:col-span-5 md:mt-12">
+                  <div className="flex justify-between items-end mb-4 border-b border-[var(--line)] pb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="mono text-[10px] text-[var(--gold-dark)]">02</span>
+                      <h3 className="text-lg md:text-xl font-serif">DINING INTERIORS</h3>
+                    </div>
+                    <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">DINING ROOM</span>
+                  </div>
+
+                  <div className="media-reveal-wrap overflow-hidden relative aspect-[3/4] md:h-[55vh] transition-transform duration-700 ease-out group-hover:scale-[1.01]" data-reveal="left">
+                    <img src={images.dining} alt="Architectural dining layout" className="media-reveal-inner object-cover w-full h-full" loading="lazy" />
+                  </div>
+                  
+                  <p className="text-[11px] text-[var(--ink-muted)] leading-normal mt-4 max-w-xs">
+                    Curated dining setups featuring marble tables, brass frames, and tailored ergonomic seating.
+                  </p>
+                </article>
+
+                {/* Living (Large/Landscape style) */}
+                <article className="group flex flex-col justify-end md:col-span-7">
+                  <div className="flex justify-between items-end mb-4 border-b border-[var(--line)] pb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="mono text-[10px] text-[var(--gold-dark)]">03</span>
+                      <h3 className="text-lg md:text-xl font-serif">LIVING SPACES</h3>
+                    </div>
+                    <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">LIVING &amp; LOUNGE</span>
+                  </div>
+
+                  <div className="media-reveal-wrap overflow-hidden relative aspect-[4/3] md:h-[45vh] transition-transform duration-700 ease-out group-hover:scale-[1.01]" data-reveal="right">
+                    <img src={images.living} alt="Bespoke luxury living room design" className="media-reveal-inner object-cover w-full h-full" loading="lazy" />
+                  </div>
+
+                  <p className="text-[11px] text-[var(--ink-muted)] leading-normal mt-4 max-w-xs">
+                    Expansive open-plan lounge layout integrated with modular media wall storage and custom stone details.
+                  </p>
+                </article>
+              </div>
+
+              {/* Item 4: Large Bespoke Kitchen */}
+              <article className="group relative w-full">
+                <div className="flex justify-between items-end mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="mono text-xs text-[var(--gold-dark)]">04</span>
+                    <h3 className="text-xl md:text-2xl font-serif">BESPOKE KITCHENS</h3>
+                  </div>
+                  <span className="mono text-[10px] text-[var(--ink-muted)] uppercase tracking-widest">KITCHEN / EXECUTION</span>
+                </div>
+                
+                <div className="media-reveal-wrap h-[55vh] md:h-[75vh] w-full mb-4 relative overflow-hidden transition-transform duration-700 ease-out group-hover:scale-[1.005]" data-reveal="scale">
+                  <img src={images.kitchen} alt="Modern luxury modular kitchen" className="media-reveal-inner object-cover w-full h-full" loading="lazy" />
+                </div>
+                
+                <p className="text-xs text-[var(--ink-muted)] max-w-xs leading-normal">
+                  Bespoke layout configuration optimizing workflow efficiency, integrated appliances, and luxury surfaces.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* DESIGN WITH PRECISION (Image Stack) */}
+        <section className="image-stack-section h-screen flex flex-col justify-center py-0 relative overflow-hidden bg-[var(--bg-dark-surface)]" id="image-stack">
+          {/* Architectural grid lines background for depth */}
+          <div className="absolute inset-0 pointer-events-none opacity-5">
+            <div className="max-w-7xl mx-auto h-full w-full border-x border-white grid grid-cols-6">
+              <div className="border-r border-white h-full" />
+              <div className="border-r border-white h-full" />
+              <div className="border-r border-white h-full" />
+              <div className="border-r border-white h-full" />
+              <div className="border-r border-white h-full" />
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto mb-12 text-center px-6 relative z-10">
             <p className="eyebrow dark justify-center">Layered Architecture</p>
-            <h2 className="heading-editorial" data-text-reveal="left">
+            <h2 className="heading-editorial text-4xl md:text-6xl" data-text-reveal="left">
               <span>DESIGN WITH</span>
               <span><em>PRECISION.</em></span>
             </h2>
@@ -737,7 +670,7 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
             </p>
           </div>
 
-          <div className="stack-stage-container">
+          <div className="stack-stage-container w-full max-w-[1050px] mx-auto relative h-[60vh] md:h-[65vh] z-10">
             {imageStackScenes.map((item, idx) => (
               <div
                 key={item.id}
@@ -745,6 +678,12 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
                 style={{ zIndex: idx + 1 }}
               >
                 <img src={item.image} alt={item.title} />
+                
+                {/* Floating tags */}
+                <div className="absolute top-6 right-6 hidden md:flex items-center gap-2 bg-[rgba(21,20,18,0.85)] backdrop-blur-md px-3 py-1.5 text-[9px] font-mono tracking-widest text-[var(--gold-light)] rounded-sm">
+                  <span>0{idx+1} / PROCESS STATE</span>
+                </div>
+
                 <div className="stack-card-caption">
                   <span className="mono text-[10px] text-[var(--gold-light)] block mb-1">
                     {item.label}
@@ -761,7 +700,7 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
 
         {/* MATERIALS & DETAILS TACTILE SECTION */}
         <section className="section-pad bg-[var(--bg-ivory)]" id="materials-details">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
                 <p className="eyebrow">Tactile Craftsmanship</p>
@@ -791,7 +730,7 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
 
         {/* ACCESSIBLE LUXURY PRINCIPLES */}
         <section className="section-pad bg-[var(--bg-sand)]" id="principles">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               <div className="lg:col-span-6 media-reveal-wrap h-[450px] md:h-[620px]" data-reveal="up">
                 <img
@@ -830,13 +769,13 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
           </div>
         </section>
 
-        {/* BEFORE / AFTER INTERACTIVE COMPARISON */}
+        {/* 09. DESIGN / DRAWING → SPACE (Before/After Slider with actual drawing1.png) */}
         <section className="section-pad-sm bg-[var(--bg-dark)] text-white" id="transformation">
-          <div className="max-w-7xl mx-auto mb-10">
-            <p className="eyebrow dark">Blueprint to Reality</p>
+          <div className="max-w-7xl mx-auto mb-10 px-6">
+            <p className="eyebrow dark">Design Process</p>
             <h2 className="heading-editorial" data-text-reveal="left">
-              <span>CONCEPT TO</span>
-              <span><em>REALITY.</em></span>
+              <span>FROM DRAWING</span>
+              <span><em>TO SPACE.</em></span>
             </h2>
             <p className="text-sm text-[var(--ink-light-muted)] mt-4">
               Drag the divider or scroll to witness how we translate precise CAD engineering layouts and architectural drawings into stunning finished interior spaces.
@@ -850,24 +789,24 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
           >
-            {/* BEFORE LAYER */}
+            {/* BEFORE LAYER (Real client blueprint layout) */}
             <div className="comparison-image-layer">
-              <img src={images.beforeBath} alt="CAD design blueprint" />
-              <div className="comparison-badge" style={{ left: "3rem" }}>
-                CAD BLUEPRINT
+              <img src="/client-work/interiors/drawing1.png" alt="Technical interior drawing layout" style={{ objectFit: 'contain', backgroundColor: 'white' }} />
+              <div className="comparison-badge" style={{ left: "3rem", color: 'black' }}>
+                TECHNICAL DRAWING
               </div>
             </div>
 
-            {/* AFTER LAYER (CLIPPED) */}
+            {/* AFTER LAYER (Finished project wardrobe space) */}
             <div
               className="comparison-image-layer comparison-after-layer"
               style={{
                 clipPath: `inset(0 0 0 ${sliderPos}%)`,
               }}
             >
-              <img src={images.afterBath} alt="3D photorealistic interior visualization" />
+              <img src={images.flutedWood} alt="Finished completed residence wardrobe interior" />
               <div className="comparison-badge" style={{ right: "3rem" }}>
-                3D VISUALIZATION
+                FINISHED SPACE
               </div>
             </div>
 
@@ -883,9 +822,124 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
           </div>
         </section>
 
-        {/* PROCESS SECTION */}
+        {/* 10. SERVICES OVERVIEW */}
+        <section className="section-pad bg-[var(--bg-dark)] text-[var(--bg-ivory)]" id="services">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div>
+                <p className="eyebrow dark">Services Overview</p>
+                <h2 className="heading-editorial" data-text-reveal="left">
+                  <span>ONE STUDIO.</span>
+                  <span><em>EVERY DETAIL.</em></span>
+                </h2>
+              </div>
+              <Link
+                href="/services"
+                className="mono text-xs text-[var(--gold-light)] flex items-center gap-2 border-b border-[var(--gold-light)] pb-1 w-fit hover:text-white hover:border-white transition-colors"
+              >
+                View Full Service Matrix <span>→</span>
+              </Link>
+            </div>
+
+            <div className="services-editorial-grid">
+              {servicesData.map((service, index) => {
+                const revealPreset = index % 2 === 0 ? "up" : "right";
+                return (
+                  <article
+                    key={service.id}
+                    className="service-card-item"
+                    data-reveal={revealPreset}
+                  >
+                    <div className="service-card-bg">
+                      <img src={service.image} alt={service.title} />
+                    </div>
+                    <div className="service-card-overlay" />
+
+                    <div className="service-card-content">
+                      <div>
+                        <span className="service-card-num">{service.number}</span>
+                        <h3 className="service-card-title">{service.title}</h3>
+                        <p className="service-card-desc">{service.tagline}</p>
+                      </div>
+
+                      <div>
+                        <ul className="service-card-list">
+                          {service.subservices.slice(0, 3).map((sub) => (
+                            <li key={sub}>{sub}</li>
+                          ))}
+                        </ul>
+
+                        <Link href={`/services/${service.id}`} className="service-card-link">
+                          Explore Category <span>→</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* 11. ALTAMOUNTT POINT OF VIEW */}
+        <section className="section-pad !pt-32 md:!pt-40 lg:!pt-48" id="brand-statement">
+          <div className="max-w-7xl mx-auto px-6">
+            <p className="eyebrow">The Altamountt Point of View</p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+              {/* TEXT */}
+              <div className="lg:col-span-6">
+                <h2 className="heading-editorial" data-text-reveal="left">
+                  <span>YOUR <em className="word-accent">SPACE.</em></span>
+                  <span>YOUR <em className="word-accent">STORY.</em></span>
+                  <span>OUR <em className="word-accent">DESIGN.</em></span>
+                </h2>
+
+                <i className="gold-line" data-gold-line />
+
+                <p className="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed max-w-xl">
+                  From thoughtful spatial reconfiguration to complete turnkey execution,
+                  Altamountt creates architectural interiors that balance timeless elegance,
+                  practical functionality, and realistic budgets.
+                </p>
+
+                <div className="trusted-by mt-12 pt-7 max-w-xl">
+                  <div className="trusted-by-heading">
+                    <span className="trusted-by-line" />
+                    <span>Trusted By</span>
+                  </div>
+
+                  <div className="trusted-by-list">
+                    <span>GOOGLE</span>
+                    <span>LAKMÉ</span>
+                    <span>PACHOULI</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* IMAGE (Residential penthouse image) */}
+              <div className="lg:col-span-6 flex flex-col gap-8">
+                <div className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px] overflow-hidden rounded-xl" data-reveal="up">
+                  <img 
+                    src={images.penthouse} 
+                    alt="Bespoke Residential Penthouse View by Altamountt" 
+                    className="media-reveal-inner object-cover w-full h-full" 
+                    loading="lazy" 
+                  />
+                </div>
+
+                <div className="border-t border-[var(--line)] pt-6 flex justify-between items-center text-xs font-mono tracking-widest text-[var(--ink-muted)]">
+                  <span>LOCATION: ASHAR - THANE WEST</span>
+                  <span>TYPOLOGY: RESIDENTIAL PENTHOUSE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 12. PROCESS SECTION */}
         <section className="section-pad bg-[var(--bg-ivory)]" id="process">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
                 <p className="eyebrow">Our Five-Step Methodology</p>
@@ -912,178 +966,102 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
           </div>
         </section>
 
-        {/* PHILOSOPHY & TESTIMONIAL */}
-        {/* =========================================================
-    CLIENT EXPERIENCES
-    ========================================================= */}
+        {/* 13. TESTIMONIALS */}
+        <section className="luxury-testimonials" id="testimonials">
+          <div className="luxury-testimonials-shell">
+            {/* HEADER */}
+            <div className="luxury-testimonials-header">
+              <div className="luxury-testimonials-title-block">
+                <p className="luxury-testimonials-eyebrow">Client Experiences</p>
+                <h2 className="luxury-testimonials-heading" data-text-reveal="left">
+                  <span>THE CLIENT</span>
+                  <span><em>COMES FIRST.</em></span>
+                </h2>
+              </div>
 
-<section className="luxury-testimonials" id="testimonials">
+              <div className="luxury-testimonials-intro">
+                <p>
+                  Every space begins with understanding the people who will experience it. Our approach brings together thoughtful design, practical functionality and meticulous execution.
+                </p>
 
-  <div className="luxury-testimonials-shell">
-
-    {/* HEADER */}
-
-    <div className="luxury-testimonials-header">
-
-      <div className="luxury-testimonials-title-block">
-
-        <p className="luxury-testimonials-eyebrow">
-          Client Experiences
-        </p>
-
-        <h2
-          className="luxury-testimonials-heading"
-          data-text-reveal="left"
-        >
-          <span>THE CLIENT</span>
-          <span>
-            <em>COMES FIRST.</em>
-          </span>
-        </h2>
-
-      </div>
-
-
-      <div className="luxury-testimonials-intro">
-
-        <p>
-          Every space begins with understanding the people
-          who will experience it. Our approach brings together
-          thoughtful design, practical functionality and
-          meticulous execution.
-        </p>
-
-        <div className="luxury-rating">
-
-          <span className="luxury-rating-number">
-            5.0
-          </span>
-
-          <div className="luxury-rating-details">
-
-            <div className="luxury-rating-stars">
-              ★★★★★
+                <a 
+                  href="https://www.google.com/search?q=altamountt+thane+bhaynder&oq=altamountt+thane+bhaynder&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQIRgVMgcIAhAhGI8CMgcIAxAhGI8C0gEINjczNGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x3be7bbc7a174eccd:0x7ed13fb7d65a6862,1,,,,"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="luxury-rating group"
+                >
+                  <span className="luxury-rating-number">5.0</span>
+                  <div className="luxury-rating-details">
+                    <div className="luxury-rating-stars text-[var(--gold)] group-hover:text-white transition-colors">★★★★★</div>
+                    <span className="group-hover:underline text-[var(--ink-muted)]">
+                      {studioInfo.reviewCount}
+                    </span>
+                  </div>
+                </a>
+              </div>
             </div>
 
-            <span>
-              {studioInfo.reviewCount}
-            </span>
+            {/* FEATURED REVIEW */}
+            <a 
+              href="https://www.google.com/search?q=altamountt+thane+bhaynder&oq=altamountt+thane+bhaynder&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQIRgVMgcIAhAhGI8CMgcIAxAhGI8C0gEINjczNGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x3be7bbc7a174eccd:0x7ed13fb7d65a6862,1,,,,"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="luxury-featured-review block group"
+              data-reveal="up"
+            >
+              <div className="luxury-quote-symbol">“</div>
+              <div className="luxury-featured-review-content">
+                <span className="luxury-review-label group-hover:text-[var(--gold)] transition-colors">01 / FEATURED REVIEW</span>
+                <blockquote>“{clientTestimonials[0].quote}”</blockquote>
+                <div className="luxury-featured-review-author">
+                  <span className="luxury-author-line" />
+                  <div>
+                    <strong>{clientTestimonials[0].author}</strong>
+                    <span>{clientTestimonials[0].location} · Google Review</span>
+                  </div>
+                </div>
+              </div>
+            </a>
 
+            {/* REVIEW GRID */}
+            <div className="luxury-review-grid">
+              {clientTestimonials.slice(1, 5).map((testimonial, index) => (
+                <a 
+                  key={`${testimonial.author}-${index}`}
+                  href="https://www.google.com/search?q=altamountt+thane+bhaynder&oq=altamountt+thane+bhaynder&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQIRgVMgcIAhAhGI8CMgcIAxAhGI8C0gEINjczNGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x3be7bbc7a174eccd:0x7ed13fb7d65a6862,1,,,,"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="luxury-review-card block group"
+                  data-reveal={index % 2 === 0 ? "left" : "right"}
+                >
+                  <div className="luxury-review-card-top">
+                    <span className="luxury-review-number">0{index + 2}</span>
+                    <span className="luxury-review-stars text-[var(--gold)]">★★★★★</span>
+                  </div>
+                  <blockquote>“{testimonial.quote}”</blockquote>
+                  <div className="luxury-review-card-footer">
+                    <div>
+                      <strong>{testimonial.author}</strong>
+                      <span>{testimonial.location} · Google Review</span>
+                    </div>
+                    <span className="luxury-review-arrow group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">↗</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* BOTTOM STATEMENT */}
+            <div className="luxury-testimonials-bottom">
+              <span className="luxury-bottom-line" />
+              <p>
+                Designed around people. <em>Built around trust.</em>
+              </p>
+              <span className="luxury-bottom-line" />
+            </div>
           </div>
+        </section>
 
-        </div>
-
-      </div>
-
-    </div>
-
-
-    {/* FEATURED REVIEW */}
-
-    <div
-      className="luxury-featured-review"
-      data-reveal="up"
-    >
-
-      <div className="luxury-quote-symbol">
-        “
-      </div>
-
-      <div className="luxury-featured-review-content">
-
-        <span className="luxury-review-label">
-          01 / FEATURED REVIEW
-        </span>
-
-        <blockquote>
-          “{clientTestimonials[0].quote}”
-        </blockquote>
-
-      <div className="luxury-featured-review-author">
-  <span className="luxury-author-line" />
-
-  <div>
-    <strong>{clientTestimonials[0].author}</strong>
-
-    <span>
-      {clientTestimonials[0].location} · Google Review
-    </span>
-  </div>
-</div>
-
-      </div>
-
-    </div>
-
-
-    {/* REVIEW GRID */}
-
-    <div className="luxury-review-grid">
-
-      {clientTestimonials.slice(1, 5).map((testimonial, index) => (
-
-        <article
-          key={`${testimonial.author}-${index}`}
-          className="luxury-review-card"
-          data-reveal={index % 2 === 0 ? "left" : "right"}
-        >
-
-        <div className="luxury-review-card-top">
-  <span className="luxury-review-number">
-    0{index + 2}
-  </span>
-
-  <span className="luxury-review-stars">
-    ★★★★★
-  </span>
-</div>
-
-
-          <blockquote>
-            “{testimonial.quote}”
-          </blockquote>
-
-
-    <div className="luxury-review-card-footer">
-  <div>
-    <strong>{testimonial.author}</strong>
-
-    <span>
-      {testimonial.location} · Google Review
-    </span>
-  </div>
-
-  <span className="luxury-review-arrow">
-    ↗
-  </span>
-</div>
-
-        </article>
-
-      ))}
-
-    </div>
-
-
-    {/* BOTTOM STATEMENT */}
-
-    <div className="luxury-testimonials-bottom">
-
-      <span className="luxury-bottom-line" />
-
-      <p>
-        Designed around people.
-        <em> Built around trust.</em>
-      </p>
-
-      <span className="luxury-bottom-line" />
-
-    </div>
-
-  </div>
-
-</section>
-        {/* FINAL CINEMATIC IMAGE */}
+        {/* 14. FINAL CINEMATIC */}
         <section className="relative h-[85vh] min-h-[550px] overflow-hidden bg-black text-white" id="cinematic-final">
           <div className="media-reveal-wrap h-full" data-reveal="scale">
             <img
@@ -1105,69 +1083,50 @@ className="media-reveal-wrap brand-video-wrap h-[520px] md:h-[540px] lg:h-[500px
           </div>
         </section>
 
-        {/* CTA / CONTACT INQUIRY SECTION */}
+        {/* 15. FINAL CTA */}
         <section className="section-pad bg-[var(--bg-dark)] text-white" id="contact">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              <div className="lg:col-span-6">
-                <p className="eyebrow dark">Let&apos;s Begin</p>
-                <h2 className="heading-editorial mb-8" data-text-reveal="left">
-                  <span>READY TO</span>
-                  <span><em>REIMAGINE</em></span>
-                  <span>YOUR SPACE?</span>
-                </h2>
-                <i className="gold-line dark" />
-                <p className="text-base text-[var(--ink-light-muted)] max-w-md leading-relaxed mb-10">
-                  Whether you are planning a complete apartment renovation, villa interior, or bespoke commercial environment in Thane or Mumbai, let&apos;s talk.
-                </p>
-
-                <div className="flex flex-col gap-4 max-w-md">
-                  <a
-                    href={studioInfo.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-btn-primary w-full justify-between"
-                  >
-                    <span>Connect on WhatsApp</span>
-                    <span>→</span>
-                  </a>
-
-                  <a
-                    href={`tel:${studioInfo.phone}`}
-                    className="mono text-xs tracking-widest text-[var(--gold-light)] border border-[rgba(245,242,235,0.2)] rounded-full py-4 px-6 text-center hover:bg-[var(--gold-dark)] hover:text-white transition-colors"
-                  >
-                    Direct Call: {studioInfo.phoneDisplay}
-                  </a>
-                </div>
-              </div>
-
-              <div className="lg:col-span-6 bg-[var(--bg-dark-surface)] p-8 md:p-12 border border-[var(--line-dark)] rounded-2xl">
-                <h3 className="text-2xl font-serif mb-6">Studio Direct Inquiries</h3>
-                <div className="flex flex-col gap-6 text-sm text-[var(--ink-light-muted)]">
-                  <div>
-                    <h4 className="mono text-xs text-[var(--gold-light)] mb-1">STUDIO LOCATION</h4>
-                    <p className="text-white leading-relaxed">{studioInfo.address}</p>
-                  </div>
-                  <div>
-                    <h4 className="mono text-xs text-[var(--gold-light)] mb-1">OFFICE HOURS</h4>
-                    <p className="text-white">Monday – Saturday: 10:00 AM – 7:30 PM (By Appointment)</p>
-                  </div>
-                  <div>
-                    <h4 className="mono text-xs text-[var(--gold-light)] mb-1">DIRECT EMAIL</h4>
-                    <p className="text-white">{studioInfo.email}</p>
-                  </div>
-                  <div className="pt-4 border-t border-[var(--line-dark)]">
-                    <a
-                      href={studioInfo.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mono text-xs text-[var(--gold-light)] underline uppercase tracking-wider"
-                    >
-                      Open Google Maps Location ↗
-                    </a>
-                  </div>
-                </div>
-              </div>
+          <div className="max-w-7xl mx-auto text-center px-6">
+            <p className="eyebrow dark justify-center">Let's Begin</p>
+            <h2 className="heading-editorial mb-12" data-text-reveal="up">
+              <span>LET'S CREATE</span>
+              <span><em>SOMETHING REMARKABLE.</em></span>
+            </h2>
+            
+            <div className="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto">
+              <a 
+                href={`tel:${studioInfo.phoneDisplay.replace(/\s+/g, '')}`} 
+                className="mono text-xs tracking-widest text-white border border-[rgba(245,242,235,0.2)] rounded-full py-4 px-8 hover:bg-white hover:text-black transition-all"
+              >
+                CALL
+              </a>
+              <a 
+                href={studioInfo.whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hero-btn-primary py-4 px-8"
+              >
+                WHATSAPP
+              </a>
+              <a 
+                href={`mailto:${studioInfo.email}`} 
+                className="mono text-xs tracking-widest text-white border border-[rgba(245,242,235,0.2)] rounded-full py-4 px-8 hover:bg-white hover:text-black transition-all"
+              >
+                EMAIL
+              </a>
+              <a 
+                href="https://www.instagram.com/altamountt_interiors?igsi=MTYzOHlnMXVsZXlpbw==" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mono text-xs tracking-widest text-white border border-[rgba(245,242,235,0.2)] rounded-full py-4 px-8 hover:bg-white hover:text-black transition-all"
+              >
+                INSTAGRAM
+              </a>
+              <Link 
+                href="/contact" 
+                className="hero-btn-primary py-4 px-8"
+              >
+                START A PROJECT <span>→</span>
+              </Link>
             </div>
           </div>
         </section>

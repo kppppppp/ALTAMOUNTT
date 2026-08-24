@@ -34,6 +34,7 @@ export const metadata: Metadata = {
 };
 
 import { SocialRail } from "@/components/SocialRail";
+import { BackToTop } from "@/components/BackToTop";
 
 export default function RootLayout({
   children,
@@ -51,6 +52,7 @@ export default function RootLayout({
         <MotionSystem />
         {children}
         <SocialRail />
+        <BackToTop />
       </body>
     </html>
   );

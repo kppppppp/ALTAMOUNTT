@@ -144,7 +144,7 @@ export default async function BlogArticlePage({ params }: Props) {
               <span>IN MIND?</span>
             </h2>
             <p className="text-base text-[var(--ink-light-muted)] max-w-md mx-auto leading-relaxed mb-10">
-              Start a project discussion with our team to bring your design layouts and visual concepts to turnkey reality on site.
+              Start a project discussion with our team to bring your design layout and visual concepts to turnkey reality on site.
             </p>
             <Link href="/contact" className="hero-btn-primary py-4 px-10">
               START A PROJECT <span>→</span>

@@ -333,12 +333,12 @@ img, video {
   z-index: 130;
   display: flex;
   flex-direction: column;
-  padding: max(1.25rem, env(safe-area-inset-top)) 6vw max(2.5rem, calc(env(safe-area-inset-bottom) + 1.5rem));
+  padding: 0 6vw max(2.5rem, calc(env(safe-area-inset-bottom) + 1.5rem));
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.28s var(--ease-editorial);
   overflow-y: auto;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .mob-open {
@@ -346,13 +346,18 @@ img, video {
   pointer-events: auto !important;
 }
 
-/* Mob header bar: brand + X close — ALWAYS visible at top */
+/* Mob header bar: brand + X close — ALWAYS visible and sticky at top */
 .mob-header {
+  position: sticky;
+  top: 0;
+  background: rgba(21, 20, 18, 0.98);
+  z-index: 20;
+  padding-top: max(1.25rem, env(safe-area-inset-top));
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(245, 242, 235, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(245, 242, 235, 0.12);
   flex-shrink: 0;
 }
 
@@ -4738,5 +4743,49 @@ img, video {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+}
+
+/* Mobile-menu active state: hide floating components completely */
+body.mobile-menu-active .social-rail-container,
+body.mobile-menu-active .back-to-top-btn {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Responsive Image Stack adjustments for mobile devices */
+@media (max-width: 1023px) {
+  .image-stack-section {
+    padding: 5rem 20px !important;
+  }
+  
+  .stack-stage-container {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+  }
+  
+  .stack-layer-card {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4/5 !important;
+    border-radius: 8px !important;
+    opacity: 1 !important;
+    transform: none !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25) !important;
+  }
+  
+  .stack-card-caption {
+    left: 1rem !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    padding: 1rem !important;
+    max-width: none !important;
+    border-radius: 6px !important;
   }
 }

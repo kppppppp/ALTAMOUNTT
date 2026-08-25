@@ -42,10 +42,12 @@ export function Navigation() {
   useEffect(() => {
     if (!open) {
       document.body.style.overflow = "";
+      document.body.classList.remove("mobile-menu-active");
       return;
     }
 
     document.body.style.overflow = "hidden";
+    document.body.classList.add("mobile-menu-active");
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -57,6 +59,7 @@ export function Navigation() {
 
     return () => {
       document.body.style.overflow = "";
+      document.body.classList.remove("mobile-menu-active");
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [open, closeMenu]);

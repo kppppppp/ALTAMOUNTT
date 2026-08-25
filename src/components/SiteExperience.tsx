@@ -99,35 +99,64 @@ export function SiteExperience() {
         },
       });
 
-      // 2. SIGNATURE IMAGE STACK MOMENT (Fixed Pin Scroll Animation with invalidateOnRefresh)
+      // 2. SIGNATURE IMAGE STACK MOMENT (Fixed Pin Scroll Animation with invalidateOnRefresh - Desktop Only)
       const stackCards = gsap.utils.toArray<HTMLElement>(".stack-layer-card");
-      if (stackCards.length >= 3) {
-        const stackTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".image-stack-section",
-            start: "top top",
-            end: "+=1500",
-            pin: true,
-            scrub: 1,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
+      const mm = gsap.matchMedia();
 
-        // Layer 2 rises over Layer 1
-        stackTl.fromTo(
-          stackCards[1],
-          { yPercent: 100, scale: 0.92, opacity: 0 },
-          { yPercent: 0, scale: 1, opacity: 1, duration: 1, ease: "power2.out" }
-        );
+      mm.add("(min-width: 1024px)", () => {
+        if (stackCards.length >= 3) {
+          const stackTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".image-stack-section",
+              start: "top top",
+              end: "+=1500",
+              pin: true,
+              scrub: 1,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          });
 
-        // Layer 3 slides over Layer 2 and expands
-        stackTl.fromTo(
-          stackCards[2],
-          { xPercent: 100, scale: 0.9, opacity: 0 },
-          { xPercent: 0, scale: 1.02, opacity: 1, duration: 1, ease: "power2.out" }
-        );
-      }
+          // Layer 2 rises over Layer 1
+          stackTl.fromTo(
+            stackCards[1],
+            { yPercent: 100, scale: 0.92, opacity: 0 },
+            { yPercent: 0, scale: 1, opacity: 1, duration: 1, ease: "power2.out" }
+          );
+
+          // Layer 3 slides over Layer 2 and expands
+          stackTl.fromTo(
+            stackCards[2],
+            { xPercent: 100, scale: 0.9, opacity: 0 },
+            { xPercent: 0, scale: 1.02, opacity: 1, duration: 1, ease: "power2.out" }
+          );
+        }
+      });
+
+      mm.add("(max-width: 1023px)", () => {
+        // Staggered native scroll reveals on mobile for stable scrolling
+        if (stackCards.length >= 3) {
+          stackCards.forEach((card, idx) => {
+            if (idx === 0) return;
+            gsap.fromTo(
+              card,
+              { y: 50, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 88%",
+                  toggleActions: "play none none reverse",
+                  invalidateOnRefresh: true,
+                }
+              }
+            );
+          });
+        }
+      });
 
       // 3. BEFORE / AFTER SCROLL SYNC (Technical drawing to finished space)
       gsap.to(".comparison-after-layer", {
@@ -233,7 +262,7 @@ export function SiteExperience() {
         </section>
 
         {/* 02. COMMERCIAL INTRODUCTION */}
-        <section className="relative bg-[var(--bg-ivory)] overflow-hidden flex items-center py-20 lg:py-32" style={{ minHeight: '620px', maxHeight: '780px' }} id="commercial-intro">
+        <section className="relative bg-[var(--bg-ivory)] overflow-hidden flex items-center py-16 lg:py-32 lg:h-auto lg:min-h-[620px] lg:max-h-[780px]" id="commercial-intro">
           {/* Subtle architectural vertical grid lines */}
           <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
           <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
@@ -250,18 +279,19 @@ export function SiteExperience() {
                 <span>SPACES THAT</span>
                 <span><em className="text-[var(--gold-dark)] font-serif italic">BUILD BRANDS.</em></span>
               </h2>
-              <div className="mt-8 max-w-md">
+              {/* Desktop Only Description & CTA */}
+              <div className="mt-8 max-w-md hidden lg:block">
                 <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed mb-6">
                   From workplaces and retail environments to hospitality and wellness spaces, we create commercial interiors that balance identity, functionality and experience.
                 </p>
-                <Link href="/services/commercial" className="hero-btn-primary">
+                <Link href="/services" className="hero-btn-primary">
                   EXPLORE COMMERCIAL WORK <span>→</span>
                 </Link>
               </div>
             </div>
 
             {/* RIGHT COLUMN: Large cropped commercial photograph entering from side */}
-            <div className="lg:col-span-5 relative h-full flex justify-end">
+            <div className="lg:col-span-5 relative h-full flex justify-center lg:justify-end mt-4 lg:mt-0">
               <div className="relative w-full max-w-[420px] aspect-[4/5] overflow-hidden group shadow-xl">
                 <div className="media-reveal-wrap h-full w-full relative overflow-hidden" data-reveal="right">
                   <img 
@@ -277,6 +307,17 @@ export function SiteExperience() {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Only Description & CTA */}
+            <div className="block lg:hidden mt-4 w-full">
+              <p className="text-sm text-[var(--ink-muted)] leading-relaxed mb-6">
+                From workplaces and retail environments to hospitality and wellness spaces, we create commercial interiors that balance identity, functionality and experience.
+              </p>
+              <Link href="/services" className="hero-btn-primary inline-flex">
+                EXPLORE COMMERCIAL WORK <span>→</span>
+              </Link>
+            </div>
+
           </div>
         </section>
 
@@ -431,14 +472,14 @@ export function SiteExperience() {
                 </div>
                 
                <h2
-  className="heading-editorial text-5xl md:text-[clamp(4rem,5.8vw,6.5rem)] mb-8 leading-[0.9] tracking-[-0.025em] overflow-visible"
-  data-text-reveal="left"
->
-                 <span className="block whitespace-nowrap">DESIGN IS</span>
-<span className="block whitespace-nowrap">ONLY THE</span>
-<span className="block whitespace-nowrap">
-  <em className="text-[var(--gold-dark)]">BEGINNING.</em>
-</span>
+                  className="heading-editorial text-5xl md:text-[clamp(4rem,5.8vw,6.5rem)] mb-8 leading-[0.9] tracking-[-0.025em] overflow-visible"
+                  data-text-reveal="left"
+                >
+                  <span className="block whitespace-normal md:whitespace-nowrap">DESIGN IS</span>
+                  <span className="block whitespace-normal md:whitespace-nowrap">ONLY THE</span>
+                  <span className="block whitespace-normal md:whitespace-nowrap">
+                    <em className="text-[var(--gold-dark)]">BEGINNING.</em>
+                  </span>
                 </h2>
                 
                 <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-sm mt-4 border-t border-[var(--line)] pt-6">
@@ -647,7 +688,7 @@ export function SiteExperience() {
         </section>
 
         {/* DESIGN WITH PRECISION (Image Stack) */}
-        <section className="image-stack-section h-screen flex flex-col justify-center py-0 relative overflow-hidden bg-[var(--bg-dark-surface)]" id="image-stack">
+        <section className="image-stack-section lg:h-screen lg:flex lg:flex-col lg:justify-center lg:py-0 py-16 px-6 relative overflow-hidden bg-[var(--bg-dark-surface)]" id="image-stack">
           {/* Architectural grid lines background for depth */}
           <div className="absolute inset-0 pointer-events-none opacity-5">
             <div className="max-w-7xl mx-auto h-full w-full border-x border-white grid grid-cols-6">

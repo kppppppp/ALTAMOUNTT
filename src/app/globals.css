@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -22,6 +21,10 @@
   --line-dark: rgba(245, 242, 235, 0.14);
 
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-serif: var(--font-playfair, 'Playfair Display'), Georgia, serif;
+  --font-sans: var(--font-manrope, 'Manrope'), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-dm-mono, 'DM Mono'), monospace;
 }
 
 * {
@@ -33,7 +36,7 @@
 html {
   background: var(--bg-ivory);
   color: var(--ink);
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -51,7 +54,7 @@ body {
 
 /* Typography Defaults */
 h1, h2, h3, .font-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif);
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 0.95;
@@ -59,7 +62,7 @@ h1, h2, h3, .font-serif {
 
 em {
   font-style: italic;
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-serif);
   color: var(--gold-dark);
   font-weight: 400;
 }
@@ -69,14 +72,14 @@ em {
 }
 
 .mono {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .eyebrow {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -4787,5 +4790,57 @@ body.mobile-menu-active .back-to-top-btn {
     padding: 1rem !important;
     max-width: none !important;
     border-radius: 6px !important;
+  }
+}
+
+/* ─── GLOBAL MOBILE CONTENT GUTTERS (20px - 24px) ─── */
+@media (max-width: 768px) {
+  /* Enforce horizontal padding safety for all main textual/content containers */
+  .max-w-7xl,
+  .section-pad,
+  .section-pad-sm,
+  .about-split,
+  .contact-split,
+  .contact-form-grid,
+  .portfolio-gallery-head,
+  .portfolio-editorial-flow,
+  .services-page,
+  .contact-page,
+  .about-page,
+  .services-editorial-grid,
+  .inquiry-form-luxury,
+  .footer-columns-grid,
+  .footer-bottom-bar,
+  .luxury-testimonials-shell {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Specific typography / copy safety */
+  .heading-editorial,
+  [data-text-reveal],
+  .heading-editorial span,
+  [data-text-reveal] span,
+  p,
+  .eyebrow,
+  .mono,
+  h1, h2, h3, h4,
+  button,
+  .hero-btn-primary,
+  .hero-btn-secondary,
+  .inquiry-field-wrap {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Overrides for page-level headers and overlays */
+  .hero-content-box {
+    left: max(22px, env(safe-area-inset-left)) !important;
+    right: max(22px, env(safe-area-inset-right)) !important;
+  }
+
+  .page-editorial-hero {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }

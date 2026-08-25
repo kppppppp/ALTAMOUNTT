@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
@@ -214,13 +215,24 @@ export function SiteExperience() {
       <main id="main-content">
         {/* 01. HERO SECTION — 100VH VIDEO WITH MASKED TEXT REVEAL */}
         <section className="hero-section" id="hero">
+          <div className="absolute inset-0 select-none pointer-events-none">
+            <Image 
+              src={images.heroPoster} 
+              alt="Altamountt Space & Design luxury interior poster" 
+              fill 
+              priority 
+              sizes="100vw"
+              className="object-cover" 
+            />
+          </div>
+
           <video
             className="hero-video-bg"
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             poster={images.heroPoster}
           >
             <source src="/video/altamountt-hero.mp4" type="video/mp4" />

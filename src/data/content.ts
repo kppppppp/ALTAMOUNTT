@@ -33,9 +33,14 @@ export interface ProjectDetail {
   location: string;
   year: string;
   scope: string;
+  role?: string;
+  area?: string;
   heroImage: string;
   intro: string;
   concept: string;
+  challenge?: string;
+  approach?: string;
+  result?: string;
   gallery: {
     title: string;
     caption: string;
@@ -50,8 +55,8 @@ export const studioInfo = {
   name: "ALTAMOUNTT SPACE & DESIGN",
   kicker: "Interior Design Studio · Thane, Maharashtra",
   address: "A Wing, JVM Sky Court, Shop No. 18, Bhayandarpada, Thane, Maharashtra 400615",
-  phone: "+91 00 00000",
-  phoneDisplay: "+917304723416",
+  phone: "+917304723416",
+  phoneDisplay: "+91 73047 23416",
   whatsappUrl: "https://wa.me/917304723416?text=Hi%20Altamountt%20team%2C%20I%20would%20like%20to%20inquire%20about%20interior%20design%20services.",
   mapsUrl: "https://maps.google.com/?q=JVM+Sky+Court+Bhayandarpada+Thane",
   email: "hello@altamounttdesign.com",
@@ -373,16 +378,24 @@ export const projectsList: ProjectDetail[] = [
     category: "Residential Architecture",
     location: "Vivearea, Mumbai",
     year: "2024",
+    role: "Design + Execution",
     scope: "Bespoke Interior & Millwork",
+    area: "2,400 sq ft",
     heroImage: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
     intro: "A high-end residential apartment at Vivearea, Mumbai, showcasing custom millwork, fluted paneling, sage green tones, and modular layouts.",
     concept: "We optimized the TV wall unit with a marble slab backdrop and gold borders, while designing a master bedroom with fluted headboards and loft storage.",
+    challenge: "Transforming a bare residential layout into a customized, high-functioning family residence with dedicated workspaces and storage without making the spaces feel small or cluttered.",
+    approach: "We introduced a custom timber vocabulary, optimizing the layout to flow naturally between private bedrooms and shared living suites. Integrated secret doors, fluted wood paneling, and custom lighting schemes.",
+    result: "A peaceful, cohesive home where every room is visually connected through timber details and natural stone highlights.",
     gallery: [
       { title: "Master Bedroom", caption: "Sage green fluted headboard with bedside hanging lamps", image: "/client-work/projects/residential/bedroom-ilaf-01.jpg", preset: "up" },
       { title: "TV Unit Option 1", caption: "Polished marble wall TV unit with gold trim", image: "/client-work/projects/residential/living-tv-unit-01.jpg", preset: "right" },
       { title: "Bespoke Console", caption: "Fluted wooden cabinet console detail", image: "/client-work/projects/residential/living-console-cabinet.jpg", preset: "left" },
       { title: "Bedroom Wardrobe", caption: "Beige wardrobes with long brass handles", image: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg", preset: "scale" },
-      { title: "Bedroom Study", caption: "Compact desk area with integrated overhead shelf", image: "/client-work/projects/residential/bedroom-ilaf-study.webp", preset: "parallax" }
+      { title: "Bedroom Study", caption: "Compact desk area with integrated overhead shelf", image: "/client-work/projects/residential/bedroom-ilaf-study.webp", preset: "parallax" },
+      { title: "TV Unit Option 2", caption: "Bespoke dark veneer and gold frame wall unit", image: "/client-work/projects/residential/living-tv-unit-02.webp", preset: "up" },
+      { title: "Bedroom Elevation CAD", caption: "Technical wardrobe blueprint layout", image: "/client-work/projects/residential/bedroom-ilaf-cad.webp", preset: "right" },
+      { title: "TV Unit Elevation CAD", caption: "Technical details of the marble backdrop", image: "/client-work/projects/residential/living-tv-unit-01-cad.webp", preset: "left" }
     ],
     quote: "Altamountt transformed our blank layout into a breathtaking, peaceful sanctuary that feels twice as spacious.",
     clientFeedback: "Residential Client · Vivearea"
@@ -394,13 +407,18 @@ export const projectsList: ProjectDetail[] = [
     category: "Commercial & Office",
     location: "BKC, Mumbai",
     year: "2024",
-    scope: "Space Planning & Interior Architecture",
+    role: "Space Planning & Interior Architecture",
+    scope: "Space Planning & Corridor Flow Coordination",
     heroImage: "/client-work/projects/commercial/google-bkc-reception.webp",
     intro: "A premium corporate workspace designed for Google in BKC, Mumbai, centering around open flow, wave-patterned flooring, and acoustic glass partitions.",
     concept: "We optimized the corridor flow and reception area, pairing textured sand-tone wallpaper with curved concrete elements and stone washroom claddings.",
+    challenge: "Designing a high-performance office space in BKC that optimizes flow and acoustics, aligning with corporate guidelines while maintaining local design identity.",
+    approach: "We resolved the corridor layouts, positioned workstations for open communication, integrated acoustic panels, and custom-designed the reception wave-patterned terrazzo floor.",
+    result: "A highly collaborative corporate environment featuring seamless flow, exceptional restroom vanity layouts, and sound-insulated zones.",
     gallery: [
       { title: "Google Reception", caption: "Curved wooden desk and terrazzo wave-pattern flooring", image: "/client-work/projects/commercial/google-bkc-reception.webp", preset: "up" },
       { title: "Workstations", caption: "Open-concept desk clusters with acoustic dividers", image: "/client-work/projects/commercial/google-bkc-office-01.webp", preset: "left" },
+      { title: "Collaborative Zone", caption: "Creative workspace layout with linear ceiling fixtures", image: "/client-work/projects/commercial/google-bkc-office-02.webp", preset: "up" },
       { title: "Meeting Suite", caption: "Glass-enclosed conference room with brick accent wall", image: "/client-work/projects/commercial/google-bkc-meeting.webp", preset: "right" },
       { title: "Washroom Vanity", caption: "Round mirrors and concrete vessel basins", image: "/client-work/projects/commercial/google-bkc-restroom.webp", preset: "scale" }
     ],
@@ -414,15 +432,21 @@ export const projectsList: ProjectDetail[] = [
     category: "Commercial & Hospitality",
     location: "Andheri, Mumbai",
     year: "2024",
-    scope: "Turnkey Interior Design & Styling",
+    role: "Turnkey Interior Design & Styling",
+    scope: "Turnkey Interior Design & Execution",
     heroImage: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
     intro: "A serene wellness clinic and spa for Pachouli in Andheri, combining light timber textures, brass detailing, and calming wellness spaces.",
     concept: "We crafted a welcoming reception with wave-textured wall backdrops and gold branding, leading to private spa suites and styling bays.",
+    challenge: "Creating a multi-sensory wellness clinic that induces calm and relaxation while accommodating technical clinic requirements and private treatment rooms.",
+    approach: "We chose light timber textures and wave-like wall panels. Designed backlit corporate signage and dedicated spa suites with custom-engineered wet rooms and circular lighting profiles.",
+    result: "A serene clinical sanctuary that blends clean hygiene requirements with quiet, natural hospitality aesthetics.",
     gallery: [
       { title: "Reception Lobby", caption: "Backlit timber counter with customized white-wave backdrop", image: "/client-work/projects/commercial/pachouli-wellness-reception.webp", preset: "up" },
+      { title: "Consultation Cabin", caption: "Executive discussion space with leather chairs and wood screens", image: "/client-work/projects/commercial/pachouli-wellness-consultation.webp", preset: "left" },
       { title: "Om Therapy Suite", caption: "Serene treatment room featuring copper shirodhara vessel", image: "/client-work/projects/commercial/pachouli-wellness-om-room.webp", preset: "right" },
       { title: "Hair Salon Area", caption: "Styling chairs and vanity mirrors with circular lights", image: "/client-work/projects/commercial/pachouli-wellness-salon.webp", preset: "left" },
-      { title: "Spa Suite", caption: "Relaxing massage bed alongside custom shower enclosure", image: "/client-work/projects/commercial/pachouli-wellness-shower.webp", preset: "scale" }
+      { title: "Spa Suite", caption: "Relaxing massage bed alongside custom shower enclosure", image: "/client-work/projects/commercial/pachouli-wellness-shower.webp", preset: "scale" },
+      { title: "Therapy Restroom", caption: "Bespoke stone basin and fluted glass paneling", image: "/client-work/projects/commercial/pachouli-wellness-washbasin.webp", preset: "up" }
     ],
     quote: "Altamountt delivered a peaceful sanctuary. Our clients frequently compliment the warm lighting and woodwork.",
     clientFeedback: "Dr. Preeti Seth · Pachouli Wellness"
@@ -434,10 +458,14 @@ export const projectsList: ProjectDetail[] = [
     category: "Commercial & Hospitality",
     location: "Versova, Mumbai",
     year: "2023",
+    role: "Interior Design & Turnkey Execution",
     scope: "Interior Design & Turnkey Execution",
     heroImage: "/client-work/projects/commercial/lakme-salon-interior-01.webp",
     intro: "A premium retail styling salon for Lakme in Versova, showcasing industrial chic brick walls, copper lighting, and circular back-light mirrors.",
     concept: "We chose an industrial texture vocabulary, using dark brick cladding and concrete floors to create a high-contrast styling environment.",
+    challenge: "Delivering an industrial-chic salon space with high client traffic capacity, requiring robust materials and optimal styling-station lighting.",
+    approach: "We balanced high-contrast exposed brick walls with custom copper pendant fixtures, dark concrete flooring, and backlit vanity mirrors.",
+    result: "A visually striking styling salon with dedicated treatment zones and high durability finishes.",
     gallery: [
       { title: "Styling Bay", caption: "Styling chairs framed by exposed brick walls and copper pendant lamps", image: "/client-work/projects/commercial/lakme-salon-interior-01.webp", preset: "up" },
       { title: "Reception Desk", caption: "Bespoke counter styling with dark accents", image: "/client-work/projects/commercial/lakme-salon-interior-02.webp", preset: "left" },
@@ -445,6 +473,50 @@ export const projectsList: ProjectDetail[] = [
     ],
     quote: "The salon styling stands out. The brick wall texture and copper styling details are perfect for our brand.",
     clientFeedback: "Lakme Salon Management"
+  },
+  {
+    slug: "arun-classes",
+    title: "Arun Classes, Thane",
+    subtitle: "Premium Educational Space",
+    category: "Commercial & Office",
+    location: "Thane, Maharashtra",
+    year: "2024",
+    role: "Interior Space Planning & Branding",
+    scope: "Space Layout & Lighting Plan",
+    heroImage: "/client-work/projects/commercial/arun-classes-classroom.webp",
+    intro: "A state-of-the-art coaching center designed to cultivate focused learning and student engagement in Thane.",
+    concept: "We optimized classroom configurations for maximum seating efficiency and visual sightlines, incorporating custom acoustic wood panels and glare-free lighting systems.",
+    challenge: "Optimizing a limited educational footprint to maximize seating capacity and focus, avoiding a cramped feeling.",
+    approach: "We designed customized linear rows, integrated acoustic panels, and glare-free overhead lighting to improve student sightlines.",
+    result: "An efficient classroom layout that elevates student attendance and visual engagement.",
+    gallery: [
+      { title: "Lecture Hall", caption: "Focused classroom rows with write-in desks and visual aids", image: "/client-work/projects/commercial/arun-classes-classroom.webp", preset: "up" },
+      { title: "Discussion Suite", caption: "Private counseling chamber with linear lighting details", image: "/client-work/projects/commercial/arun-classes-meeting.webp", preset: "right" }
+    ],
+    quote: "The visual design and lighting have noticeably improved student focus and class attendance.",
+    clientFeedback: "Arun Classes Management Team"
+  },
+  {
+    slug: "atoz-studio",
+    title: "A to Z Studio Office, Thane",
+    subtitle: "Creative Design Workspace",
+    category: "Commercial & Office",
+    location: "Thane, Maharashtra",
+    year: "2023",
+    role: "Turnkey Design & Execution",
+    scope: "Design, Procurement & Execution",
+    heroImage: "/client-work/projects/commercial/atoz-studio-office-01.webp",
+    intro: "A modern design office layout optimizing collaboration and workspace ergonomics in Bhayandarpada.",
+    concept: "We designed a layout dividing open workstations and material libraries from cozy informal break areas, utilizing industrial grey overlays and fluted panels.",
+    challenge: "Designing a modern creative workshop where materials and open design ideas can be organized, keeping the office flow uncluttered.",
+    approach: "We divided linear work desks from informal breakout areas using grey overlays, fluted panels, and custom cabinets.",
+    result: "A functional design office that serves as both a material library and a creative layout workspace.",
+    gallery: [
+      { title: "Creative Workspace", caption: "Ergonomic linear workstations with integrated cable routing", image: "/client-work/projects/commercial/atoz-studio-office-01.webp", preset: "up" },
+      { title: "Breakout Area", caption: "Informal discussion desk beside materials library showcase", image: "/client-work/projects/commercial/atoz-studio-office-02.webp", preset: "left" }
+    ],
+    quote: "Altamountt turned our limited office square footage into a highly functional, creative design studio.",
+    clientFeedback: "A to Z Studio Creative Director"
   }
 ];
 

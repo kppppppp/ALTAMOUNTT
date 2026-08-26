@@ -29,15 +29,11 @@ export function MotionSystem() {
           // PRESET 1 — BOTTOM REVEAL (Signature Altamountt Motion)
           // Starts when image top enters 82% of viewport; plays full crisp reveal over 1.1s
           gsap.fromTo(
-            media,
+            el,
             {
-              y: 130,
-              scale: 1.12,
               clipPath: "inset(100% 0% 0% 0%)",
             },
             {
-              y: 0,
-              scale: 1,
               clipPath: "inset(0% 0% 0% 0%)",
               duration: 1.15,
               ease: "power3.out",
@@ -51,28 +47,32 @@ export function MotionSystem() {
           );
 
           // Post-reveal subtle continuous parallax
-          gsap.to(media, {
-            yPercent: -5,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1.4,
-            },
-          });
-        } else if (preset === "left") {
-          // PRESET 2 — LEFT REVEAL
           gsap.fromTo(
             media,
             {
-              x: -120,
-              scale: 1.08,
+              yPercent: 8,
+              scale: 1.12,
+            },
+            {
+              yPercent: -8,
+              scale: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.4,
+              },
+            }
+          );
+        } else if (preset === "left") {
+          // PRESET 2 — LEFT REVEAL
+          gsap.fromTo(
+            el,
+            {
               clipPath: "inset(0% 0% 0% 100%)",
             },
             {
-              x: 0,
-              scale: 1,
               clipPath: "inset(0% 0% 0% 0%)",
               duration: 1.15,
               ease: "power3.out",
@@ -81,21 +81,36 @@ export function MotionSystem() {
                 start: "top 82%",
                 toggleActions: "play none none reverse",
                 invalidateOnRefresh: true,
+              },
+            }
+          );
+
+          gsap.fromTo(
+            media,
+            {
+              xPercent: -8,
+              scale: 1.08,
+            },
+            {
+              xPercent: 0,
+              scale: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.2,
               },
             }
           );
         } else if (preset === "right") {
           // PRESET 3 — RIGHT REVEAL
           gsap.fromTo(
-            media,
+            el,
             {
-              x: 120,
-              scale: 1.08,
               clipPath: "inset(0% 100% 0% 0%)",
             },
             {
-              x: 0,
-              scale: 1,
               clipPath: "inset(0% 0% 0% 0%)",
               duration: 1.15,
               ease: "power3.out",
@@ -107,18 +122,33 @@ export function MotionSystem() {
               },
             }
           );
-        } else if (preset === "scale") {
-          // PRESET 4 — CINEMATIC SCALE
+
           gsap.fromTo(
             media,
             {
-              scale: 1.18,
-              opacity: 0.88,
+              xPercent: 8,
+              scale: 1.08,
+            },
+            {
+              xPercent: 0,
+              scale: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.2,
+              },
+            }
+          );
+        } else if (preset === "scale") {
+          // PRESET 4 — CINEMATIC SCALE
+          gsap.fromTo(
+            el,
+            {
               clipPath: "inset(6% 6% 6% 6%)",
             },
             {
-              scale: 1,
-              opacity: 1,
               clipPath: "inset(0% 0% 0% 0%)",
               duration: 1.25,
               ease: "power3.out",
@@ -130,18 +160,33 @@ export function MotionSystem() {
               },
             }
           );
-        } else if (preset === "parallax") {
-          // PRESET 5 — PARALLAX SCRUB
+
           gsap.fromTo(
             media,
             {
-              y: 80,
-              scale: 1.1,
+              scale: 1.18,
+              opacity: 0.88,
+            },
+            {
+              scale: 1,
+              opacity: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.2,
+              },
+            }
+          );
+        } else if (preset === "parallax") {
+          // PRESET 5 — PARALLAX SCRUB
+          gsap.fromTo(
+            el,
+            {
               clipPath: "inset(40% 0% 0% 0%)",
             },
             {
-              y: 0,
-              scale: 1,
               clipPath: "inset(0% 0% 0% 0%)",
               duration: 1.1,
               ease: "power3.out",
@@ -153,11 +198,13 @@ export function MotionSystem() {
               },
             }
           );
+
           gsap.fromTo(
             media,
-            { yPercent: 4 },
+            { yPercent: 12, scale: 1.15 },
             {
-              yPercent: -8,
+              yPercent: -12,
+              scale: 1,
               ease: "none",
               scrollTrigger: {
                 trigger: el,

@@ -111,10 +111,15 @@ export default function Contact() {
           </div>
         </section>
 
-        <section className="section-pad pt-0">
-          <div className="max-w-7xl mx-auto contact-form-grid">
+        <section className="section-pad pt-0 relative overflow-hidden">
+          {/* Big architectural background number */}
+          <div className="bg-section-number right-[8%] top-4 select-none pointer-events-none opacity-20 lg:opacity-10">05</div>
+
+          <div className="max-w-7xl mx-auto contact-form-grid relative z-10">
             <div className="contact-form-copy">
-              <p className="eyebrow">Start your project</p>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="micro-label-editorial">05 / START A PROJECT</span>
+              </div>
               <h2 className="heading-editorial" data-text-reveal="left">
                 <span>READY TO</span>
                 <span>

@@ -87,16 +87,23 @@ export default function About() {
         </section>
 
         {/* ═══ 2. WHO WE ARE — SPLIT (image left, text right) ═══ */}
-        <section className="section-pad bg-[var(--bg-ivory)]">
-          <div className="max-w-7xl mx-auto about-split">
+        <section className="section-pad bg-[var(--bg-ivory)] relative overflow-hidden">
+          {/* Big architectural background number */}
+          <div className="bg-section-number right-[8%] top-4 select-none pointer-events-none opacity-20 lg:opacity-10">01</div>
+
+          <div className="max-w-7xl mx-auto about-split relative z-10">
             {/* Image */}
-            <div className="media-reveal-wrap" style={{ height: "55vw", minHeight: 420, maxHeight: 680 }} data-reveal="left">
-              <img src={images.lounge} alt="Altamountt luxury lounge interior" className="media-reveal-inner" loading="lazy" />
+            <div className="editorial-image-frame corner-bracket-wrap shadow-xl">
+              <div className="media-reveal-wrap h-full w-full relative" style={{ height: "55vw", minHeight: 420, maxHeight: 680 }} data-reveal="left">
+                <img src={images.lounge} alt="Altamountt luxury lounge interior" className="media-reveal-inner object-cover w-full h-full" loading="lazy" />
+              </div>
             </div>
 
             {/* Text */}
             <div>
-              <p className="eyebrow">Who We Are</p>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="micro-label-editorial">01 / THE STUDIO</span>
+              </div>
               <h2 className="heading-editorial mb-6" data-text-reveal="left">
                 <span>WE BUILD</span>
                 <span><em>SPACES TO LIVE IN.</em></span>
@@ -121,11 +128,16 @@ export default function About() {
         </section>
 
         {/* ═══ 3. ARCHITECTURAL MOMENT — REVERSE SPLIT (text left, image right) ═══ */}
-        <section className="section-pad bg-[var(--bg-sand)]">
-          <div className="max-w-7xl mx-auto about-split">
+        <section className="section-pad bg-[var(--bg-sand)] relative overflow-hidden">
+          {/* Big architectural background number */}
+          <div className="bg-section-number left-[8%] top-4 select-none pointer-events-none opacity-20 lg:opacity-10">02</div>
+
+          <div className="max-w-7xl mx-auto about-split relative z-10">
             {/* Text */}
             <div className="order-2 md:order-1">
-              <p className="eyebrow">Our Architecture</p>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="micro-label-editorial">02 / PHILOSOPHY</span>
+              </div>
               <h2 className="heading-editorial mb-6" data-text-reveal="left">
                 <span>EVERY ROOM</span>
                 <span>HAS A</span>
@@ -146,8 +158,10 @@ export default function About() {
             </div>
 
             {/* Image */}
-            <div className="order-1 md:order-2 media-reveal-wrap" style={{ height: "55vw", minHeight: 400, maxHeight: 660 }} data-reveal="right">
-              <img src={images.dining} alt="Altamountt architectural dining room interior" className="media-reveal-inner" loading="lazy" />
+            <div className="order-1 md:order-2 editorial-image-frame corner-bracket-wrap shadow-xl">
+              <div className="media-reveal-wrap h-full w-full relative" style={{ height: "55vw", minHeight: 400, maxHeight: 660 }} data-reveal="right">
+                <img src={images.dining} alt="Altamountt architectural dining room interior" className="media-reveal-inner object-cover w-full h-full" loading="lazy" />
+              </div>
             </div>
           </div>
         </section>
@@ -189,7 +203,61 @@ export default function About() {
           </div>
         </section>
 
-        {/* ═══ 5. CUSTOMER FIRST — TRUST SECTION ═══ */}
+        {/* ═══ 5. OUR TEAM — REAL COMPANY CREDIBILITY ═══ */}
+        <section className="section-pad bg-[var(--bg-sand)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+              <div>
+                <p className="eyebrow">The Studio Team</p>
+                <h2 className="heading-editorial" data-text-reveal="left">
+                  <span>REAL PEOPLE.</span>
+                  <span><em>REAL EXECUTION.</em></span>
+                </h2>
+              </div>
+              <p className="text-sm text-[var(--ink-muted)] max-w-sm">
+                No stock images. Our projects are designed and managed by verified interior professionals on site.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  role: "Founder & Principal Designer",
+                  name: "[Founder Name - Data Placeholder]",
+                  desc: "Leads spatial concept planning and material direction. Oversees all residential design blueprints and corporate flow layouts.",
+                  img: images.detail,
+                },
+                {
+                  role: "Lead Interior Architect",
+                  name: "[Architect Name - Data Placeholder]",
+                  desc: "Translates structural challenges into precise 2D CAD elevations, lighting configurations, and detailing plans.",
+                  img: images.material,
+                },
+                {
+                  role: "Head of Project Management & Turnkey Execution",
+                  name: "[Project Manager - Data Placeholder]",
+                  desc: "Supervises on-site carpentry, masonry works, procurement coordination, and final defect-free turnkey handovers.",
+                  img: images.kitchen,
+                },
+              ].map((member, idx) => (
+                <div key={idx} className="bg-[var(--bg-ivory)] border border-[var(--line)] p-6 flex flex-col gap-4 rounded-xl">
+                  <div className="w-full aspect-[4/3] bg-[var(--bg-sand)] overflow-hidden relative">
+                    <div className="absolute inset-0 flex items-center justify-center text-[10px] font-mono tracking-widest text-[var(--ink-muted)] uppercase p-4 text-center border border-dashed border-[var(--gold-dark)] m-4">
+                      [Photo Placeholder]
+                    </div>
+                  </div>
+                  <div>
+                    <span className="mono text-[9px] text-[var(--gold-dark)] font-semibold block mb-1">{member.role}</span>
+                    <h3 className="text-xl font-serif text-[var(--ink)] mb-2">{member.name}</h3>
+                    <p className="text-xs text-[var(--ink-muted)] leading-relaxed">{member.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 6. CUSTOMER FIRST — TRUST SECTION ═══ */}
         <section className="section-pad bg-[var(--bg-ivory)]">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

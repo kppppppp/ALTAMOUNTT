@@ -61,15 +61,16 @@ export default async function BlogArticlePage({ params }: Props) {
           </div>
         </section>
 
-        {/* ═══ 2. HERO IMAGE ═══ */}
         <section className="max-w-7xl mx-auto px-6 mb-16 lg:mb-24">
-          <div className="media-reveal-wrap overflow-hidden aspect-[16/9] md:h-[65vh] w-full relative shadow-xl rounded-sm">
-            <img 
-              src={article.image} 
-              alt={article.title} 
-              className="media-reveal-inner object-cover w-full h-full"
-              loading="eager" 
-            />
+          <div className="editorial-image-frame corner-bracket-wrap shadow-xl">
+            <div className="media-reveal-wrap overflow-hidden aspect-[16/9] md:h-[65vh] w-full relative">
+              <img 
+                src={article.image} 
+                alt={article.title} 
+                className="media-reveal-inner object-cover w-full h-full"
+                loading="eager" 
+              />
+            </div>
           </div>
         </section>
 

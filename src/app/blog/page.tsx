@@ -18,7 +18,7 @@ export default function Blog() {
     <PageShell>
       <main className="bg-[var(--bg-ivory)] min-h-screen">
         {/* ═══ 1. EDITORIAL HERO ═══ */}
-        <section className="page-editorial-hero overflow-hidden">
+        <section className="page-editorial-hero overflow-hidden corner-bracket-wrap">
           {/* Subtle grid lines */}
           <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
           <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
@@ -26,8 +26,7 @@ export default function Blog() {
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="flex items-center gap-3 mb-6">
-              <span className="w-6 h-[1px] bg-[var(--gold-dark)]" />
-              <span className="mono text-xs text-[var(--gold-dark)] tracking-[0.2em] uppercase">JOURNAL</span>
+              <span className="micro-label-editorial">ISSUE 01 / JOURNAL</span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
@@ -49,17 +48,22 @@ export default function Blog() {
 
         {/* ═══ 2. FEATURED ARTICLE ═══ */}
         <section className="py-12 border-t border-[rgba(21,20,18,0.1)] relative">
+          {/* Big architectural background number */}
+          <div className="bg-section-number right-[8%] top-4 select-none pointer-events-none opacity-20 lg:opacity-10">01</div>
+
           <div className="max-w-7xl mx-auto px-6">
             <article className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center group">
               <div className="lg:col-span-7">
                 <Link href={`/blog/${featuredArticle.slug}`} className="block">
-                  <div className="media-reveal-wrap overflow-hidden aspect-[16/10] md:h-[50vh] relative shadow-xl rounded-sm">
-                    <img 
-                      src={featuredArticle.image} 
-                      alt={featuredArticle.title} 
-                      className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
-                      loading="eager" 
-                    />
+                  <div className="editorial-image-frame corner-bracket-wrap shadow-xl">
+                    <div className="media-reveal-wrap overflow-hidden aspect-[16/10] md:h-[50vh] relative">
+                      <img 
+                        src={featuredArticle.image} 
+                        alt={featuredArticle.title} 
+                        className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
+                        loading="eager" 
+                      />
+                    </div>
                   </div>
                 </Link>
               </div>
@@ -97,14 +101,16 @@ export default function Blog() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
               {secondaryArticles.map((article, idx) => (
                 <article key={article.slug} className="group flex flex-col h-full">
-                  <Link href={`/blog/${article.slug}`} className="block">
-                    <div className="media-reveal-wrap overflow-hidden aspect-[4/3] relative mb-6 shadow-md rounded-sm">
-                      <img 
-                        src={article.image} 
-                        alt={article.title} 
-                        className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]" 
-                        loading="lazy" 
-                      />
+                  <Link href={`/blog/${article.slug}`} className="block mb-6">
+                    <div className="editorial-image-frame corner-bracket-wrap shadow-md">
+                      <div className="media-reveal-wrap overflow-hidden aspect-[4/3] relative">
+                        <img 
+                          src={article.image} 
+                          alt={article.title} 
+                          className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.03]" 
+                          loading="lazy" 
+                        />
+                      </div>
                     </div>
                   </Link>
 

@@ -111,13 +111,17 @@ export default async function ProjectDetailPage({
                     ["Location", project.location],
                     ["Typology", project.category],
                     ["Year", project.year],
+                    project.role ? ["Role", project.role] : null,
+                    project.area ? ["Area", project.area] : null,
                     ["Scope", project.scope],
-                  ].map(([label, val]) => (
-                    <div key={label} className="py-3 border-b border-[var(--line)]">
-                      <span className="mono text-[10px] text-[var(--ink-muted)] block mb-0.5">{label}</span>
-                      <span className="text-sm font-semibold text-[var(--ink)]">{val}</span>
-                    </div>
-                  ))}
+                  ]
+                    .filter((item): item is [string, string] => item !== null)
+                    .map(([label, val]) => (
+                      <div key={label} className="py-3 border-b border-[var(--line)]">
+                        <span className="mono text-[10px] text-[var(--ink-muted)] block mb-0.5">{label}</span>
+                        <span className="text-sm font-semibold text-[var(--ink)]">{val}</span>
+                      </div>
+                    ))}
 
                   <div className="mt-6">
                     <Link href="/contact" className="hero-btn-primary w-full justify-center">
@@ -129,22 +133,43 @@ export default async function ProjectDetailPage({
 
               {/* Story narrative */}
               <div className="lg:col-span-8">
-                <p className="eyebrow">Architectural Narrative</p>
+                <p className="eyebrow">Case Study Narrative</p>
                 <h2 className="heading-editorial mb-6" data-text-reveal="left">
                   <span>SPACE CONCEIVED</span>
                   <span><em>FOR REAL LIFE.</em></span>
                 </h2>
                 <i className="gold-line" data-gold-line />
 
-                <p className="text-lg md:text-xl text-[var(--ink)] leading-relaxed mb-5">
+                <p className="text-lg md:text-xl text-[var(--ink)] leading-relaxed mb-8">
                   {project.intro}
                 </p>
-                <p className="text-base text-[var(--ink-muted)] leading-relaxed mb-10">
-                  {project.concept}
-                </p>
+
+                {/* Challenge */}
+                {project.challenge && (
+                  <div className="mb-6">
+                    <h3 className="mono text-[10px] text-[var(--gold-dark)] uppercase tracking-wider mb-2">The Challenge</h3>
+                    <p className="text-sm text-[var(--ink-muted)] leading-relaxed">{project.challenge}</p>
+                  </div>
+                )}
+
+                {/* Approach */}
+                {project.approach && (
+                  <div className="mb-6">
+                    <h3 className="mono text-[10px] text-[var(--gold-dark)] uppercase tracking-wider mb-2">The Approach</h3>
+                    <p className="text-sm text-[var(--ink-muted)] leading-relaxed">{project.approach}</p>
+                  </div>
+                )}
+
+                {/* Result */}
+                {project.result && (
+                  <div className="mb-8">
+                    <h3 className="mono text-[10px] text-[var(--gold-dark)] uppercase tracking-wider mb-2">The Result</h3>
+                    <p className="text-sm text-[var(--ink-muted)] leading-relaxed">{project.result}</p>
+                  </div>
+                )}
 
                 {/* Client quote */}
-                <div className="border-l-[3px] border-[var(--gold)] pl-6 py-2 bg-[rgba(184,154,112,0.07)] rounded-r-lg">
+                <div className="border-l-[3px] border-[var(--gold)] pl-6 py-2 bg-[rgba(184,154,112,0.07)] rounded-r-lg mt-8">
                   <blockquote className="text-lg md:text-xl font-serif italic text-[var(--ink)] mb-2">
                     &ldquo;{project.quote}&rdquo;
                   </blockquote>

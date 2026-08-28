@@ -64,7 +64,15 @@ export const studioInfo = {
   reviewCount: "10+ Google Reviews",
 };
 
+export const founderInfo = {
+  name: "Pradeep",
+  role: "Founder & Principal Designer",
+  desc: "Leads spatial concept planning and material direction. Oversees all residential design blueprints and corporate flow layouts.",
+  image: "/client-work/pradeep.png",
+};
+
 export const images = {
+  founderProfile: "/client-work/pradeep.png",
   heroPoster: "/client-work/interiors/img7.jpeg", // Living Room
   living: "/client-work/interiors/img9.jpeg", // Living Lounge
   lounge: "/client-work/interiors/img7.jpeg", // Living Room

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
-import { images, studioInfo } from "@/data/content";
+import { images, studioInfo, founderInfo } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "About Altamountt | Interior Design Studio · Thane",
@@ -219,40 +219,48 @@ export default function About() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  role: "Founder & Principal Designer",
-                  name: "[Founder Name - Data Placeholder]",
-                  desc: "Leads spatial concept planning and material direction. Oversees all residential design blueprints and corporate flow layouts.",
-                  img: images.detail,
-                },
-                {
-                  role: "Lead Interior Architect",
-                  name: "[Architect Name - Data Placeholder]",
-                  desc: "Translates structural challenges into precise 2D CAD elevations, lighting configurations, and detailing plans.",
-                  img: images.material,
-                },
-                {
-                  role: "Head of Project Management & Turnkey Execution",
-                  name: "[Project Manager - Data Placeholder]",
-                  desc: "Supervises on-site carpentry, masonry works, procurement coordination, and final defect-free turnkey handovers.",
-                  img: images.kitchen,
-                },
-              ].map((member, idx) => (
-                <div key={idx} className="bg-[var(--bg-ivory)] border border-[var(--line)] p-6 flex flex-col gap-4 rounded-xl">
-                  <div className="w-full aspect-[4/3] bg-[var(--bg-sand)] overflow-hidden relative">
-                    <div className="absolute inset-0 flex items-center justify-center text-[10px] font-mono tracking-widest text-[var(--ink-muted)] uppercase p-4 text-center border border-dashed border-[var(--gold-dark)] m-4">
-                      [Photo Placeholder]
-                    </div>
-                  </div>
-                  <div>
-                    <span className="mono text-[9px] text-[var(--gold-dark)] font-semibold block mb-1">{member.role}</span>
-                    <h3 className="text-xl font-serif text-[var(--ink)] mb-2">{member.name}</h3>
-                    <p className="text-xs text-[var(--ink-muted)] leading-relaxed">{member.desc}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left — Landscape Portrait showing full office context */}
+              <div className="lg:col-span-8 flex justify-center w-full">
+                <div className="w-full shadow-2xl rounded-2xl overflow-hidden border border-[var(--line)] bg-[var(--bg-sand)]">
+                  <div className="relative aspect-[3/2] overflow-hidden">
+                    <img
+                      src={founderInfo.image}
+                      alt={founderInfo.name}
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.01]"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Right — Biography content */}
+              <div className="lg:col-span-4 flex flex-col justify-center">
+                <span className="mono text-[10px] text-[var(--gold-dark)] tracking-[0.2em] uppercase mb-3 block">
+                  {founderInfo.role}
+                </span>
+                <h3 className="text-4xl md:text-5xl font-serif text-[var(--ink)] mb-5 tracking-tight leading-none">
+                  {founderInfo.name}
+                </h3>
+                
+                <div className="w-16 h-[1.5px] bg-[var(--gold)] mb-6" />
+
+                <p className="text-base md:text-lg text-[var(--ink-muted)] leading-relaxed mb-8 max-w-xl">
+                  {founderInfo.desc}
+                </p>
+
+                {/* Structured architectural details */}
+                <div className="border-t border-[var(--line)] pt-6 grid grid-cols-2 gap-6 max-w-lg">
+                  <div>
+                    <span className="mono text-[9px] text-[var(--ink-muted)] block uppercase mb-1">Focus</span>
+                    <span className="text-xs font-semibold text-[var(--ink)] uppercase tracking-wide">Spatial &amp; Material Direction</span>
+                  </div>
+                  <div>
+                    <span className="mono text-[9px] text-[var(--ink-muted)] block uppercase mb-1">Practice</span>
+                    <span className="text-xs font-semibold text-[var(--ink)] uppercase tracking-wide">Turnkey Design &amp; Build</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

@@ -416,8 +416,8 @@ export function SiteExperience() {
 
                 <h2 className="heading-editorial text-5xl md:text-[clamp(3.5rem,5vw,6rem)] mb-8 leading-[0.95] tracking-tight">
                   <span>DESIGN IS</span>
-                  <span>ONLY THE</span>
-                  <span><em className="text-[var(--gold-dark)]">BEGINNING.</em></span>
+                  <span> ONLY THE</span>
+                  <span><em className="text-[var(--gold-dark)]"> BEGINNING.</em></span>
                 </h2>
 
                 <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed max-w-sm mt-4 border-t border-[var(--line)] pt-6">

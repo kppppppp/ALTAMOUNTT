@@ -771,6 +771,7 @@ img, video {
   left: max(5vw, env(safe-area-inset-left));
   right: max(5vw, env(safe-area-inset-right));
   bottom: max(6vh, calc(env(safe-area-inset-bottom) + 2rem));
+  top: calc(var(--navbar-safety-height) + 2.5rem); /* Safe ceiling boundary to prevent header overlaps */
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -4986,5 +4987,57 @@ body.mobile-menu-active .back-to-top-btn {
     user-select: none;
     pointer-events: none;
     opacity: 0.28;
+  }
+
+  /* Mobile-only typography adjustments to prevent ascender/descender clipping & line overlapping */
+  .heading-editorial,
+  .page-editorial-hero__heading,
+  .hero-title-main,
+  .luxury-testimonials-heading,
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.08 !important; /* Safe spacing to prevent overlapping lines on mobile */
+    padding-top: 0.05em !important;
+    padding-bottom: 0.06em !important;
+    padding-right: 0.1em !important;
+    overflow: visible !important;
+  }
+
+  .heading-editorial span,
+  .page-editorial-hero__heading span,
+  .hero-title-main span,
+  [data-text-reveal] span {
+    line-height: inherit !important;
+    overflow: visible !important;
+    padding-top: 0.02em !important;
+    padding-bottom: 0.04em !important;
+    padding-right: 0.1em !important;
+  }
+
+  /* Safe padding inside clipping GSAP mask containers to prevent letter clipping on mobile */
+  .mask-text {
+    padding-top: 0.06em !important;
+    padding-bottom: 0.06em !important;
+  }
+  .mask-text-line {
+    padding-top: 0.04em !important;
+    padding-bottom: 0.04em !important;
+  }
+}
+
+/* ==========================================================================
+   SURGICAL HERO SECTION HEIGHT SAFETY PADDING (PREVENT NAVBAR OVERLAPS)
+   ========================================================================== */
+.projects-hero-section,
+.services-hero-section {
+  position: relative;
+  padding-top: calc(var(--navbar-safety-height) + 3.5rem) !important;
+  padding-bottom: 4rem !important;
+}
+
+@media (min-width: 1024px) {
+  .projects-hero-section,
+  .services-hero-section {
+    padding-top: calc(var(--navbar-safety-height) + 5.5rem) !important;
+    padding-bottom: 6rem !important;
   }
 }

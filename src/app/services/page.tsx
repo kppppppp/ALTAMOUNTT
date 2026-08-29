@@ -12,76 +12,153 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   const [res, com, arch, tkey] = servicesData;
 
+  // Real proof projects list based on existing project data
+  const proofProjects = [
+    {
+      category: "COMMERCIAL WORKPLACE",
+      title: "Google BKC",
+      location: "BKC, Mumbai",
+      role: "Space Planning & Interior Execution",
+      image: "/client-work/projects/commercial/google-bkc-reception.webp",
+      link: "/projects/google-bkc"
+    },
+    {
+      category: "LUXURY RESIDENTIAL",
+      title: "Vivearea Residence",
+      location: "Thane West",
+      role: "Interior Design & Custom Joinery",
+      image: "/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg",
+      link: "/projects/selected-residence"
+    },
+    {
+      category: "EXPERIENTIAL RETAIL",
+      title: "Lakmé Salon",
+      location: "Versova, Mumbai",
+      role: "Design & Turnkey Contracting",
+      image: "/client-work/projects/commercial/lakme-salon-interior-01.webp",
+      link: "/projects/lakme-salon"
+    },
+    {
+      category: "BOUTIQUE CLINIC",
+      title: "Pachouli Wellness",
+      location: "Andheri, Mumbai",
+      role: "Tactile Space Planning & Build",
+      image: "/client-work/projects/commercial/pachouli-wellness-reception.webp",
+      link: "/projects/pachouli-wellness"
+    }
+  ];
+
   return (
     <PageShell>
-      <main className="services-page">
-        {/* ═══ 1. CINEMATIC HERO ═══ */}
-        <section className="page-hero-img">
-          <img src={images.servicesHero} alt="Altamountt interior design services" loading="eager" />
-          <div className="page-hero-img-overlay" />
+      <main className="bg-[var(--bg-ivory)] min-h-screen">
+        {/* ═══ 1. EDITORIAL HERO (SPLIT LAYOUT) ═══ */}
+        <section className="relative overflow-hidden services-hero-section bg-[var(--bg-ivory)]">
+          {/* Subtle architectural vertical grid lines */}
+          <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
 
-          <div className="page-hero-img-content">
-            <p className="eyebrow dark mb-5">Services &amp; Turnkey Architecture · Thane &amp; Mumbai</p>
-            <h1 className="hero-title-main mask-text" style={{ color: "#FFFFFF" }}>
-              <span className="mask-text-line">DESIGN.</span>
-              <span className="mask-text-line"><em style={{ color: "var(--gold-light)" }}>DETAIL.</em></span>
-              <span className="mask-text-line">DELIVERY.</span>
-            </h1>
-          </div>
-
-          <div className="scroll-ind">
-            <span>SCROLL</span>
-            <div className="scroll-ind-line" />
-          </div>
-        </section>
-
-        {/* ═══ 2. EDITORIAL STATEMENT ═══ */}
-        <section className="section-pad bg-[var(--bg-ivory)]">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-5">
-                <p className="eyebrow">What We Do</p>
-                <h2 className="heading-editorial mb-6" data-text-reveal="left">
-                  <span>FROM FIRST SKETCH</span>
-                  <span><em>TO FINAL DETAIL.</em></span>
-                </h2>
-                <i className="gold-line" data-gold-line />
-                <p className="text-base md:text-lg text-[var(--ink-muted)] leading-relaxed mb-4">
-                  Every Altamountt project begins with listening. We study how you live, work, or host — then
-                  translate those rhythms into spatial architecture, material specifications, and turnkey execution.
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              {/* Left Column — Text & Hierarchy */}
+              <div className="lg:col-span-7">
+                <span className="mono text-[10px] text-[var(--gold-dark)] tracking-[0.25em] uppercase mb-4 block">
+                  SERVICES / WHAT WE DO
+                </span>
+                
+                <h1 className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.95] text-[var(--ink)] mb-8 overflow-visible">
+                  SPACES <br className="hidden md:inline" />
+                  THAT <em className="text-[var(--gold-dark)] italic">SPEAK.</em>
+                </h1>
+                
+                <p className="text-sm md:text-base text-[var(--ink-muted)] max-w-lg leading-relaxed mb-8">
+                  Every Altamountt project begins with spatial planning. We resolve the layout, circulation, and light vectors first — then coordinate materials, custom millwork, and full turnkey execution.
                 </p>
-                <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
-                  From residential luxury homes to customized corporate workspaces, our studio maintains
-                  the same obsessive quality standard throughout.
-                </p>
+
+                {/* Subservice metadata layers */}
+                <div className="border-t border-[var(--line)] pt-6 flex flex-wrap gap-8 text-[9px] font-mono text-[var(--ink-muted)] tracking-wider uppercase">
+                  <div>
+                    <span className="text-[var(--gold-dark)] mr-1">01 /</span> Residential
+                  </div>
+                  <div>
+                    <span className="text-[var(--gold-dark)] mr-1">02 /</span> Commercial
+                  </div>
+                  <div>
+                    <span className="text-[var(--gold-dark)] mr-1">03 /</span> Turnkey Execution
+                  </div>
+                </div>
               </div>
 
-              <div className="lg:col-span-7 relative">
-                <div className="media-reveal-wrap" style={{ height: "45vw", minHeight: 360, maxHeight: 580 }} data-reveal="right">
-                  <img src={images.living} alt="Altamountt living room design" className="media-reveal-inner" loading="lazy" />
-                </div>
-                {/* Floating detail */}
-                <div className="hidden lg:block absolute -bottom-10 -left-10 w-52 h-52 shadow-2xl overflow-hidden border-4 border-[var(--bg-ivory)]" data-reveal="parallax">
-                  <img src={images.detail} alt="Joinery detail" className="w-full h-full object-cover" loading="lazy" />
+              {/* Right Column — Large Portrait visual anchor */}
+              <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                <div className="editorial-image-frame corner-bracket-wrap w-full max-w-[420px] shadow-2xl overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <img 
+                      src={images.servicesHero} 
+                      alt="Altamountt turnkey interior design services" 
+                      className="w-full h-full object-cover"
+                      loading="eager"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══ 3. RESIDENTIAL SECTION (editorial vertical flow) ═══ */}
-        <section className="section-pad bg-[var(--bg-sand)]">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+        {/* ═══ 2. EDITORIAL STATEMENT ═══ */}
+        <section className="section-pad bg-[var(--bg-sand)] relative overflow-hidden border-y border-[var(--line)]">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-5">
-                <span className="service-section-number">{res.number} <small>/ 04</small></span>
-                <h2 className="heading-editorial mb-4" data-text-reveal="left">
-                  <span>RESIDENTIAL</span>
-                  <span><em>INTERIORS.</em></span>
+                <p className="eyebrow">Studio Practice</p>
+                <h2 className="heading-editorial mb-6" data-text-reveal="left">
+                  <span>FROM FIRST SKETCH</span>
+                  <span><em>TO FINAL DETAIL.</em></span>
                 </h2>
-                <i className="gold-line" data-gold-line />
-                <p className="text-base md:text-lg text-[var(--ink-muted)] leading-relaxed mb-8">{res.description}</p>
+                <div className="w-16 h-[1.5px] bg-[var(--gold)] mb-6" />
+                <p className="text-base text-[var(--ink-muted)] leading-relaxed mb-6">
+                  We don&apos;t just draft layout concepts — we manage carpentry, structural civil works, smart automation, and final handover under one single contract.
+                </p>
+              </div>
 
+              <div className="lg:col-span-7 relative">
+                <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)]">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img 
+                      src={images.living} 
+                      alt="Altamountt living room styling and layout" 
+                      className="w-full h-full object-cover" 
+                      loading="lazy" 
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 3. SERVICE CATEGORIES (ASYMMETRIC FLOW) ═══ */}
+        <section className="bg-[var(--bg-ivory)] relative overflow-hidden py-24" id="categories">
+          {/* Subtle grid lines */}
+          <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col gap-28 lg:gap-36">
+            
+            {/* 01 / RESIDENTIAL INTERIORS — TEXT LEFT, IMAGE RIGHT */}
+            <article className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="lg:col-span-5">
+                <span className="mono text-sm text-[var(--gold-dark)] block mb-2">{res.number} / 04</span>
+                <h3 className="font-serif text-3xl md:text-4xl text-[var(--ink)] mb-4 tracking-tight leading-none">
+                  {res.title}
+                </h3>
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed mb-6">
+                  {res.tagline} {res.description}
+                </p>
+
+                {/* Subservice tags list */}
                 <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-6">
                   {res.subservices.map((s) => (
                     <div key={s} className="svc-tag-item">
@@ -91,58 +168,50 @@ export default function ServicesPage() {
                   ))}
                 </div>
 
-                <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
-                  Inquire for Residence <span>→</span>
+                <Link href="/services/residential" className="hero-btn-primary inline-flex w-fit">
+                  Explore Residential <span>→</span>
                 </Link>
               </div>
 
-              {/* Editorial Vertical Image Stack: Living -> Kitchen -> Study */}
-              <div className="lg:col-span-7 flex flex-col gap-10">
-                <div className="media-reveal-wrap" style={{ height: "40vw", minHeight: 300, maxHeight: 520 }} data-reveal="left">
-                  <img src={images.living} alt="Residential living room TV unit design" className="media-reveal-inner" loading="lazy" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="up">
-                    <img src={images.kitchen} alt="Modular kitchen layout" className="media-reveal-inner" loading="lazy" />
-                  </div>
-                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="right">
-                    <img src={images.bedroom} alt="Bespoke bedroom layout" className="media-reveal-inner" loading="lazy" />
+              <div className="lg:col-span-7 flex justify-end w-full">
+                <div className="editorial-image-frame corner-bracket-wrap w-full max-w-[620px] shadow-xl overflow-hidden rounded-xl border border-[var(--line)]">
+                  <div className="relative aspect-[16/10] overflow-hidden group">
+                    <img 
+                      src="/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg" 
+                      alt="Luxury Residential Bedroom" 
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
+                      loading="lazy" 
+                    />
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </article>
 
-        {/* ═══ 4. COMMERCIAL SECTION (editorial vertical flow) ═══ */}
-        <section className="section-pad bg-[var(--bg-ivory)]">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
-              {/* Images on Left */}
-              <div className="lg:col-span-7 flex flex-col gap-10 order-2 lg:order-1">
-                <div className="media-reveal-wrap" style={{ height: "40vw", minHeight: 300, maxHeight: 520 }} data-reveal="left">
-                  <img src={images.architectural} alt="Google BKC reception desk" className="media-reveal-inner" loading="lazy" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="up">
-                    <img src="/client-work/projects/commercial/lakme-salon-interior-01.webp" alt="Lakme Salon interior Versova" className="media-reveal-inner" loading="lazy" />
-                  </div>
-                  <div className="media-reveal-wrap" style={{ height: "35vw", minHeight: 260, maxHeight: 420 }} data-reveal="right">
-                    <img src="/client-work/projects/commercial/google-bkc-meeting.webp" alt="Google BKC meeting space" className="media-reveal-inner" loading="lazy" />
+            {/* 02 / COMMERCIAL — IMAGE LEFT, TEXT RIGHT */}
+            <article className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="lg:col-span-7 order-2 lg:order-1 flex justify-start w-full">
+                <div className="editorial-image-frame corner-bracket-wrap w-full max-w-[620px] shadow-xl overflow-hidden rounded-xl border border-[var(--line)]">
+                  <div className="relative aspect-[16/10] overflow-hidden group">
+                    <img 
+                      src="/client-work/projects/commercial/google-bkc-meeting.webp" 
+                      alt="Google BKC Workspace Meeting Area" 
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
+                      loading="lazy" 
+                    />
                   </div>
                 </div>
               </div>
 
-              {/* Text on Right */}
               <div className="lg:col-span-5 order-1 lg:order-2">
-                <span className="service-section-number">{com.number} <small>/ 04</small></span>
-                <h2 className="heading-editorial mb-4" data-text-reveal="left">
-                  <span>COMMERCIAL</span>
-                  <span><em>&amp; HOSPITALITY.</em></span>
-                </h2>
-                <i className="gold-line" data-gold-line />
-                <p className="text-base md:text-lg text-[var(--ink-muted)] leading-relaxed mb-8">{com.description}</p>
+                <span className="mono text-sm text-[var(--gold-dark)] block mb-2">{com.number} / 04</span>
+                <h3 className="font-serif text-3xl md:text-4xl text-[var(--ink)] mb-4 tracking-tight leading-none">
+                  {com.title}
+                </h3>
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed mb-6">
+                  {com.tagline} {com.description}
+                </p>
 
+                {/* Subservice tags list */}
                 <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-6">
                   {com.subservices.map((s) => (
                     <div key={s} className="svc-tag-item">
@@ -152,105 +221,116 @@ export default function ServicesPage() {
                   ))}
                 </div>
 
-                <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
-                  Inquire for Commercial <span>→</span>
+                <Link href="/services/commercial" className="hero-btn-primary inline-flex w-fit">
+                  Explore Commercial <span>→</span>
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
+            </article>
 
-        {/* ═══ 5. INTERIOR ARCHITECTURE — FULL WIDTH + TEXT OVERLAY ═══ */}
-        <section className="section-pad-sm bg-[var(--bg-ivory)]">
-          <div className="max-w-7xl mx-auto">
-            <div className="svc-full">
-              <div className="svc-full-img" data-reveal="scale">
-                <img src={arch.image} alt="Interior architecture by Altamountt" className="w-full h-full object-cover media-reveal-inner" loading="lazy" />
-              </div>
+            {/* 03 / INTERIOR ARCHITECTURE — TEXT LEFT, IMAGE RIGHT */}
+            <article className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="lg:col-span-5">
+                <span className="mono text-sm text-[var(--gold-dark)] block mb-2">{arch.number} / 04</span>
+                <h3 className="font-serif text-3xl md:text-4xl text-[var(--ink)] mb-4 tracking-tight leading-none">
+                  {arch.title}
+                </h3>
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed mb-6">
+                  {arch.tagline} {arch.description}
+                </p>
 
-              <div className="svc-card-overlay">
-                <span className="service-section-number service-section-number-light">{arch.number} <small>/ 04</small></span>
-                <h2 className="text-2xl md:text-4xl font-serif text-white mb-3">{arch.title}</h2>
-                <i className="gold-line dark" style={{ width: 50, margin: "0.75rem 0" }} data-gold-line />
-                <p className="text-xs md:text-sm text-[var(--ink-light-muted)] leading-relaxed mb-6">{arch.description}</p>
-                <div className="svc-tag-list border-t border-[rgba(245,242,235,0.15)] pt-4 mb-6">
+                {/* Subservice tags list */}
+                <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-6">
                   {arch.subservices.map((s) => (
-                    <div key={s} className="svc-tag-item" style={{ color: "var(--ink-light-muted)" }}>
+                    <div key={s} className="svc-tag-item">
                       <span className="svc-tag-dot" />
                       <span>{s}</span>
                     </div>
                   ))}
                 </div>
-                <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
-                  Discuss Architecture <span>→</span>
+
+                <Link href="/services/architecture" className="hero-btn-primary inline-flex w-fit">
+                  Explore Architecture <span>→</span>
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* ═══ 6. TURNKEY SOLUTIONS ═══ */}
-        <section className="section-pad bg-[var(--bg-sand)]">
-          <div className="max-w-7xl mx-auto svc-row">
-            {/* Large hero image with floating detail */}
-            <div className="relative">
-              <div className="media-reveal-wrap" style={{ height: "52vw", minHeight: 380, maxHeight: 640 }} data-reveal="up">
-                <img src={tkey.image} alt="Turnkey completed interior" className="media-reveal-inner" loading="lazy" />
-              </div>
-              <div className="hidden md:block absolute -bottom-8 -right-8 w-44 h-44 shadow-2xl overflow-hidden border-4 border-[var(--bg-sand)]" data-reveal="parallax">
-                <img src={images.detail} alt="Turnkey detail" className="w-full h-full object-cover" loading="lazy" />
-              </div>
-            </div>
-
-            <div>
-              <span className="service-section-number">{tkey.number} <small>/ 04</small></span>
-              <h2 className="heading-editorial mb-4" data-text-reveal="left">
-                <span>FROM CONCEPT</span>
-                <span><em>TO COMPLETION.</em></span>
-              </h2>
-              <i className="gold-line" data-gold-line />
-              <p className="text-base text-[var(--ink-muted)] leading-relaxed mb-6">{tkey.description}</p>
-
-              <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-4">
-                {tkey.subservices.map((s) => (
-                  <div key={s} className="svc-tag-item">
-                    <span className="svc-tag-dot" />
-                    <span>{s}</span>
+              <div className="lg:col-span-7 flex justify-end w-full">
+                <div className="editorial-image-frame corner-bracket-wrap w-full max-w-[620px] shadow-xl overflow-hidden rounded-xl border border-[var(--line)]">
+                  <div className="relative aspect-[16/10] overflow-hidden group">
+                    <img 
+                      src="/client-work/interiors/img12.jpeg" 
+                      alt="Bespoke Interior Architecture Details" 
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
+                      loading="lazy" 
+                    />
                   </div>
-                ))}
+                </div>
+              </div>
+            </article>
+
+            {/* 04 / TURNKEY SOLUTIONS — IMAGE LEFT, TEXT RIGHT */}
+            <article className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="lg:col-span-7 order-2 lg:order-1 flex justify-start w-full">
+                <div className="editorial-image-frame corner-bracket-wrap w-full max-w-[620px] shadow-xl overflow-hidden rounded-xl border border-[var(--line)]">
+                  <div className="relative aspect-[16/10] overflow-hidden group">
+                    <img 
+                      src="/client-work/interiors/img11.jpeg" 
+                      alt="Turnkey Design Completion & Handover" 
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
+                      loading="lazy" 
+                    />
+                  </div>
+                </div>
               </div>
 
-              <Link href="/contact" className="hero-btn-primary" style={{ display: "inline-flex", width: "fit-content" }}>
-                Start Turnkey Project <span>→</span>
-              </Link>
-            </div>
+              <div className="lg:col-span-5 order-1 lg:order-2">
+                <span className="mono text-sm text-[var(--gold-dark)] block mb-2">{tkey.number} / 04</span>
+                <h3 className="font-serif text-3xl md:text-4xl text-[var(--ink)] mb-4 tracking-tight leading-none">
+                  {tkey.title}
+                </h3>
+                <p className="text-sm md:text-base text-[var(--ink-muted)] leading-relaxed mb-6">
+                  {tkey.tagline} {tkey.description}
+                </p>
+
+                {/* Subservice tags list */}
+                <div className="svc-tag-list mb-8 border-t border-[var(--line)] pt-6">
+                  {tkey.subservices.map((s) => (
+                    <div key={s} className="svc-tag-item">
+                      <span className="svc-tag-dot" />
+                      <span>{s}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link href="/services/turnkey" className="hero-btn-primary inline-flex w-fit">
+                  Explore Turnkey <span>→</span>
+                </Link>
+              </div>
+            </article>
+
           </div>
         </section>
 
-        {/* ═══ 7. COMPLETE SERVICE MATRIX ═══ */}
-        <section className="section-pad bg-[var(--bg-dark)] text-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-14">
-              <p className="eyebrow dark justify-center">Complete Capability</p>
-              <h2 className="heading-editorial mb-4" data-text-reveal="left">
+        {/* ═══ 4. COMPLETE SERVICE MATRIX ═══ */}
+        <section className="section-pad bg-[var(--bg-dark)] text-white relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 z-10 relative">
+            <div className="mb-16 border-b border-white/10 pb-6">
+              <p className="eyebrow dark">Capability Spectrum</p>
+              <h2 className="heading-editorial text-[var(--bg-ivory)]">
                 <span>EVERY SERVICE</span>
                 <span><em>WE OFFER.</em></span>
               </h2>
-              <p className="text-sm text-[var(--ink-light-muted)] max-w-xl mx-auto">
-                Each service can be commissioned individually or seamlessly bundled into a full turnkey contract.
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-              {allServicesGrouped.map((group) => (
-                <div key={group.category}>
-                  <h3 className="text-sm font-serif text-[var(--gold-light)] mb-4 pb-2 border-b border-[var(--line-dark)] uppercase tracking-widest">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {allServicesGrouped.slice(0, 4).map((group) => (
+                <div key={group.category} className="border-t border-white/10 pt-6">
+                  <h3 className="text-xs font-mono font-bold tracking-wider text-[var(--gold-light)] mb-4 uppercase">
                     {group.category}
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {group.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-xs text-[var(--ink-light-muted)]">
-                        <span className="mt-1.5 w-1 h-1 rounded-full bg-[var(--gold)] flex-shrink-0" />
+                      <li key={item} className="flex items-start gap-2.5 text-xs text-[var(--ink-light-muted)] leading-relaxed">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--gold)] flex-shrink-0" />
                         {item}
                       </li>
                     ))}
@@ -261,12 +341,12 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ═══ 8. 5-STEP PROCESS ═══ */}
-        <section className="section-pad bg-[var(--bg-ivory)]">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-14">
+        {/* ═══ 5. SOPHISTICATED PROCESS SECTION ═══ */}
+        <section className="section-pad bg-[var(--bg-sand)]">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="mb-16 border-b border-[var(--line)] pb-6">
               <p className="eyebrow">Our Methodology</p>
-              <h2 className="heading-editorial" data-text-reveal="left">
+              <h2 className="heading-editorial">
                 <span>HOW WE</span>
                 <span><em>WORK.</em></span>
               </h2>
@@ -276,32 +356,90 @@ export default function ServicesPage() {
               {servicesProcess.map((step, i) => (
                 <div key={step.num} className="process-row-item">
                   <span className="process-num">{step.num}</span>
-                  <h3 className="process-name">{step.title}</h3>
-                  <p className="process-desc">{step.desc}</p>
-                  <span className="process-arrow">{i < servicesProcess.length - 1 ? "↓" : "✓"}</span>
+                  <h3 className="process-name">{step.title.toUpperCase()}</h3>
+                  <p className="process-desc text-sm">{step.desc}</p>
+                  <span className="process-arrow text-[var(--gold-dark)]">
+                    {i < servicesProcess.length - 1 ? "↓" : "✓"}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═══ 9. FINAL CTA IMAGE ═══ */}
-        <section className="relative overflow-hidden" style={{ height: "65vw", minHeight: 420, maxHeight: 740 }}>
-          <div className="media-reveal-wrap w-full h-full" data-reveal="expand">
-            <img src={images.architectural} alt="Ready to transform your space" className="media-reveal-inner" loading="lazy" />
+        {/* ═══ 6. REAL PROJECT PROOF (SEE IT BUILT) ═══ */}
+        <section className="section-pad bg-[var(--bg-ivory)] relative overflow-hidden border-t border-[var(--line)]">
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="mb-16 border-b border-[var(--line)] pb-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <p className="eyebrow">Portfolio Proof</p>
+                <h2 className="heading-editorial">
+                  <span>SEE IT</span>
+                  <span><em>BUILT.</em></span>
+                </h2>
+              </div>
+              <p className="text-sm text-[var(--ink-muted)] max-w-sm leading-relaxed">
+                A selection of corporate workspaces, beauty retail, wellness, and bespoke private suites designed and built on site by Altamountt.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+              {proofProjects.map((project, idx) => (
+                <article key={idx} className="group relative">
+                  <Link href={project.link} className="block">
+                    <div className="flex justify-between items-end mb-4 border-b border-[var(--line)] pb-2">
+                      <div>
+                        <span className="mono text-[9px] text-[var(--gold-dark)] block mb-1">{project.category}</span>
+                        <h3 className="text-xl font-serif text-[var(--ink)]">{project.title}</h3>
+                      </div>
+                      <span className="mono text-[10px] text-[var(--ink-muted)] uppercase">{project.location}</span>
+                    </div>
+
+                    <div className="editorial-image-frame corner-bracket-wrap shadow-lg overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <img 
+                          src={project.image} 
+                          alt={project.title} 
+                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4 text-[10px] font-mono text-[var(--ink-muted)] uppercase flex justify-between">
+                      <span>{project.role}</span>
+                      <span className="text-[var(--gold-dark)]">VIEW CASE STUDY →</span>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(21,20,18,0.9)] via-[rgba(21,20,18,0.22)] to-transparent" />
-          <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 md:pb-20 px-6 text-center text-white">
-            <h2 className="heading-editorial mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 6rem)" }} data-text-reveal="left">
-              <span>READY TO TRANSFORM</span>
-              <span><em>YOUR SPACE?</em></span>
+        </section>
+
+        {/* ═══ 7. CONVERSION CTA ═══ */}
+        <section className="section-pad bg-[var(--bg-dark)] text-white relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <p className="eyebrow dark justify-center">DESIGN CONSULTATION</p>
+            <h2 className="heading-editorial mb-8 text-[var(--bg-ivory)]">
+              <span>HAVE A SPACE</span>
+              <span><em>IN MIND?</em></span>
             </h2>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link href="/contact" className="hero-btn-primary">
-                Start a Project <span>→</span>
+            <p className="text-base text-[var(--ink-light-muted)] leading-relaxed max-w-lg mx-auto mb-12">
+              Let&apos;s discuss your workspace layout, retail showroom guidelines, or luxury residential blueprints at our studio in Thane.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/contact" className="hero-btn-primary py-4 px-8 w-full sm:w-auto text-center">
+                BOOK A CONSULTATION
               </Link>
-              <a href={studioInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hero-btn-secondary">
-                WhatsApp Us <span>→</span>
+              <a 
+                href={studioInfo.whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hero-btn-secondary py-4 px-8 w-full sm:w-auto text-center border border-white/20 hover:bg-white hover:text-black transition-all"
+              >
+                WHATSAPP US <span>→</span>
               </a>
             </div>
           </div>

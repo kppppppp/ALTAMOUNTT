@@ -65,7 +65,7 @@ export const studioInfo = {
 };
 
 export const founderInfo = {
-  name: "Pradeep",
+  name: "Pradeep Mohanthy",
   role: "Founder & Principal Designer",
   desc: "Leads spatial concept planning and material direction. Oversees all residential design blueprints and corporate flow layouts.",
   image: "/client-work/pradeep.png",

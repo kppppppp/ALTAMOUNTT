@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
@@ -15,8 +15,87 @@ import { Footer, Navigation } from "@/components/SiteChrome";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const furnitureImages = [
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.06.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.07.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.08.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.09.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.10.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.11.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.12.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.13.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.14.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.15.jpeg",
+  "/client-work/furniture/WhatsApp Image 2026-08-29 at 12.36.16.jpeg",
+];
+
 export function SiteExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Furniture Carousel State
+  const [sliderIndex, setSliderIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const isDragging = useRef(false);
+
+  // Filter projects by category
+  const commercialProjects = projectsList.filter((p) =>
+    ["google-bkc", "lakme-salon", "pachouli-wellness"].includes(p.slug)
+  );
+
+  const residentialProjects = projectsList.filter((p) =>
+    ["selected-residence"].includes(p.slug)
+  );
+
+  // Carousel Handlers
+  const handlePrev = () => {
+    setSliderIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setSliderIndex((prev) => Math.min(furnitureImages.length - 1, prev + 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    isDragging.current = true;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging.current) return;
+    const currentX = e.touches[0].clientX;
+    const diff = touchStartX.current - currentX;
+    if (Math.abs(diff) > 75) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+      isDragging.current = false;
+    }
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    touchStartX.current = e.clientX;
+    isDragging.current = true;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current) return;
+    const currentX = e.clientX;
+    const diff = touchStartX.current - currentX;
+    if (Math.abs(diff) > 75) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+      isDragging.current = false;
+    }
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+  };
 
   useLayoutEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -112,10 +191,7 @@ export function SiteExperience() {
     return () => ctx.revert();
   }, []);
 
-  // Filter 4 strongest projects for Selected Projects section
-  const selectedProjects = projectsList.filter((p) =>
-    ["google-bkc", "selected-residence", "lakme-salon", "pachouli-wellness"].includes(p.slug)
-  );
+
 
   return (
     <div ref={containerRef} className="page-wrapper">
@@ -191,240 +267,151 @@ export function SiteExperience() {
           </div>
         </section>
 
-        {/* 02 — SELECTED PROJECTS */}
-        <section className="section-pad bg-[var(--bg-ivory)] relative overflow-hidden" id="selected-projects">
-          {/* Subtle architectural vertical grid lines */}
+        {/* 02 — COMMERCIAL STORY INTRODUCTION */}
+        <section className="relative bg-[var(--bg-ivory)] overflow-hidden pt-24 pb-12" id="commercial-intro">
           <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
           <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
           <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
 
-          <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-            <div className="flex flex-col mb-16 border-b border-[var(--line)] pb-4">
-              <span className="mono text-[10px] text-[var(--gold-dark)] tracking-widest block mb-2">02 / PORTFOLIO SHAPING SPACE</span>
-              <h2 className="text-3xl md:text-5xl font-serif tracking-tight">SELECTED WORK</h2>
+          <div className="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+            <div className="lg:col-span-7">
+              <span className="mono text-[10px] text-[var(--gold-dark)] tracking-widest block mb-4 uppercase">02 / PORTFOLIO CASE STUDIES</span>
+              <h2 className="heading-editorial text-4xl md:text-6xl tracking-tight leading-[0.95]" data-reveal="up">
+                <span>SPACES THAT</span>
+                <span><em>BUILD BRANDS.</em></span>
+              </h2>
             </div>
-
-            <div className="flex flex-col gap-24 md:gap-32">
-              {selectedProjects.map((project, idx) => {
-                const isEven = idx % 2 === 0;
-                return (
-                  <article
-                    key={project.slug}
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center group"
-                    data-reveal="up"
-                  >
-                    {/* Image Column */}
-                    <div className={`lg:col-span-7 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-                      <div className="editorial-image-frame corner-bracket-wrap shadow-xl">
-                        <div className="relative aspect-[16/10] overflow-hidden group">
-                          <img
-                            src={project.heroImage}
-                            alt={project.title}
-                            className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
-                            loading="lazy"
-                          />
-                          {/* Micro metadata over image */}
-                          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-[9px] font-mono text-white bg-[rgba(21,20,18,0.85)] px-3 py-2 backdrop-blur-sm">
-                            <span>{project.title.toUpperCase()}</span>
-                            <span>{project.location.toUpperCase()}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content Column */}
-                    <div className={`lg:col-span-5 flex flex-col justify-center ${isEven ? "lg:order-2 lg:pl-8" : "lg:order-1 lg:pr-8"}`}>
-                      <span className="mono text-[10px] text-[var(--gold-dark)] mb-2">0{idx + 1} / {project.category.toUpperCase()}</span>
-                      <h3 className="text-2xl md:text-3xl font-serif text-[var(--ink)] mb-3 leading-snug">
-                        {project.title}
-                      </h3>
-                      <div className="mb-4 text-xs font-mono text-[var(--ink-muted)] flex flex-col gap-1 border-y border-[var(--line)] py-3">
-                        <span>ROLE / {project.role}</span>
-                        <span>SCOPE / {project.scope}</span>
-                        {project.area && <span>AREA / {project.area}</span>}
-                      </div>
-                      <p className="text-sm text-[var(--ink-muted)] leading-relaxed mb-6">
-                        {project.intro}
-                      </p>
-                      <Link href={`/projects/${project.slug}`} className="text-xs text-[var(--gold-dark)] font-semibold tracking-widest uppercase hover:text-black transition-colors border-b border-current pb-[2px] w-fit">
-                        VIEW PROJECT →
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-
-            <div className="mt-16 text-center">
-              <Link href="/projects" className="hero-btn-primary">
-                VIEW ALL PROJECTS <span>→</span>
-              </Link>
+            <div className="lg:col-span-4 lg:col-start-9">
+              <p className="text-sm text-[var(--ink-muted)] leading-relaxed mb-2">
+                From open corporate offices in BKC to high-end styling salons and wellness spaces, we execute commercial interiors with strict spatial efficiency.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* 03 — WHAT WE DO */}
-        <section className="section-pad bg-[var(--bg-dark)] text-white relative overflow-hidden" id="what-we-do">
+        {/* 03 — COMMERCIAL PROJECTS ASYMMETRIC PORTFOLIO */}
+        <section className="bg-[var(--bg-ivory)] relative overflow-hidden pb-24" id="commercial-projects">
+          <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[rgba(245,242,235,0.15)] pb-6">
-              <div>
-                <p className="eyebrow dark">03 / SPECIALIZATIONS</p>
-                <h2 className="heading-editorial text-4xl md:text-6xl">
-                  <span>WHAT WE</span>
-                  <span><em>DO.</em></span>
-                </h2>
-              </div>
-              <p className="text-sm text-[var(--ink-light-muted)] max-w-sm leading-relaxed">
-                Straightforward spatial planning, turnkey contracting, and functional interiors.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              {[
-                {
-                  id: "residential",
-                  title: "RESIDENTIAL",
-                  tagline: "Homes designed around how you live.",
-                  desc: "Considered layouts, space optimization, and materials specified for Thane's climate, ensuring beautiful and liveable spaces.",
-                },
-                {
-                  id: "commercial",
-                  title: "COMMERCIAL",
-                  tagline: "Workplaces, retail and wellness spaces designed around your brand.",
-                  desc: "We design and build spaces that work beautifully for the people who use them and the brands they represent.",
-                },
-                {
-                  id: "turnkey",
-                  title: "TURNKEY SOLUTIONS",
-                  tagline: "One team from design through execution and handover.",
-                  desc: "Single-point accountability managing budgeting, material procurement, civil work, and detailing.",
-                },
-              ].map((service) => (
-                <div
-                  key={service.id}
-                  className="border-t border-[rgba(245,242,235,0.15)] pt-6 flex flex-col justify-between h-64 group hover:border-[var(--gold)] transition-colors duration-500"
-                  data-reveal="up"
-                >
-                  <div>
-                    <h3 className="text-xl font-serif text-[var(--gold-light)] mb-2 group-hover:text-white transition-colors duration-500">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs text-[var(--gold-light)] font-semibold mb-3 leading-normal">
-                      {service.tagline}
-                    </p>
-                    <p className="text-xs text-[var(--ink-light-muted)] leading-relaxed">
-                      {service.desc}
-                    </p>
+            {/* GOOGLE BKC — LARGE FEATURE PROJECT */}
+            {commercialProjects.filter(p => p.slug === "google-bkc").map((project) => (
+              <article key={project.slug} className="group relative w-full mb-28" data-reveal="up">
+                <Link href={`/projects/${project.slug}`} className="block">
+                  <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-4 border-b border-[var(--line)] pb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="mono text-sm text-[var(--gold-dark)]">01</span>
+                      <h3 className="text-2xl md:text-3xl font-serif text-[var(--ink)]">{project.title}</h3>
+                    </div>
+                    <span className="mono text-[10px] text-[var(--ink-muted)] uppercase tracking-widest md:text-right">BKC, Mumbai · Corporate Workplace</span>
                   </div>
-                  <Link href={`/services#${service.id}`} className="text-[10px] text-[var(--gold-light)] uppercase tracking-widest hover:text-white transition-colors border-b border-current pb-[1px] w-fit">
-                    LEARN MORE →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* 04 — WHY ALTAMOUNTT */}
-        <section className="section-pad bg-[var(--bg-sand)]" id="why-altamountt">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[var(--line)] pb-6">
-              <div>
-                <p className="eyebrow">04 / CORE VALUES</p>
-                <h2 className="heading-editorial">
-                  <span>WHY</span>
-                  <span><em>ALTAMOUNTT?</em></span>
-                </h2>
-              </div>
-              <p className="text-sm text-[var(--ink-muted)] max-w-sm">
-                Thoughtful spatial planning, budget-conscious decisions, and turnkey execution under one roof.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  num: "01",
-                  title: "DESIGN-LED",
-                  desc: "Every project begins with considered spatial planning. We resolve the architectural envelope and light flow before selecting finishes.",
-                  image: images.detail,
-                },
-                {
-                  num: "02",
-                  title: "BUDGET-CONSCIOUS",
-                  desc: "Premium design without unnecessary budget inflation. We combine high-impact finishes with durable value-engineered substrates.",
-                  image: images.material,
-                },
-                {
-                  num: "03",
-                  title: "ONE POINT OF ACCOUNTABILITY",
-                  desc: "Design, coordination, and turnkey execution under one roof. No vendor blame games, only scheduled delivery.",
-                  image: images.officeInterior,
-                },
-                {
-                  num: "04",
-                  title: "BUILT FOR REAL LIFE",
-                  desc: "Beautiful spaces designed for everyday use. We build using BWP substrates and textures calibrated for real life.",
-                  image: images.living,
-                },
-              ].map((value) => (
-                <div
-                  key={value.num}
-                  className="bg-[var(--bg-ivory)] border border-[var(--line)] flex flex-col justify-between hover:shadow-lg transition-all duration-500 rounded-2xl overflow-hidden group"
-                  data-reveal="up"
-                >
-                  {/* Image Header with rounded-t corners */}
-                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-[var(--bg-sand)]">
-                    <img
-                      src={value.image}
-                      alt={value.title}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-4 left-4 bg-[rgba(21,20,18,0.9)] text-[var(--gold-light)] px-2.5 py-1 text-[9px] font-mono tracking-widest uppercase rounded">
-                      VALUE / {value.num}
+                  <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                    <div className="media-reveal-wrap overflow-hidden h-[50vh] md:h-[65vh] w-full relative">
+                      <img
+                        src={project.heroImage}
+                        alt={project.title}
+                        className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+                        style={{ objectPosition: "center 40%" }}
+                        loading="lazy"
+                      />
                     </div>
                   </div>
 
-                  {/* Explicit padding and typography styles to avoid global reset conflicts */}
-                  <div style={{ padding: "28px 24px 28px 24px", display: "flex", flexDirection: "column", flexGrow: 1 }}>
-                    <h3
-                      className="text-[var(--ink)] font-serif"
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: "600",
-                        letterSpacing: "-0.015em",
-                        lineHeight: "1.3",
-                        marginBottom: "12px",
-                      }}
-                    >
-                      {value.title}
-                    </h3>
-                    <p
-                      className="text-[var(--ink-muted)]"
-                      style={{
-                        fontSize: "12.5px",
-                        lineHeight: "1.6",
-                        margin: 0,
-                      }}
-                    >
-                      {value.desc}
+                  <div className="flex flex-wrap justify-between items-start mt-5 gap-4">
+                    <p className="text-xs text-[var(--ink-muted)] max-w-sm leading-relaxed">
+                      High-performance workspace resolved around open flow, wave-patterned ceilings, and bespoke concrete features.
                     </p>
+                    <div className="flex gap-8 text-[10px] font-mono uppercase text-[var(--ink-muted)]">
+                      <span>ROLE / {project.role}</span>
+                      <span>AREA / {project.area}</span>
+                    </div>
                   </div>
-                </div>
+                </Link>
+              </article>
+            ))}
+
+            {/* LAKME & PACHOULI — ASYMMETRIC COLUMN SPLIT */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+              {/* LAKME SALON — VERTICAL CROP (LEFT COLUMN) */}
+              {commercialProjects.filter(p => p.slug === "lakme-salon").map((project) => (
+                <article key={project.slug} className="group flex flex-col md:col-span-5 md:mt-12" data-reveal="up">
+                  <Link href={`/projects/${project.slug}`} className="block">
+                    <div className="flex items-end justify-between mb-4 border-b border-[var(--line)] pb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="mono text-[10px] text-[var(--gold-dark)]">02</span>
+                        <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">{project.title}</h3>
+                      </div>
+                      <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Versova / Retail</span>
+                    </div>
+
+                    <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                      <div className="media-reveal-wrap overflow-hidden relative aspect-[3/4] md:h-[50vh]">
+                        <img
+                          src={project.heroImage}
+                          alt={project.title}
+                          className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex flex-col gap-1">
+                      <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                        Premium salon framing treatment zones, architectural copper details, and raw brick accents.
+                      </p>
+                      <span className="mono text-[9px] text-[var(--gold-dark)] uppercase mt-1">ROLE / {project.role}</span>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+
+              {/* PACHOULI WELLNESS — HORIZONTAL CROP (RIGHT COLUMN) */}
+              {commercialProjects.filter(p => p.slug === "pachouli-wellness").map((project) => (
+                <article key={project.slug} className="group flex flex-col md:col-span-7" data-reveal="up">
+                  <Link href={`/projects/${project.slug}`} className="block">
+                    <div className="flex items-end justify-between mb-4 border-b border-[var(--line)] pb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="mono text-[10px] text-[var(--gold-dark)]">03</span>
+                        <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">{project.title}</h3>
+                      </div>
+                      <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Andheri / Wellness</span>
+                    </div>
+
+                    <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                      <div className="media-reveal-wrap overflow-hidden relative aspect-[4/3] md:h-[42vh]">
+                        <img
+                          src={project.heroImage}
+                          alt={project.title}
+                          className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex flex-col gap-1">
+                      <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                        Wellness clinic utilizing organic textures, fluted wall screens, and integrated spatial flow.
+                      </p>
+                      <span className="mono text-[9px] text-[var(--gold-dark)] uppercase mt-1">ROLE / {project.role}</span>
+                    </div>
+                  </Link>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 05 — PROJECT IN PROGRESS */}
-        <section className="py-24 lg:py-32 bg-[var(--bg-ivory)] relative overflow-hidden" id="project-in-progress">
+        {/* 04 — PROJECT IN PROGRESS */}
+        <section className="py-24 lg:py-32 bg-[var(--bg-ivory)] relative overflow-hidden border-t border-[var(--line)]" id="project-in-progress">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               {/* Left Column */}
               <div className="lg:col-span-6 relative flex flex-col justify-center min-w-0" data-reveal="up">
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="micro-label-editorial">05 / ON SITE EVIDENCE</span>
+                  <span className="micro-label-editorial">04 / ON SITE EVIDENCE</span>
                 </div>
 
                 <h2 className="heading-editorial text-5xl md:text-[clamp(3.5rem,5vw,6rem)] mb-8 leading-[0.95] tracking-tight">
@@ -447,7 +434,7 @@ export function SiteExperience() {
 
               {/* Right Column */}
               <div className="lg:col-span-6 flex flex-col items-center lg:items-end min-w-0">
-                <div className="editorial-image-frame corner-bracket-wrap w-full lg:w-[45vw] lg:max-w-[460px] shadow-2xl">
+                <div className="editorial-image-frame corner-bracket-wrap w-full lg:w-[45vw] lg:max-w-[460px] shadow-2xl rounded-2xl overflow-hidden border border-[var(--line)] bg-[var(--bg-sand)]">
                   <div className="relative aspect-[9/16] overflow-hidden">
                     <video
                       src="https://res.cloudinary.com/haulskyj/video/upload/v1787590125/video-progress.mp4"
@@ -465,8 +452,293 @@ export function SiteExperience() {
           </div>
         </section>
 
-        {/* 06 — OUR PROCESS */}
-        <section className="section-pad bg-[var(--bg-sand)]" id="process">
+        {/* 05 — RESIDENTIAL STORY INTRODUCTION */}
+        <section className="relative bg-[var(--bg-ivory)] overflow-hidden pt-24 pb-12 border-t border-[var(--line)]" id="residential-intro">
+          <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-6 w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+            <div className="lg:col-span-7">
+              <span className="mono text-[10px] text-[var(--gold-dark)] tracking-widest block mb-4 uppercase">05 / PORTFOLIO CASE STUDIES</span>
+              <h2 className="heading-editorial text-4xl md:text-6xl tracking-tight leading-[0.95]" data-reveal="up">
+                <span>SPACES MADE</span>
+                <span><em>FOR LIVING.</em></span>
+              </h2>
+            </div>
+            <div className="lg:col-span-4 lg:col-start-9">
+              <p className="text-sm text-[var(--ink-muted)] leading-relaxed mb-2">
+                Thoughtfully planned homes where proportion, material, light, and everyday functionality come together to support your daily rituals.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 06 — RESIDENTIAL PROJECTS ASYMMETRIC PORTFOLIO */}
+        <section className="bg-[var(--bg-ivory)] relative overflow-hidden pb-24" id="residential-projects">
+          <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute left-[50%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+          <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[rgba(21,20,18,0.06)] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            {/* SELECTED RESIDENCE, VIVEAREA — LARGE FEATURE */}
+            {residentialProjects.map((project) => (
+              <article key={project.slug} className="group relative w-full mb-28" data-reveal="up">
+                <Link href={`/projects/${project.slug}`} className="block">
+                  <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-4 border-b border-[var(--line)] pb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="mono text-sm text-[var(--gold-dark)]">01</span>
+                      <h3 className="text-2xl md:text-3xl font-serif text-[var(--ink)]">{project.title}</h3>
+                    </div>
+                    <span className="mono text-[10px] text-[var(--ink-muted)] uppercase tracking-widest md:text-right">Thane West · Residential Flat</span>
+                  </div>
+
+                  <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                    <div className="media-reveal-wrap overflow-hidden h-[50vh] md:h-[65vh] w-full relative">
+                      <img
+                        src="/client-work/projects/residential/bedroom-ilaf-wardrobe.jpg"
+                        alt={project.title}
+                        className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+                        style={{ objectPosition: "center center" }}
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap justify-between items-start mt-5 gap-4">
+                    <p className="text-xs text-[var(--ink-muted)] max-w-sm leading-relaxed">
+                      A warm and elegant residence featuring custom wood joinery details, warm ceiling illumination, and textured fabrics.
+                    </p>
+                    <div className="flex gap-8 text-[10px] font-mono uppercase text-[var(--ink-muted)]">
+                      <span>ROLE / {project.role}</span>
+                      <span>AREA / {project.area}</span>
+                    </div>
+                  </div>
+                </Link>
+              </article>
+            ))}
+
+            {/* BEDROOM & DINING — ASYMMETRIC GRID */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+              {/* MASTER BEDROOM — VERTICAL CROP (LEFT) */}
+              <article className="group flex flex-col md:col-span-5 md:mt-12" data-reveal="up">
+                <Link href="/projects/selected-residence" className="block">
+                  <div className="flex items-end justify-between mb-4 border-b border-[var(--line)] pb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="mono text-[10px] text-[var(--gold-dark)]">02</span>
+                      <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">Master Suites</h3>
+                    </div>
+                    <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Thane West / Bedroom</span>
+                  </div>
+
+                  <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                    <div className="media-reveal-wrap overflow-hidden relative aspect-[3/4] md:h-[50vh]">
+                      <img
+                        src={images.bedroom}
+                        alt="Master Suites"
+                        className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex flex-col gap-1">
+                    <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                      Textured master suite layout focusing on textured fabrics, integrated wardrobes, and custom illumination.
+                    </p>
+                    <span className="mono text-[9px] text-[var(--gold-dark)] uppercase mt-1">ROLE / Space planning &amp; styling</span>
+                  </div>
+                </Link>
+              </article>
+
+              {/* DINING AREA — HORIZONTAL CROP (RIGHT) */}
+              <article className="group flex flex-col md:col-span-7" data-reveal="up">
+                <Link href="/projects/selected-residence" className="block">
+                  <div className="flex items-end justify-between mb-4 border-b border-[var(--line)] pb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="mono text-[10px] text-[var(--gold-dark)]">03</span>
+                      <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">Dining Interiors</h3>
+                    </div>
+                    <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Thane West / Dining</span>
+                  </div>
+
+                  <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                    <div className="media-reveal-wrap overflow-hidden relative aspect-[4/3] md:h-[42vh]">
+                      <img
+                        src={images.dining}
+                        alt="Dining Interiors"
+                        className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex flex-col gap-1">
+                    <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                      Curated dining setups featuring marble tables, brass frames, and tailored ergonomic seating.
+                    </p>
+                    <span className="mono text-[9px] text-[var(--gold-dark)] uppercase mt-1">ROLE / Furniture curation &amp; lighting</span>
+                  </div>
+                </Link>
+              </article>
+            </div>
+
+            <div className="mt-20 text-center">
+              <Link href="/projects" className="hero-btn-primary">
+                VIEW ALL PROJECTS <span>→</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 07 — FURNITURE & LIVING SPACES HORIZONTAL CAROUSEL (DARK THEME) */}
+        <section className="section-pad bg-[#151412] text-white overflow-hidden relative" id="furniture-showcase">
+          <div className="max-w-7xl mx-auto px-6 mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div>
+              <p className="mono text-[10px] text-[var(--gold-light)] tracking-widest block mb-4 uppercase">
+                PORTFOLIO
+              </p>
+              <h2 className="heading-editorial text-4xl md:text-5xl lg:text-6xl text-[var(--bg-ivory)]">
+                <span>FURNITURE.</span>
+                <span className="block mt-2"><em className="text-[var(--gold)]">COMFORT. CRAFTED.</em></span>
+              </h2>
+              <p className="text-xs text-[var(--ink-light-muted)] max-w-md mt-6 leading-relaxed">
+                Thoughtfully selected furniture and curated living spaces that blend comfort, aesthetics and functionality.
+              </p>
+            </div>
+            
+            <div className="flex flex-col items-start lg:items-end gap-4">
+              <p className="text-xs text-[var(--ink-light-muted)] max-w-xs text-left lg:text-right italic">
+                Every piece is chosen with intent. Every space is built for real life.
+              </p>
+              <div className="flex gap-4 items-center">
+                {/* Navigation Arrows */}
+                <button
+                  onClick={handlePrev}
+                  disabled={sliderIndex === 0}
+                  className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/10 active:scale-95 transition-all disabled:opacity-30 disabled:pointer-events-none"
+                  aria-label="Previous slide"
+                >
+                  <span className="rotate-180 block">→</span>
+                </button>
+                <button
+                  onClick={handleNext}
+                  disabled={sliderIndex === furnitureImages.length - 1}
+                  className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white/10 active:scale-95 transition-all disabled:opacity-30 disabled:pointer-events-none"
+                  aria-label="Next slide"
+                >
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Slider Container wrapper with dragging/touch event binding */}
+          <div 
+            className="w-full relative px-6 cursor-grab active:cursor-grabbing select-none"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+          >
+            <div 
+              className="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              style={{
+                transform: `translateX(-${sliderIndex * (typeof window !== "undefined" && window.innerWidth < 768 ? 85 : 34)}%)`,
+              }}
+            >
+              {furnitureImages.map((img, idx) => (
+                <div 
+                  key={idx}
+                  className="w-[80vw] md:w-[35vw] lg:w-[34vw] flex-shrink-0 px-1 transition-opacity duration-300"
+                  style={{
+                    opacity: Math.abs(sliderIndex - idx) <= 2 ? 1 : 0.4
+                  }}
+                >
+                  <div className="relative aspect-[16/11] rounded-2xl overflow-hidden border border-white/10 bg-[#1E1D1A]">
+                    <img 
+                      src={img} 
+                      alt={`Furniture Layout ${idx + 1}`} 
+                      className="w-full h-full object-cover pointer-events-none"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Slider bottom progress bar */}
+          <div className="max-w-7xl mx-auto px-6 mt-8 flex justify-center">
+            <div className="w-48 h-[2px] bg-white/10 relative rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-[var(--gold)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                style={{
+                  width: `${((sliderIndex + 1) / furnitureImages.length) * 100}%`
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Carousel footer columns */}
+          <div className="max-w-7xl mx-auto px-6 mt-16 pt-12 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "PREMIUM SELECTION",
+                desc: "Carefully sourced for quality and comfort.",
+                icon: (
+                  <svg className="w-6 h-6 stroke-current text-[var(--gold)]" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h12a2.25 2.25 0 002.25-2.25V3M3.75 3h16.5M3.75 3v11.25M6 21h12m-9-4.5v4.5m6-4.5v4.5" />
+                  </svg>
+                )
+              },
+              {
+                title: "DESIGN-LED CHOICES",
+                desc: "Furniture that complements your space beautifully.",
+                icon: (
+                  <svg className="w-6 h-6 stroke-current text-[var(--gold)]" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 14.122A3 3 0 0014.122 9.53M9.53 14.122a3 3 0 104.591-4.592M9.53 14.122L3 20.65M14.122 9.53L20.65 3M16.5 5.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm-6 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                  </svg>
+                )
+              },
+              {
+                title: "BUILT FOR REAL LIFE",
+                desc: "Durable, functional and made for everyday living.",
+                icon: (
+                  <svg className="w-6 h-6 stroke-current text-[var(--gold)]" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>
+                )
+              },
+              {
+                title: "MADE TO FIT",
+                desc: "Perfectly scaled and suited to your lifestyle.",
+                icon: (
+                  <svg className="w-6 h-6 stroke-current text-[var(--gold)]" fill="none" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 4.5v15m6-15v15M3 9h18M3 15h18" />
+                  </svg>
+                )
+              }
+            ].map((col, idx) => (
+              <div key={idx} className="flex gap-4 items-start">
+                <div className="flex-shrink-0 mt-1">{col.icon}</div>
+                <div>
+                  <h4 className="text-xs font-mono font-bold tracking-wider text-[var(--bg-ivory)] uppercase mb-2">
+                    {col.title}
+                  </h4>
+                  <p className="text-[11px] text-[var(--ink-light-muted)] leading-relaxed">
+                    {col.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 08 — WHY ALTAMOUNTT */}
+        <section className="section-pad bg-[var(--bg-sand)]" id="why-altamountt">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[var(--line)] pb-6">
               <div>

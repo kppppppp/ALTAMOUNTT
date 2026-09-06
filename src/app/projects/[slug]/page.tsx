@@ -52,8 +52,8 @@ export default async function ProjectDetailPage({
             <img
               src={project.heroImage}
               alt={project.title}
-              className="media-reveal-inner"
-              style={{ opacity: 0.78 }}
+              className="media-reveal-inner object-cover w-full h-full"
+              style={{ opacity: 0.78, objectPosition: project.heroPosition || "center center" }}
             />
           </div>
 
@@ -108,14 +108,15 @@ export default async function ProjectDetailPage({
                   <p className="mono text-xs text-[var(--gold-dark)] mb-6">Project Specifications</p>
 
                   {[
+                    project.slug === "gokuldham-city" ? ["Project", project.title] : null,
+                    [project.slug === "gokuldham-city" ? "Type" : "Typology", project.category],
                     ["Location", project.location],
-                    ["Typology", project.category],
-                    ["Year", project.year],
+                    project.year ? ["Year", project.year] : null,
                     project.role ? ["Role", project.role] : null,
                     project.area ? ["Area", project.area] : null,
-                    ["Scope", project.scope],
+                    project.scope ? ["Scope", project.scope] : null,
                   ]
-                    .filter((item): item is [string, string] => item !== null)
+                    .filter((item): item is [string, string] => item !== null && Boolean(item[1]))
                     .map(([label, val]) => (
                       <div key={label} className="py-3 border-b border-[var(--line)]">
                         <span className="mono text-[10px] text-[var(--ink-muted)] block mb-0.5">{label}</span>
@@ -168,13 +169,17 @@ export default async function ProjectDetailPage({
                   </div>
                 )}
 
-                {/* Client quote */}
-                <div className="border-l-[3px] border-[var(--gold)] pl-6 py-2 bg-[rgba(184,154,112,0.07)] rounded-r-lg mt-8">
-                  <blockquote className="text-lg md:text-xl font-serif italic text-[var(--ink)] mb-2">
-                    &ldquo;{project.quote}&rdquo;
-                  </blockquote>
-                  <span className="mono text-xs text-[var(--gold-dark)]">— {project.clientFeedback}</span>
-                </div>
+                {/* Client quote (only if verified) */}
+                {project.quote && (
+                  <div className="border-l-[3px] border-[var(--gold)] pl-6 py-2 bg-[rgba(184,154,112,0.07)] rounded-r-lg mt-8">
+                    <blockquote className="text-lg md:text-xl font-serif italic text-[var(--ink)] mb-2">
+                      &ldquo;{project.quote}&rdquo;
+                    </blockquote>
+                    {project.clientFeedback && (
+                      <span className="mono text-xs text-[var(--gold-dark)]">— {project.clientFeedback}</span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -189,52 +194,167 @@ export default async function ProjectDetailPage({
             </div>
 
             <div className="flex flex-col gap-20 md:gap-28">
-              {project.gallery.map((item, index) => {
-                const isEven = index % 2 === 0;
-
-                return (
-                  <div
-                    key={item.title}
-                    className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end ${
-                      isEven ? "" : "lg:grid-flow-dense"
-                    }`}
-                  >
-                    <div
-                      className={`lg:col-span-8 ${
-                        isEven ? "" : "lg:col-start-5"
-                      }`}
-                    >
-                      <div
-                        className="media-reveal-wrap"
-                        style={{ height: "45vw", minHeight: 320, maxHeight: 600 }}
-                        data-reveal={item.preset}
-                      >
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="media-reveal-inner"
-                          loading="lazy"
-                        />
+              {project.slug === "gokuldham-city" && project.gallery.length >= 4 ? (
+                <>
+                  {/* VIEW 01: LARGE LIVING ROOM FEATURE */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end">
+                    <div className="lg:col-span-8">
+                      <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                        <div
+                          className="media-reveal-wrap overflow-hidden relative h-[50vh] md:h-[65vh] w-full"
+                          data-reveal={project.gallery[0].preset}
+                        >
+                          <img
+                            src={project.gallery[0].image}
+                            alt={project.gallery[0].title}
+                            className="media-reveal-inner object-cover w-full h-full"
+                            style={{ objectPosition: project.gallery[0].objectPosition || "center 25%" }}
+                            loading="lazy"
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    <div
-                      className={`lg:col-span-4 flex flex-col justify-end pb-4 ${
-                        isEven ? "" : "lg:col-start-1"
-                      }`}
-                    >
-                      <span className="mono text-xs text-[var(--gold-dark)] mb-2">
-                        VIEW 0{index + 1}
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-serif mb-2">{item.title}</h3>
+                    <div className="lg:col-span-4 flex flex-col justify-end pb-4">
+                      <span className="mono text-xs text-[var(--gold-dark)] mb-2">VIEW 01</span>
+                      <h3 className="text-2xl md:text-3xl font-serif mb-2">{project.gallery[0].title}</h3>
                       <i className="gold-line" style={{ width: 40, margin: "0.75rem 0" }} data-gold-line />
                       <p className="text-xs md:text-sm text-[var(--ink-muted)] leading-relaxed">
-                        {item.caption}
+                        {project.gallery[0].caption}
                       </p>
                     </div>
                   </div>
-                );
-              })}
+
+                  {/* VIEW 02 & VIEW 03: ASYMMETRIC EDITORIAL PAIR */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 items-start">
+                    {/* VIEW 02: SEATING & PEACOCK MURAL */}
+                    <div className="md:col-span-7 flex flex-col">
+                      <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                        <div
+                          className="media-reveal-wrap overflow-hidden relative aspect-[3/4] md:h-[62vh] w-full"
+                          data-reveal={project.gallery[1].preset}
+                        >
+                          <img
+                            src={project.gallery[1].image}
+                            alt={project.gallery[1].title}
+                            className="media-reveal-inner object-cover w-full h-full"
+                            style={{ objectPosition: project.gallery[1].objectPosition || "center 20%" }}
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-5 flex flex-col gap-1">
+                        <span className="mono text-xs text-[var(--gold-dark)]">VIEW 02</span>
+                        <h3 className="text-xl md:text-2xl font-serif">{project.gallery[1].title}</h3>
+                        <p className="text-xs md:text-sm text-[var(--ink-muted)] leading-relaxed">
+                          {project.gallery[1].caption}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* VIEW 03: SPATIAL MIRROR REFLECTION */}
+                    <div className="md:col-span-5 md:mt-12 flex flex-col">
+                      <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                        <div
+                          className="media-reveal-wrap overflow-hidden relative aspect-[3/4] md:h-[54vh] w-full"
+                          data-reveal={project.gallery[2].preset}
+                        >
+                          <img
+                            src={project.gallery[2].image}
+                            alt={project.gallery[2].title}
+                            className="media-reveal-inner object-cover w-full h-full"
+                            style={{ objectPosition: project.gallery[2].objectPosition || "center 35%" }}
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                      <div className="mt-5 flex flex-col gap-1">
+                        <span className="mono text-xs text-[var(--gold-dark)]">VIEW 03</span>
+                        <h3 className="text-xl md:text-2xl font-serif">{project.gallery[2].title}</h3>
+                        <p className="text-xs md:text-sm text-[var(--ink-muted)] leading-relaxed">
+                          {project.gallery[2].caption}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* VIEW 04: DETAIL PRESENTATION */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end lg:grid-flow-dense">
+                    <div className="lg:col-span-8 lg:col-start-5">
+                      <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                        <div
+                          className="media-reveal-wrap overflow-hidden relative h-[45vh] md:h-[55vh] w-full"
+                          data-reveal={project.gallery[3].preset}
+                        >
+                          <img
+                            src={project.gallery[3].image}
+                            alt={project.gallery[3].title}
+                            className="media-reveal-inner object-cover w-full h-full"
+                            style={{ objectPosition: project.gallery[3].objectPosition || "center 30%" }}
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="lg:col-span-4 lg:col-start-1 flex flex-col justify-end pb-4">
+                      <span className="mono text-xs text-[var(--gold-dark)] mb-2">VIEW 04</span>
+                      <h3 className="text-2xl md:text-3xl font-serif mb-2">{project.gallery[3].title}</h3>
+                      <i className="gold-line" style={{ width: 40, margin: "0.75rem 0" }} data-gold-line />
+                      <p className="text-xs md:text-sm text-[var(--ink-muted)] leading-relaxed">
+                        {project.gallery[3].caption}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                project.gallery.map((item, index) => {
+                  const isEven = index % 2 === 0;
+
+                  return (
+                    <div
+                      key={item.title}
+                      className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end ${
+                        isEven ? "" : "lg:grid-flow-dense"
+                      }`}
+                    >
+                      <div
+                        className={`lg:col-span-8 ${
+                          isEven ? "" : "lg:col-start-5"
+                        }`}
+                      >
+                        <div
+                          className="media-reveal-wrap"
+                          style={{ height: "45vw", minHeight: 320, maxHeight: 600 }}
+                          data-reveal={item.preset}
+                        >
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="media-reveal-inner"
+                            loading="lazy"
+                          />
+                        </div>
+                      </div>
+
+                      <div
+                        className={`lg:col-span-4 flex flex-col justify-end pb-4 ${
+                          isEven ? "" : "lg:col-start-1"
+                        }`}
+                      >
+                        <span className="mono text-xs text-[var(--gold-dark)] mb-2">
+                          VIEW 0{index + 1}
+                        </span>
+                        <h3 className="text-2xl md:text-3xl font-serif mb-2">{item.title}</h3>
+                        <i className="gold-line" style={{ width: 40, margin: "0.75rem 0" }} data-gold-line />
+                        <p className="text-xs md:text-sm text-[var(--ink-muted)] leading-relaxed">
+                          {item.caption}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
         </section>
@@ -242,8 +362,16 @@ export default async function ProjectDetailPage({
         {/* ═══ 4. FINAL LARGE IMAGE ═══ */}
         <section className="px-5 md:px-12 pb-20 bg-[var(--bg-ivory)]">
           <div className="max-w-7xl mx-auto">
-            <div className="media-reveal-wrap" style={{ height: "42vw", minHeight: 300, maxHeight: 560 }} data-reveal="expand">
-              <img src={images.final} alt="Completed interior atmosphere" className="media-reveal-inner" loading="lazy" />
+            <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+              <div className="media-reveal-wrap overflow-hidden h-[42vw] min-h-[300px] max-h-[560px] w-full relative" data-reveal="expand">
+                <img
+                  src={project.closingImage || images.final}
+                  alt={project.title}
+                  className="media-reveal-inner object-cover w-full h-full"
+                  style={{ objectPosition: project.closingPosition || "center center" }}
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </section>

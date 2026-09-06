@@ -31,11 +31,14 @@ export interface ProjectDetail {
   subtitle: string;
   category: string;
   location: string;
-  year: string;
-  scope: string;
+  year?: string;
+  scope?: string;
   role?: string;
   area?: string;
   heroImage: string;
+  heroPosition?: string;
+  closingImage?: string;
+  closingPosition?: string;
   intro: string;
   concept: string;
   challenge?: string;
@@ -46,9 +49,12 @@ export interface ProjectDetail {
     caption: string;
     image: string;
     preset: "up" | "left" | "right" | "scale" | "parallax";
+    aspect?: "portrait" | "landscape" | "wide" | "square";
+    layout?: "featured" | "pair" | "detail" | "standard";
+    objectPosition?: string;
   }[];
-  quote: string;
-  clientFeedback: string;
+  quote?: string;
+  clientFeedback?: string;
 }
 
 export const studioInfo = {
@@ -407,6 +413,60 @@ export const projectsList: ProjectDetail[] = [
     ],
     quote: "Altamountt transformed our blank layout into a breathtaking, peaceful sanctuary that feels twice as spacious.",
     clientFeedback: "Residential Client · Vivearea"
+  },
+  {
+    slug: "gokuldham-city",
+    title: "Gokuldham City",
+    subtitle: "Residential Flat · Goregaon, Mumbai",
+    category: "Residential",
+    location: "Goregaon, Mumbai",
+    heroImage: "/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (1).jpeg",
+    heroPosition: "center 25%",
+    closingImage: "/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (1).jpeg",
+    closingPosition: "center 30%",
+    intro: "A residential interior in Gokuldham City, Goregaon, centered on a bright living lounge featuring architectural cove ceiling illumination, an ornate glass petal chandelier, tailored seating, and an artistic peacock mural accent wall.",
+    concept: "The living space is anchored by warm cove ceiling illumination and a central chandelier, balanced with neutral sofa seating, a polished stone coffee table, and an expansive floor-to-ceiling mirror panel that amplifies light and spatial openness.",
+    challenge: "Harmonizing warm architectural lighting and reflective elements with tailored lounge seating and a detailed feature wall in a cohesive residential layout.",
+    approach: "We planned the living area with integrated false ceiling cove lights, curated a central glass chandelier, aligned a full-height mirror to reflect ambient light, and organized sofa seating around the feature wall and window.",
+    result: "An inviting, luminous living environment highlighted by reflective surfaces, ambient ceiling lighting, and curated accent walls.",
+    gallery: [
+      {
+        title: "Living Space & Spatial Planning",
+        caption: "Open living lounge with integrated cove ceiling illumination, central glass petal chandelier, and tailored lounge seating",
+        image: "/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (1).jpeg",
+        preset: "up",
+        aspect: "portrait",
+        layout: "featured",
+        objectPosition: "center 25%"
+      },
+      {
+        title: "Seating & Peacock Mural Wall",
+        caption: "Angled perspective highlighting the sofa seating, luminous chandelier, and vibrant peacock accent wall",
+        image: "/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (2).jpeg",
+        preset: "right",
+        aspect: "portrait",
+        layout: "pair",
+        objectPosition: "center 20%"
+      },
+      {
+        title: "Spatial Mirror Reflection",
+        caption: "Floor-to-ceiling mirror panel reflecting ambient lighting and expanding spatial depth",
+        image: "/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37.jpeg",
+        preset: "left",
+        aspect: "portrait",
+        layout: "pair",
+        objectPosition: "center 35%"
+      },
+      {
+        title: "Lounge & Coffee Table Detail",
+        caption: "Stone-top center coffee table with wooden base, neutral sofa, and tailored window drapery",
+        image: "/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.38.jpeg",
+        preset: "scale",
+        aspect: "portrait",
+        layout: "detail",
+        objectPosition: "center 30%"
+      }
+    ]
   },
   {
     slug: "google-bkc",

@@ -518,6 +518,63 @@ export function SiteExperience() {
               </article>
             ))}
 
+            {/* 02 — GOKULDHAM CITY FEATURE */}
+            <article className="group relative w-full mb-28" data-reveal="up">
+              <Link href="/projects/gokuldham-city" className="block">
+                <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-4 border-b border-[var(--line)] pb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="mono text-sm text-[var(--gold-dark)]">02</span>
+                    <h3 className="text-2xl md:text-3xl font-serif text-[var(--ink)]">Gokuldham City</h3>
+                  </div>
+                  <span className="mono text-[10px] text-[var(--ink-muted)] uppercase tracking-widest md:text-right">Goregaon, Mumbai · Residential</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+                  {/* Primary Image: Wide living room view */}
+                  <div className="md:col-span-7">
+                    <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                      <div className="media-reveal-wrap overflow-hidden h-[45vh] md:h-[58vh] w-full relative">
+                        <img
+                          src="/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (1).jpeg"
+                          alt="Gokuldham City Living Room"
+                          className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+                          style={{ objectPosition: "center 25%" }}
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Secondary Image & Project CTA */}
+                  <div className="md:col-span-5 flex flex-col justify-between">
+                    <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)] mb-4 md:mb-0">
+                      <div className="media-reveal-wrap overflow-hidden h-[30vh] md:h-[40vh] w-full relative">
+                        <img
+                          src="/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (2).jpeg"
+                          alt="Gokuldham City Seating Area & Mural Wall"
+                          className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                          style={{ objectPosition: "center 20%" }}
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-3 pt-2">
+                      <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                        A contemporary residential flat in Goregaon featuring custom cove ceiling illumination, decorative chandelier lighting, tailored lounge seating, and an artistic accent wall.
+                      </p>
+                      <div className="flex items-center justify-between pt-2 border-t border-[var(--line)]">
+                        <span className="mono text-[10px] uppercase text-[var(--ink-muted)]">GOREGAON, MUMBAI</span>
+                        <span className="mono text-[11px] text-[var(--gold-dark)] font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                          VIEW PROJECT <span>→</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </article>
+
             {/* BEDROOM & DINING — ASYMMETRIC GRID */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
               {/* MASTER BEDROOM — VERTICAL CROP (LEFT) */}
@@ -525,7 +582,7 @@ export function SiteExperience() {
                 <Link href="/projects/selected-residence" className="block">
                   <div className="flex items-end justify-between mb-4 border-b border-[var(--line)] pb-2">
                     <div className="flex items-center gap-2">
-                      <span className="mono text-[10px] text-[var(--gold-dark)]">02</span>
+                      <span className="mono text-[10px] text-[var(--gold-dark)]">03</span>
                       <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">Master Suites</h3>
                     </div>
                     <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Thane West / Bedroom</span>
@@ -556,7 +613,7 @@ export function SiteExperience() {
                 <Link href="/projects/selected-residence" className="block">
                   <div className="flex items-end justify-between mb-4 border-b border-[var(--line)] pb-2">
                     <div className="flex items-center gap-2">
-                      <span className="mono text-[10px] text-[var(--gold-dark)]">03</span>
+                      <span className="mono text-[10px] text-[var(--gold-dark)]">04</span>
                       <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">Dining Interiors</h3>
                     </div>
                     <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Thane West / Dining</span>

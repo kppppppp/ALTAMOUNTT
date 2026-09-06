@@ -14,6 +14,7 @@ export default function Projects() {
   const lakmeProject = projectsList.find(p => p.slug === "lakme-salon") || projectsList[3];
   const pachouliProject = projectsList.find(p => p.slug === "pachouli-wellness") || projectsList[2];
   const resProject = projectsList.find(p => p.slug === "selected-residence") || projectsList[0];
+  const gokuldhamProject = projectsList.find(p => p.slug === "gokuldham-city");
 
   return (
     <PageShell>
@@ -204,6 +205,63 @@ export default function Projects() {
                 </Link>
               </article>
 
+              {/* GOKULDHAM CITY RESIDENCE FEATURE */}
+              <article className="group relative w-full">
+                <Link href="/projects/gokuldham-city" className="block">
+                  <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-6 border-b border-[rgba(21,20,18,0.15)] pb-4">
+                    <div className="flex items-center gap-3">
+                      <span className="mono text-sm text-[var(--gold-dark)] font-semibold">02</span>
+                      <h3 className="text-2xl md:text-3xl font-serif text-[var(--ink)]">Gokuldham City</h3>
+                    </div>
+                    <span className="mono text-[10px] text-[var(--ink-muted)] uppercase tracking-widest md:text-right">Goregaon, Mumbai · Residential</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                    {/* Primary Image: Wide living room view */}
+                    <div className="md:col-span-7">
+                      <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                        <div className="media-reveal-wrap overflow-hidden h-[45vh] md:h-[58vh] w-full relative">
+                          <img 
+                            src="/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (1).jpeg" 
+                            alt="Gokuldham City Living Room" 
+                            className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.01]" 
+                            style={{ objectPosition: "center 25%" }}
+                            loading="lazy" 
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Secondary Image & Project Details */}
+                    <div className="md:col-span-5 flex flex-col justify-between h-full gap-6">
+                      <div className="editorial-image-frame corner-bracket-wrap shadow-xl overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                        <div className="media-reveal-wrap overflow-hidden h-[30vh] md:h-[38vh] w-full relative">
+                          <img 
+                            src="/client-work/gokuldham/WhatsApp Image 2026-08-30 at 08.15.37 (2).jpeg" 
+                            alt="Gokuldham City Seating Area & Mural Wall" 
+                            className="media-reveal-inner object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
+                            style={{ objectPosition: "center 20%" }}
+                            loading="lazy" 
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col gap-3">
+                        <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                          A residential interior in Goregaon planned with ambient cove ceiling illumination, an ornamental glass petal chandelier, tailored lounge seating, and an accent peacock mural wall.
+                        </p>
+                        <div className="flex justify-between items-center text-[10px] font-mono uppercase text-[var(--ink-muted)] pt-3 border-t border-[var(--line)]">
+                          <span>TYPOLOGY / Residential</span>
+                          <span className="text-[var(--gold-dark)] font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                            VIEW CASE STUDY <span>→</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </article>
+
               {/* MASTER BEDROOM + DINING — ASYMMETRIC GRID */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
                 {/* BEDROOM */}
@@ -211,7 +269,7 @@ export default function Projects() {
                   <Link href={`/projects/${resProject.slug}`} className="block">
                     <div className="flex items-end justify-between mb-4 border-b border-[rgba(21,20,18,0.15)] pb-2">
                       <div className="flex items-center gap-2">
-                        <span className="mono text-[10px] text-[var(--gold-dark)]">02</span>
+                        <span className="mono text-[10px] text-[var(--gold-dark)]">03</span>
                         <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">Master Suites</h3>
                       </div>
                       <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Thane West / Bedroom</span>
@@ -242,7 +300,7 @@ export default function Projects() {
                   <Link href={`/projects/${resProject.slug}`} className="block">
                     <div className="flex items-end justify-between mb-4 border-b border-[rgba(21,20,18,0.15)] pb-2">
                       <div className="flex items-center gap-2">
-                        <span className="mono text-[10px] text-[var(--gold-dark)]">03</span>
+                        <span className="mono text-[10px] text-[var(--gold-dark)]">04</span>
                         <h3 className="text-xl md:text-2xl font-serif text-[var(--ink)]">Dining Interiors</h3>
                       </div>
                       <span className="mono text-[9px] text-[var(--ink-muted)] uppercase">Thane West / Dining</span>

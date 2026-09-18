@@ -277,7 +277,7 @@ export const imageStackScenes = [
 
 // Names and imagery below are only used where the supplied project assets establish the relationship.
 export const selectedClients = [
-  { name: "GOOGLE", descriptor: "Corporate workspace · BKC", image: "/client-work/projects/commercial/google-bkc-reception.webp" },
+  { name: "GOOGLE", descriptor: "Plumbing works · BKC", image: "/client-work/projects/commercial/google-bkc-reception.webp" },
   { name: "LAKMÉ", descriptor: "Beauty & styling salon · Versova", image: "/client-work/projects/commercial/lakme-salon-interior-01.webp" },
   { name: "PACHOULI WELLNESS", descriptor: "Wellness clinic · Andheri", image: "/client-work/projects/commercial/pachouli-wellness-reception.webp" },
 ];
@@ -471,26 +471,26 @@ export const projectsList: ProjectDetail[] = [
   {
     slug: "google-bkc",
     title: "Google Office, BKC",
-    subtitle: "Modern Corporate Workspace",
+    subtitle: "Plumbing Works Execution",
     category: "Commercial & Office",
     location: "BKC, Mumbai",
     year: "2024",
-    role: "Space Planning & Interior Architecture",
-    scope: "Space Planning & Corridor Flow Coordination",
+    role: "Plumbing Work",
+    scope: "Plumbing Works Only",
     heroImage: "/client-work/projects/commercial/google-bkc-reception.webp",
-    intro: "A premium corporate workspace designed for Google in BKC, Mumbai, centering around open flow, wave-patterned flooring, and acoustic glass partitions.",
-    concept: "We optimized the corridor flow and reception area, pairing textured sand-tone wallpaper with curved concrete elements and stone washroom claddings.",
-    challenge: "Designing a high-performance office space in BKC that optimizes flow and acoustics, aligning with corporate guidelines while maintaining local design identity.",
-    approach: "We resolved the corridor layouts, positioned workstations for open communication, integrated acoustic panels, and custom-designed the reception wave-patterned terrazzo floor.",
-    result: "A highly collaborative corporate environment featuring seamless flow, exceptional restroom vanity layouts, and sound-insulated zones.",
+    intro: "Specialized plumbing works executed by Altamountt for the Google corporate workspace in BKC, Mumbai. Altamountt's scope was specifically the plumbing work only, delivering high-precision sanitary drainage systems and fixture installations.",
+    concept: "Execution of enterprise-grade commercial plumbing infrastructure, water supply distribution, and sanitary drainage lines compliant with corporate facility standards.",
+    challenge: "Executing commercial-grade plumbing and restroom utility networks within strict corporate facility guidelines and building compliance standards.",
+    approach: "Our scope was dedicated strictly to plumbing execution: coordinating sanitary supply lines, multi-zone drainage connections, core utility piping, and premium restroom washbasin installations.",
+    result: "High-performance plumbing infrastructure and restroom sanitary utilities delivered with flawless pressure integrity and reliable daily operation.",
     gallery: [
-      { title: "Google Reception", caption: "Curved wooden desk and terrazzo wave-pattern flooring", image: "/client-work/projects/commercial/google-bkc-reception.webp", preset: "up" },
-      { title: "Workstations", caption: "Open-concept desk clusters with acoustic dividers", image: "/client-work/projects/commercial/google-bkc-office-01.webp", preset: "left" },
-      { title: "Collaborative Zone", caption: "Creative workspace layout with linear ceiling fixtures", image: "/client-work/projects/commercial/google-bkc-office-02.webp", preset: "up" },
-      { title: "Meeting Suite", caption: "Glass-enclosed conference room with brick accent wall", image: "/client-work/projects/commercial/google-bkc-meeting.webp", preset: "right" },
-      { title: "Washroom Vanity", caption: "Round mirrors and concrete vessel basins", image: "/client-work/projects/commercial/google-bkc-restroom.webp", preset: "scale" }
+      { title: "Google BKC Facility", caption: "Corporate office facility where Altamountt executed specialized plumbing works", image: "/client-work/projects/commercial/google-bkc-reception.webp", preset: "up" },
+      { title: "Workplace Facility", caption: "Corporate office floor supported by Altamountt's utility and plumbing infrastructure", image: "/client-work/projects/commercial/google-bkc-office-01.webp", preset: "left" },
+      { title: "Collaborative Zone", caption: "Workplace floor area served by commercial plumbing and drainage networks", image: "/client-work/projects/commercial/google-bkc-office-02.webp", preset: "up" },
+      { title: "Meeting Suite", caption: "Executive discussion zone within the Google BKC corporate workplace", image: "/client-work/projects/commercial/google-bkc-meeting.webp", preset: "right" },
+      { title: "Washroom Vanity & Plumbing", caption: "Sanitary plumbing installations, concrete vessel basin fittings, and drainage executed by Altamountt", image: "/client-work/projects/commercial/google-bkc-restroom.webp", preset: "scale" }
     ],
-    quote: "The design completely changed how our team collaborates. The flow and restroom layout are exceptional.",
+    quote: "The plumbing works and restroom installations were executed with outstanding precision, reliability, and professionalism.",
     clientFeedback: "Google BKC Facilities Team"
   },
   {

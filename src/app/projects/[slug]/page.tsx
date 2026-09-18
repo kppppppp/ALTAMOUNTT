@@ -85,16 +85,34 @@ export default async function ProjectDetailPage({
             >
               <span className="mask-text-line">{project.title}</span>
             </h1>
-            <p
-              style={{
-                fontSize: "clamp(0.875rem, 1.5vw, 1.125rem)",
-                color: "rgba(245,242,235,0.85)",
-                maxWidth: 520,
-                lineHeight: 1.55,
-              }}
-            >
-              {project.subtitle}
-            </p>
+            {project.slug === "google-bkc" ? (
+              <div className="flex flex-col gap-1.5 mt-2">
+                <p className="mono text-xs tracking-widest uppercase text-[var(--gold-light)] font-semibold">
+                  PLUMBING WORK · GOOGLE PROJECT
+                </p>
+                <p
+                  style={{
+                    fontSize: "clamp(0.875rem, 1.5vw, 1.125rem)",
+                    color: "rgba(245,242,235,0.85)",
+                    maxWidth: 520,
+                    lineHeight: 1.55,
+                  }}
+                >
+                  Plumbing works executed by Altamountt.
+                </p>
+              </div>
+            ) : (
+              <p
+                style={{
+                  fontSize: "clamp(0.875rem, 1.5vw, 1.125rem)",
+                  color: "rgba(245,242,235,0.85)",
+                  maxWidth: 520,
+                  lineHeight: 1.55,
+                }}
+              >
+                {project.subtitle}
+              </p>
+            )}
           </div>
         </section>
 
@@ -136,10 +154,23 @@ export default async function ProjectDetailPage({
               <div className="lg:col-span-8">
                 <p className="eyebrow">Case Study Narrative</p>
                 <h2 className="heading-editorial mb-6" data-text-reveal="left">
-                  <span>SPACE CONCEIVED</span>
-                  <span><em>FOR REAL LIFE.</em></span>
+                  <span>{project.slug === "google-bkc" ? "PLUMBING WORK" : "SPACE CONCEIVED"}</span>
+                  <span><em>{project.slug === "google-bkc" ? "GOOGLE PROJECT." : "FOR REAL LIFE."}</em></span>
                 </h2>
                 <i className="gold-line" data-gold-line />
+
+                {project.slug === "google-bkc" && (
+                  <div className="mb-6 p-4 rounded-xl border border-[var(--line)] bg-[var(--bg-sand)]">
+                    <p className="mono text-[11px] tracking-wider uppercase mb-1">
+                      <span className="font-semibold text-[var(--gold-dark)]">PLUMBING WORK</span>
+                      <span className="text-[var(--ink-muted)] opacity-50 mx-2">·</span>
+                      <span className="text-[var(--ink-muted)]">GOOGLE PROJECT</span>
+                    </p>
+                    <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                      Plumbing works executed by Altamountt. Altamountt&apos;s scope was specifically the plumbing work only.
+                    </p>
+                  </div>
+                )}
 
                 <p className="text-lg md:text-xl text-[var(--ink)] leading-relaxed mb-8">
                   {project.intro}

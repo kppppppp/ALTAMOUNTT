@@ -320,14 +320,15 @@ export function SiteExperience() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap justify-between items-start mt-5 gap-4">
-                    <p className="text-xs text-[var(--ink-muted)] max-w-sm leading-relaxed">
-                      High-performance workspace resolved around open flow, wave-patterned ceilings, and bespoke concrete features.
+                  <div className="mt-5 flex flex-col gap-1.5">
+                    <p className="mono text-[11px] tracking-wider uppercase">
+                      <span className="font-semibold text-[var(--gold-dark)]">PLUMBING WORK</span>
+                      <span className="text-[var(--ink-muted)] opacity-50 mx-2">·</span>
+                      <span className="text-[var(--ink-muted)]">GOOGLE PROJECT</span>
                     </p>
-                    <div className="flex gap-8 text-[10px] font-mono uppercase text-[var(--ink-muted)]">
-                      <span>ROLE / {project.role}</span>
-                      <span>AREA / {project.area}</span>
-                    </div>
+                    <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
+                      Plumbing works executed by Altamountt.
+                    </p>
                   </div>
                 </Link>
               </article>

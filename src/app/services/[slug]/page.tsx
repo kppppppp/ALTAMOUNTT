@@ -64,7 +64,7 @@ export default async function ServiceSlugPage({ params }: Props) {
     commercial: {
       localContext: "We design and build commercial workspaces that elevate company credibility and drive workflow efficiency. From corporate offices in BKC to wellness clinics in Andheri and retail styling salons in Versova, our team manages design compliance and turnkey contracting.",
       faqs: [
-        { q: "Have you worked with established national brands?", a: "Yes. Our team has coordinated office space layouts and interior styling for brands such as Google BKC, Lakmé Salon Versova, and Pachouli Wellness clinic Andheri." },
+        { q: "Have you worked with established national brands?", a: "Yes. Our team has delivered specialized works and styling for brands such as Google BKC (plumbing work), Lakmé Salon Versova, and Pachouli Wellness clinic Andheri." },
         { q: "How do you handle acoustic glass paneling and lighting?", a: "We integrate specialized acoustic partition walls, trimless recessed downlights, and custom linear ceiling fixtures that enhance workspace focus." },
         { q: "Do you handle commercial permissions and site guidelines?", a: "Yes, our turnkey team coordinates with corporate facility management and structural guidelines to ensure clean compliance." },
       ],

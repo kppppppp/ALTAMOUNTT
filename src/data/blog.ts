@@ -25,7 +25,7 @@ export const blogArticles: BlogArticle[] = [
     category: "RESIDENTIAL",
     date: "August 24, 2026",
     readTime: "5 min read",
-    image: "/client-work/interiors/img8.jpeg",
+    image: "/client-work/projects/residential/living-tv-unit-01.jpg",
     relatedSlugs: ["modular-kitchen-cost-in-thane", "interior-design-budget-1000-sqft-apartment"]
   },
   {
@@ -105,7 +105,7 @@ export const blogArticles: BlogArticle[] = [
     category: "DESIGN PROCESS",
     date: "July 25, 2026",
     readTime: "4 min read",
-    image: "/client-work/interiors/img11.jpeg",
+    image: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
     relatedSlugs: ["turnkey-interior-vs-hiring-separate-contractors", "10-mistakes-to-avoid-renovating-3bhk"]
   },
   {
@@ -169,7 +169,7 @@ export const blogArticles: BlogArticle[] = [
     category: "MATERIALS",
     date: "July 28, 2026",
     readTime: "5 min read",
-    image: "/client-work/interiors/img8.jpeg",
+    image: "/client-work/projects/residential/living-tv-unit-02.webp",
     relatedSlugs: ["plan-home-interior-before-drawing", "how-long-does-complete-home-interior-take"]
   },
   {

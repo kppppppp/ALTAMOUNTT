@@ -273,7 +273,7 @@ export default function ServicesPage() {
                 <div className="editorial-image-frame corner-bracket-wrap w-full max-w-[620px] shadow-xl overflow-hidden rounded-xl border border-[var(--line)]">
                   <div className="relative aspect-[16/10] overflow-hidden group">
                     <img 
-                      src="/client-work/interiors/img11.jpeg" 
+                      src="/client-work/projects/residential/bedroom-ilaf-01.jpg" 
                       alt="Turnkey Design Completion & Handover" 
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" 
                       loading="lazy" 

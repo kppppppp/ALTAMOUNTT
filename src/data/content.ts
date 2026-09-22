@@ -82,8 +82,8 @@ export const images = {
   heroPoster: "/client-work/interiors/img7.jpeg", // Living Room
   living: "/client-work/interiors/img9.jpeg", // Living Lounge
   lounge: "/client-work/interiors/img7.jpeg", // Living Room
-  dining: "/client-work/interiors/img8.jpeg", // Dining Space
-  bedroom: "/client-work/interiors/img11.jpeg", // Bedroom
+  dining: "/client-work/interiors/img13.jpeg", // Dining Space
+  bedroom: "/client-work/projects/residential/bedroom-ilaf-01.jpg", // Bedroom
   kitchen: "/client-work/interiors/client-kitchen-01.webp",
   bath: "/client-work/projects/commercial/google-bkc-restroom.webp",
   detail: "/client-work/interiors/drawing0.png",
@@ -98,7 +98,7 @@ export const images = {
   flutedWood: "/client-work/interiors/img4.jpeg", // Wardrobe/Bedroom
   lightingGlow: "/client-work/interiors/im1.jpeg", // Circular Headboard
   officeInterior: "/client-work/projects/commercial/google-bkc-office-01.webp",
-  aboutHero: "/client-work/interiors/img11.jpeg", // Bedroom striped
+  aboutHero: "/client-work/projects/residential/bedroom-ilaf-01.jpg", // Bedroom
   servicesHero: "/client-work/interiors/img9.jpeg", // Living Lounge
   contactHero: "/client-work/projects/commercial/google-bkc-reception.webp",
 };
@@ -335,7 +335,7 @@ export const servicesData: ServiceItem[] = [
     title: "Turnkey Interior ",
     tagline: "Seamless end-to-end execution from sketch to keys",
     description: "One single accountable team managing procurement, engineering, contractor supervision, craftsmanship, and on-schedule handover within your established budget.",
-    image: "/client-work/interiors/img11.jpeg",
+    image: "/client-work/projects/residential/bedroom-ilaf-01.jpg",
     subservices: [
       "Material Sourcing & Procurement",
       "Civil & Structural Supervision",
@@ -372,7 +372,7 @@ export const pinnedStoryScenes: ProjectScene[] = [
     tag: "04 / 05 · Dining Area · Vivearea",
     title: "Dining Interiors",
     subtitle: "An elegant dining space focused on a white marble table with sculptural gold bases, paired with textured curved dining chairs.",
-    image: "/client-work/interiors/img8.jpeg",
+    image: "/client-work/interiors/img13.jpeg",
     aspect: "16/10"
   },
   {
